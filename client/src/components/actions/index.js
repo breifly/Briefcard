@@ -1,6 +1,12 @@
 import keys from '../../config/keys';
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR, EDIT_USER } from './types';
+import {
+  AUTH_USER,
+  AUTH_ERROR,
+  EDIT_USER,
+  GET_ALL_USERS,
+  GET_ALL_USERS_ERROR
+} from './types';
 import * as JWT from 'jwt-decode';
 
 ///////////////////////////////// User Authentification ///////////////////////////////////////
@@ -107,4 +113,17 @@ export const deleteUser = (id, callback) => async dispatch => {
   dispatch({ type: EDIT_USER, payload: '' });
   localStorage.removeItem('token');
   callback(); /* history callback */
+};
+
+/////////////////////////////// Dicover ////////////////////////////////////////////////////
+export const getAllUser = () => async dispatch => {
+  try {
+    const response = await axios.get(`${keys.siteUrl}/dashboard`);
+    dispatch({ type: GET_ALL_USERS, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: GET_ALL_USERS_ERROR,
+      payload: 'cannot find the users'
+    });
+  }
 };

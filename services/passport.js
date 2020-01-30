@@ -1,16 +1,14 @@
-const keys = require("../config/keys");
-const passport = require("passport");
-const User = require("../models/User");
-const JwtStrategy = require("passport-jwt").Strategy;
-const ExtractJwt = require("passport-jwt").ExtractJwt;
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const InstagramStrategy = require("passport-instagram").Strategy;
-const FacebookStrategy = require("passport-facebook").Strategy;
-const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-const localStrategy = require("passport-local");
+const keys = require('../config/keys');
+const passport = require('passport');
+const User = require('../models/User');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const localStrategy = require('passport-local');
 
 // Create local strategy
-const localOptions = { usernameField: "email" };
+const localOptions = { usernameField: 'email' };
 const localLogin = new localStrategy(localOptions, function(
   email,
   password,
@@ -41,7 +39,7 @@ const localLogin = new localStrategy(localOptions, function(
 
 // setup option for jwt Strategy
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: keys.secret,
   passReqToCallback: true
 };
@@ -75,7 +73,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
-    user.whatever = "you like";
+    user.whatever = 'you like';
     done(null, user);
   });
 });
@@ -86,13 +84,13 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback",
+      callbackURL: '/auth/google/callback',
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log("access Token", accessToken);
-      console.log("refresh Token", refreshToken);
-      console.log("profile", profile);
+      console.log('access Token', accessToken);
+      console.log('refresh Token', refreshToken);
+      console.log('profile', profile);
       // don't have double User with same profileId
       const existingUser = await User.findOne({ googleId: profile.id });
 
@@ -106,7 +104,14 @@ passport.use(
           email: profile._json.email,
           avatar: profile._json.picture,
           firstName: profile._json.given_name,
-          lastName: profile._json.family_name
+          lastName: profile._json.family_name,
+          friendId:
+            new Date()
+              .getTime()
+              .toString()
+              .substring(8) +
+            Math.floor(Math.random() * (99999 - 10000)) +
+            100000
         }).save();
         done(null, user);
       }
@@ -120,14 +125,14 @@ passport.use(
     {
       clientID: keys.linkedinClientID,
       clientSecret: keys.linkedinClientSecret,
-      callbackURL: "/auth/linkedin/callback",
-      scope: ["r_liteprofile", "r_emailaddress", "w_member_social"],
+      callbackURL: '/auth/linkedin/callback',
+      scope: ['r_liteprofile', 'r_emailaddress', 'w_member_social'],
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log("access token", accessToken);
-      console.log("refresh token", refreshToken);
-      console.log("profile:", profile);
+      console.log('access token', accessToken);
+      console.log('refresh token', refreshToken);
+      console.log('profile:', profile);
       // don't have double User with same profileID
       const existingUser = await User.findOne({ linkedinId: profile.id });
       if (existingUser) {
@@ -140,7 +145,14 @@ passport.use(
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
           email: profile.emails[0].value,
-          avatar: profile.photos[1].value
+          avatar: profile.photos[1].value,
+          friendId:
+            new Date()
+              .getTime()
+              .toString()
+              .substring(8) +
+            Math.floor(Math.random() * (99999 - 10000)) +
+            100000
         }).save();
         done(null, user);
       }
