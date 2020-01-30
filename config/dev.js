@@ -8,6 +8,6 @@ module.exports = {
   cookieKey: 'rjfhsjd78060f7f87kbjsrklvjbkmlej123fefdgrdfg',
   secret: 'lfghjhfvl34738473fbhzr89861khjv45454346dfefjazghc',
   siteUrl: 'http://localhost:3001',
-  linkedinClientID: '86sy0pbld2dtyv',
-  linkedinClientSecret: 'UMhL1MEFECFWObdT'
+  linkedinClientID: '86bbg3y2g9btxj',
+  linkedinClientSecret: 'itfxHtTAHGnhbwEq'
 };
