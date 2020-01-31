@@ -1,14 +1,24 @@
-import { GET_ALL_USERS, GET_ALL_USERS_ERROR } from '../actions/types';
+import {
+  CREATE_DISCOVER,
+  DISCOVER_ERROR,
+  GET_ALL_DISCOVERS,
+  GET_ALL_DISCOVERS_ERROR
+} from '../actions/types';
 const INITIAL_STATE = {
-  allUsers: '',
-  errorMessage: ''
+  errorMessage: '',
+  createDiscover: '',
+  allDiscovers: ''
 };
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case GET_ALL_USERS:
-      return { ...state, allUsers: action.payload || false };
-    case GET_ALL_USERS_ERROR:
+    case CREATE_DISCOVER:
+      return { ...state, createDiscover: action.payload || false };
+    case DISCOVER_ERROR:
+      return { ...state, errorMessage: action.payload };
+    case GET_ALL_DISCOVERS:
+      return { ...state, allDiscovers: action.payload || false };
+    case GET_ALL_DISCOVERS_ERROR:
       return { ...state, errorMessage: action.payload };
     default:
       return state;

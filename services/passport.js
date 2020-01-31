@@ -145,14 +145,7 @@ passport.use(
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
           email: profile.emails[0].value,
-          avatar: profile.photos[1].value,
-          friendId:
-            new Date()
-              .getTime()
-              .toString()
-              .substring(8) +
-            Math.floor(Math.random() * (99999 - 10000)) +
-            100000
+          avatar: profile.photos[1].value
         }).save();
         done(null, user);
       }

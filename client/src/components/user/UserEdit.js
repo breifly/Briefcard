@@ -5,7 +5,6 @@ import { reduxForm, Field } from 'redux-form';
 import * as actions from '../actions';
 import { Modal } from 'react-materialize';
 import normalizePhone from './normalizePhone';
-import config from '../../config/keys';
 
 class UserEdit extends React.Component {
   state = {

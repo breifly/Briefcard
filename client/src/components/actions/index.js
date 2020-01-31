@@ -5,7 +5,11 @@ import {
   AUTH_ERROR,
   EDIT_USER,
   GET_ALL_USERS,
-  GET_ALL_USERS_ERROR
+  GET_ALL_USERS_ERROR,
+  CREATE_DISCOVER,
+  DISCOVER_ERROR,
+  GET_ALL_DISCOVERS,
+  GET_ALL_DISCOVERS_ERROR
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -115,7 +119,7 @@ export const deleteUser = (id, callback) => async dispatch => {
   callback(); /* history callback */
 };
 
-/////////////////////////////// Dicover ////////////////////////////////////////////////////
+/////////////////////////////// User ////////////////////////////////////////////////////
 export const getAllUser = () => async dispatch => {
   try {
     const response = await axios.get(`${keys.siteUrl}/dashboard`);
@@ -124,6 +128,33 @@ export const getAllUser = () => async dispatch => {
     dispatch({
       type: GET_ALL_USERS_ERROR,
       payload: 'cannot find the users'
+    });
+  }
+};
+
+/////////////////////////////// Discover ////////////////////////////////////////////////////
+// Get all Discover
+export const getAllDiscover = () => async dispatch => {
+  try {
+    const response = await axios.get(`/api/discover`);
+    dispatch({ type: GET_ALL_DISCOVERS, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: GET_ALL_DISCOVERS_ERROR,
+      payload: 'error to create discover'
+    });
+  }
+};
+
+// Post Discover
+export const createDiscover = formValues => async dispatch => {
+  try {
+    const response = await axios.post(`${keys.siteUrl}/dashboard`, formValues);
+    dispatch({ type: CREATE_DISCOVER, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: DISCOVER_ERROR,
+      payload: 'error to create discover'
     });
   }
 };

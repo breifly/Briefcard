@@ -34,14 +34,7 @@ exports.signup = function(req, res, next) {
     // if a user with email does not exist, create and save record
     const user = new User({
       email: email,
-      password: password,
-      friendId:
-        new Date()
-          .getTime()
-          .toString()
-          .substring(8) +
-        Math.floor(Math.random() * (99999 - 10000)) +
-        100000
+      password: password
     });
 
     user.save(function(error) {

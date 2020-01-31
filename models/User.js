@@ -20,7 +20,8 @@ const userSchema = new Schema({
   facebook: String,
   snapchat: String,
   tiktok: String,
-  friendId: Number
+  friendId: Number,
+  postMatch: []
 });
 
 // On save Hook, encrypt password
