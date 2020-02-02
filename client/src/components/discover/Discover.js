@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import User from './User';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import SwipeCard from './SwipeCard';
 
 class Discover extends React.Component {
   componentDidMount() {
     this.props.getAllUser();
-  }
-
-  componentDidUpdate() {
-    this.renderAllUser();
+    var elems = document.querySelectorAll('.carousel');
+    M.Carousel.init(elems, {});
   }
 
   matchDiscover = (userId, friendId, match) => {
@@ -29,10 +30,8 @@ class Discover extends React.Component {
           !user.unliked.includes(this.props.auth._id)
         ) {
           return (
-            <div key={user._id} className="col m4 card">
-              <p>{user.firstName}</p>
-              <p>{user.lastName}</p>
-              <p>{user.email}</p>
+            <div key={user._id}>
+              <User matchDiscover={this.matchDiscover} user={user} />
               <button
                 className="btn"
                 onClick={() =>
@@ -56,8 +55,17 @@ class Discover extends React.Component {
       });
   };
 
+  action() {
+    console.log('hello');
+  }
+
   render() {
-    return <div className="row">{this.renderAllUser()}</div>;
+    return (
+      <div className="">
+        {/* {this.renderAllUser()} */}
+        <SwipeCard />
+      </div>
+    );
   }
 }
 

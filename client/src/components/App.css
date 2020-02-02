@@ -54,7 +54,6 @@ body{
   border: 2px solid #fff;
 }
 
-
 @media only screen and (max-width: 600px) {
   /* Signin Signup */
   .box-input-signin{
