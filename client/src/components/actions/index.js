@@ -9,7 +9,9 @@ import {
   CREATE_DISCOVER,
   DISCOVER_ERROR,
   GET_ALL_DISCOVERS,
-  GET_ALL_DISCOVERS_ERROR
+  GET_ALL_DISCOVERS_ERROR,
+  GET_DISCOVERS,
+  GET_DISCOVERS_ERROR
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -33,7 +35,7 @@ export const signup = (formProps, callback) => async dispatch => {
       };
       const response = await axios.get(`/api/user/${data.id}`);
       dispatch({ type: AUTH_USER, payload: response.data });
-      callback(); /* history callback */
+      callback(data.id); /* history callback */
     } else {
       token = null;
     }
@@ -60,7 +62,7 @@ export const signin = (formProps, callback) => async dispatch => {
       };
       const response = await axios.get(`/api/user/${data.id}`);
       dispatch({ type: AUTH_USER, payload: response.data });
-      callback(); /* history callback */
+      callback(data.id); /* history callback */
     } else {
       token = null;
     }
@@ -80,22 +82,26 @@ export const signout = () => async dispatch => {
 
 // Fetch the user by Passport JWT
 export const fetchUser = () => async dispatch => {
-  const res = await axios.get('/api/current_user');
-  let token = localStorage.token;
-  if (token) {
-    // Decode token
-    token = JWT(token);
-    // let token to variable data
-    let data = token;
-    data = {
-      id: data.sub,
-      email: data.email
-    };
-    const response = await axios.get(`/api/user/${data.id}`);
-    dispatch({ type: AUTH_USER, payload: response.data });
-  } else {
-    token = null;
-    dispatch({ type: AUTH_USER, payload: res.data });
+  try {
+    const res = await axios.get('/api/current_user');
+    let token = localStorage.token;
+    if (token) {
+      // Decode token
+      token = JWT(token);
+      // let token to variable data
+      let data = token;
+      data = {
+        id: data.sub,
+        email: data.email
+      };
+      const response = await axios.get(`/api/user/${data.id}`);
+      dispatch({ type: AUTH_USER, payload: response.data });
+    } else {
+      token = null;
+      dispatch({ type: AUTH_USER, payload: res.data });
+    }
+  } catch (e) {
+    dispatch({ type: AUTH_ERROR, payload: 'Invalid login credentials' });
   }
 };
 
@@ -141,7 +147,20 @@ export const getAllDiscover = () => async dispatch => {
   } catch (e) {
     dispatch({
       type: GET_ALL_DISCOVERS_ERROR,
-      payload: 'error to create discover'
+      payload: 'error to get all discover'
+    });
+  }
+};
+
+// Get Discover by user
+export const getDiscoverByUser = id => async dispatch => {
+  try {
+    const response = await axios.get(`${keys.siteUrl}/dashboard/${id}`);
+    dispatch({ type: GET_DISCOVERS, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: GET_DISCOVERS_ERROR,
+      payload: 'cannot find the discovers by user'
     });
   }
 };

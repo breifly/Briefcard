@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define our model
 const discoverSchema = new Schema({
-  userId: String,
+  author: { type: Schema.Types.ObjectId, ref: 'users' },
   friendId: String,
   isMatch: Boolean
 });

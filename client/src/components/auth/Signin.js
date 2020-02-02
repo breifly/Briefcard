@@ -8,7 +8,9 @@ import * as actions from '../actions';
 
 class Signin extends React.Component {
   onSubmit = formProps => {
-    this.props.signin(formProps, () => this.props.history.push(`/`));
+    this.props.signin(formProps, id =>
+      this.props.history.push(`/dashboard/${id}`)
+    );
   };
 
   render() {

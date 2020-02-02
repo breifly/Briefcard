@@ -5,31 +5,29 @@ import * as actions from '../actions';
 class Discover extends React.Component {
   componentDidMount() {
     this.props.getAllUser();
-    this.props.getAllDiscover();
   }
 
-  matchDiscover = (userId, friendId) => {
+  componentDidUpdate() {
+    this.renderAllUser();
+  }
+
+  matchDiscover = (userId, friendId, match) => {
     const discover = {
       userId: userId,
       friendId: friendId,
-      isMatch: true
+      isMatch: match
     };
     this.props.createDiscover(discover);
   };
 
-  unmatchDiscover = (userId, friendId) => {
-    const discover = {
-      userId: userId,
-      friendId: friendId,
-      isMatch: false
-    };
-    this.props.createDiscover(discover);
-  };
-
-  renderAllUsers = () => {
-    if (this.props.users) {
+  renderAllUser = () => {
+    if (this.props.users)
       return this.props.users.map(user => {
-        if (this.props.auth._id !== user._id)
+        if (
+          user._id !== this.props.auth._id &&
+          !user.liked.includes(this.props.auth._id) &&
+          !user.unliked.includes(this.props.auth._id)
+        ) {
           return (
             <div key={user._id} className="col m4 card">
               <p>{user.firstName}</p>
@@ -38,7 +36,7 @@ class Discover extends React.Component {
               <button
                 className="btn"
                 onClick={() =>
-                  this.matchDiscover(this.props.auth._id, user._id)
+                  this.matchDiscover(this.props.auth._id, user._id, true)
                 }
               >
                 Yes
@@ -46,19 +44,20 @@ class Discover extends React.Component {
               <button
                 className="btn"
                 onClick={() =>
-                  this.unmatchDiscover(this.props.auth._id, user._id)
+                  this.matchDiscover(this.props.auth._id, user._id, false)
                 }
               >
                 No
               </button>
             </div>
           );
+        }
+        return null;
       });
-    }
   };
 
   render() {
-    return <div className="row">{this.renderAllUsers()}</div>;
+    return <div className="row">{this.renderAllUser()}</div>;
   }
 }
 
@@ -71,3 +70,7 @@ function mapStateToProps(state) {
   };
 }
 export default connect(mapStateToProps, actions)(Discover);
+
+// const url = window.location.pathname;
+// const id = url.substring(url.lastIndexOf('/') + 1);
+// this.props.getDiscoverByUser(this.props.auth._id || id);

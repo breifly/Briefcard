@@ -36,7 +36,10 @@ class App extends React.Component {
             <div>
               <Route exact path="/user/:id" component={UserShow} />
               <Route exact path="/user/edit/:id" component={UserEdit} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Route
+                path="/dashboard/:id"
+                render={props => <Dashboard {...props} />}
+              />
             </div>
           ) : (
             ''

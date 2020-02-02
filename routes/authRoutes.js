@@ -8,7 +8,7 @@ module.exports = app => {
   // Signup by Email with JWT
   app.post('/signup', Authentication.signup);
   // Signin by Email with JWT
-  app.post('/signin', requireSignin, Authentication.signin);
+  app.post('/signin', requireSignin, Authentication.signin); //auth route);
   // Fetch by id with JWT
   app.get('/api/user/:id', Authentication.fetchUser);
   // Edit by id with JWT
@@ -27,7 +27,7 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      res.redirect('/dashboard');
+      res.redirect(`/dashboard/${req._passport.session.user}`);
     }
   );
 
@@ -43,7 +43,7 @@ module.exports = app => {
     passport.authenticate('linkedin', { failureRedirect: '/' }),
     function(req, res) {
       // Successful authentication, redirect home.
-      res.redirect('/dashboard');
+      res.redirect(`/dashboard/${req._passport.session.user}`);
     }
   );
 

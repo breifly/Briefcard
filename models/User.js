@@ -21,7 +21,9 @@ const userSchema = new Schema({
   snapchat: String,
   tiktok: String,
   friendId: Number,
-  postMatch: []
+  discover: [{ type: Schema.Types.ObjectId, ref: 'discover' }],
+  liked: [],
+  unliked: []
 });
 
 // On save Hook, encrypt password

@@ -88,9 +88,6 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log('access Token', accessToken);
-      console.log('refresh Token', refreshToken);
-      console.log('profile', profile);
       // don't have double User with same profileId
       const existingUser = await User.findOne({ googleId: profile.id });
 
@@ -104,14 +101,7 @@ passport.use(
           email: profile._json.email,
           avatar: profile._json.picture,
           firstName: profile._json.given_name,
-          lastName: profile._json.family_name,
-          friendId:
-            new Date()
-              .getTime()
-              .toString()
-              .substring(8) +
-            Math.floor(Math.random() * (99999 - 10000)) +
-            100000
+          lastName: profile._json.family_name
         }).save();
         done(null, user);
       }
@@ -130,9 +120,6 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log('access token', accessToken);
-      console.log('refresh token', refreshToken);
-      console.log('profile:', profile);
       // don't have double User with same profileID
       const existingUser = await User.findOne({ linkedinId: profile.id });
       if (existingUser) {
