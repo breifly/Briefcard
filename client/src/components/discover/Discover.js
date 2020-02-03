@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import User from './User';
-import Swipe from './SwipeCard';
 import TinderCard from 'react-tinder-card';
+import '../css/SwipeCard.css';
 
 class Discover extends React.Component {
+  state = {
+    direction: ''
+  };
+
   componentDidMount() {
     this.props.getAllUser();
   }
@@ -20,7 +23,6 @@ class Discover extends React.Component {
   };
 
   onSwipe = (direction, user) => {
-    console.log(user);
     console.log('You swiped: ' + direction);
     if (direction === 'right' || direction === 'up') {
       this.matchDiscover(this.props.auth._id, user, true);
@@ -47,7 +49,6 @@ class Discover extends React.Component {
               onSwipe={dir => this.onSwipe(dir, user._id)}
               onCardLeftScreen={() => this.onCardLeftScreen('')}
               className="swipe"
-              key={user.name}
             >
               <div
                 style={{
@@ -58,6 +59,11 @@ class Discover extends React.Component {
               >
                 <p>{user.email}</p>
               </div>
+              {this.state.direction ? (
+                <h2 className="infoText">You swiped {this.state.direction}</h2>
+              ) : (
+                <h2 className="infoText" />
+              )}
             </TinderCard>
           );
         }
