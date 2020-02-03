@@ -2,14 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import User from './User';
-import M from 'materialize-css/dist/js/materialize.min.js';
-import SwipeCard from './SwipeCard';
+import Swipe from './SwipeCard';
+import TinderCard from 'react-tinder-card';
 
 class Discover extends React.Component {
   componentDidMount() {
     this.props.getAllUser();
-    var elems = document.querySelectorAll('.carousel');
-    M.Carousel.init(elems, {});
   }
 
   matchDiscover = (userId, friendId, match) => {
@@ -21,7 +19,21 @@ class Discover extends React.Component {
     this.props.createDiscover(discover);
   };
 
-  renderAllUser = () => {
+  onSwipe = (direction, user) => {
+    console.log(user);
+    console.log('You swiped: ' + direction);
+    if (direction === 'right' || direction === 'up') {
+      this.matchDiscover(this.props.auth._id, user, true);
+    } else {
+      this.matchDiscover(this.props.auth._id, user, false);
+    }
+  };
+
+  onCardLeftScreen = myIdentifier => {
+    console.log(myIdentifier + ' left the screen');
+  };
+
+  renderAllUserTest = () => {
     if (this.props.users)
       return this.props.users.map(user => {
         if (
@@ -30,40 +42,37 @@ class Discover extends React.Component {
           !user.unliked.includes(this.props.auth._id)
         ) {
           return (
-            <div key={user._id}>
-              <User matchDiscover={this.matchDiscover} user={user} />
-              <button
-                className="btn"
-                onClick={() =>
-                  this.matchDiscover(this.props.auth._id, user._id, true)
-                }
+            <TinderCard
+              key={user._id}
+              onSwipe={dir => this.onSwipe(dir, user._id)}
+              onCardLeftScreen={() => this.onCardLeftScreen('')}
+              className="swipe"
+              key={user.name}
+            >
+              <div
+                style={{
+                  backgroundImage:
+                    'url(https://media-exp1.licdn.com/dms/image/C5603AQFGMjb6LWm_kQ/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=SJNVSnTrC7-XWEeKm_kDgNUln2XmgqCHYH53v7Bvi5A)'
+                }}
+                className="card-tinder"
               >
-                Yes
-              </button>
-              <button
-                className="btn"
-                onClick={() =>
-                  this.matchDiscover(this.props.auth._id, user._id, false)
-                }
-              >
-                No
-              </button>
-            </div>
+                <p>{user.email}</p>
+              </div>
+            </TinderCard>
           );
         }
         return null;
       });
   };
 
-  action() {
-    console.log('hello');
-  }
-
   render() {
     return (
       <div className="">
         {/* {this.renderAllUser()} */}
-        <SwipeCard />
+        <div className="swipe-card-box">
+          <div className="cardContainer">{this.renderAllUserTest()}</div>
+        </div>
+        {/* <Swipe /> */}
       </div>
     );
   }
@@ -81,4 +90,4 @@ export default connect(mapStateToProps, actions)(Discover);
 
 // const url = window.location.pathname;
 // const id = url.substring(url.lastIndexOf('/') + 1);
-// this.props.getDiscoverByUser(this.props.auth._id || id);
+// this.props.getDiscoverByUser(this.props.auth._id || id)
