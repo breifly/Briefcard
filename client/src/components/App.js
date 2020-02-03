@@ -13,6 +13,7 @@ import Signup from './auth/Signup';
 import UserShow from './user/UserShow';
 import UserEdit from './user/UserEdit';
 import Dashboard from './dasboard/Dashboard';
+import SigninRedux from './auth/SigninRedux';
 
 class App extends React.Component {
   componentDidMount() {
@@ -30,6 +31,8 @@ class App extends React.Component {
           <Route exact path="/" component={Welcome} />
           <Route path="/signout" component={Signout} />
           <Route path="/signin" component={Signin} />
+          <Route path="/signinRedux" component={SigninRedux} />
+
           <Route path="/signup" component={Signup} />
 
           {this.props.authenticated ? (
