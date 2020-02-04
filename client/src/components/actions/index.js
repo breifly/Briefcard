@@ -128,7 +128,7 @@ export const deleteUser = (id, callback) => async dispatch => {
 /////////////////////////////// User ////////////////////////////////////////////////////
 export const getAllUser = () => async dispatch => {
   try {
-    const response = await axios.get(`${keys.siteUrl}/dashboard`);
+    const response = await axios.get(`/api/dashboard`);
     dispatch({ type: GET_ALL_USERS, payload: response.data });
   } catch (e) {
     dispatch({
@@ -155,7 +155,7 @@ export const getAllDiscover = () => async dispatch => {
 // Get Discover by user
 export const getDiscoverByUser = id => async dispatch => {
   try {
-    const response = await axios.get(`${keys.siteUrl}/dashboard/${id}`);
+    const response = await axios.get(`/api/dashboard/${id}`);
     dispatch({ type: GET_DISCOVERS, payload: response.data });
   } catch (e) {
     dispatch({
@@ -168,7 +168,7 @@ export const getDiscoverByUser = id => async dispatch => {
 // Post Discover
 export const createDiscover = formValues => async dispatch => {
   try {
-    const response = await axios.post(`${keys.siteUrl}/dashboard`, formValues);
+    const response = await axios.post(`/api/dashboard`, formValues);
     dispatch({ type: CREATE_DISCOVER, payload: response.data });
   } catch (e) {
     dispatch({
