@@ -20,7 +20,6 @@ const userSchema = new Schema({
   facebook: String,
   snapchat: String,
   tiktok: String,
-  friendId: Number,
   discover: [{ type: Schema.Types.ObjectId, ref: 'discover' }],
   liked: [],
   unliked: []
