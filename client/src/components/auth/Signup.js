@@ -7,12 +7,13 @@ import * as actions from '../actions';
 import renderField from './renderField';
 import { Link } from 'react-router-dom';
 
-class SignupRedux extends React.Component {
+class Signup extends React.Component {
   render() {
     const submit = form => {
-      this.props.signup(form, id =>
-        this.props.history.push(`/dashboard/${id}`)
-      );
+      console.log(form);
+      // this.props.signup(form, id =>
+      //   this.props.history.push(`/dashboard/${id}`)
+      // );
     };
 
     const { error, handleSubmit, submitting } = this.props;
@@ -108,4 +109,4 @@ class SignupRedux extends React.Component {
 export default compose(
   connect(null, actions),
   reduxForm({ form: 'SignUpForm', validate })
-)(SignupRedux);
+)(Signup);
