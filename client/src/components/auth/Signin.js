@@ -8,13 +8,10 @@ import renderField from './renderField';
 import { Link } from 'react-router-dom';
 
 class Signin extends React.Component {
+  submit = form => {
+    this.props.signin(form, id => this.props.history.push(`/dashboard/${id}`));
+  };
   render() {
-    const submit = form => {
-      this.props.signin(form, id =>
-        this.props.history.push(`/dashboard/${id}`)
-      );
-    };
-
     const { error, handleSubmit, submitting } = this.props;
     return (
       <div className="container">
@@ -22,7 +19,7 @@ class Signin extends React.Component {
           Sign in <i className="fas fa-user-alt"></i>
         </h4>
         <div className="row">
-          <form onSubmit={handleSubmit(submit)}>
+          <form onSubmit={handleSubmit(this.submit)}>
             <div className="col m12 s12">
               <div className="box-input-signin">
                 <div className="input-field">
