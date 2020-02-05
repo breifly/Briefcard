@@ -15,7 +15,6 @@ class User extends React.Component {
       <div>
         <div>
           <img
-            style={{ width: 120 }}
             src={process.env.PUBLIC_URL + '/images/lechef.jpg'}
             alt="avatar"
           />

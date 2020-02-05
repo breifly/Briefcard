@@ -6,10 +6,12 @@ import renderField from './renderField';
 import * as actions from '../actions';
 import validate from './Validation';
 import ModalForm from './ModalForm';
-
 import normalizePhone from './normalizePhone';
 
 class UserEdit extends React.Component {
+  state = {
+    image: ''
+  };
   onDelete = () => {
     const id = this.props.auth._id;
     this.props.deleteUser(id, () => {
@@ -17,12 +19,36 @@ class UserEdit extends React.Component {
     });
   };
 
+  deletePhoto = () => {
+    this.setState({ image: '' });
+  };
+
+  uploadWidget = () => {
+    window.cloudinary.openUploadWidget(
+      { cloud_name: 'dxc3kuw7v', upload_preset: 'vj9pfx2t', tags: ['xmas'] },
+      (error, result) => {
+        if (result) {
+          this.setState({ image: result[0].url });
+        }
+      }
+    );
+  };
+
   render() {
     const { error, handleSubmit, submitting } = this.props;
 
     const onSubmit = formProps => {
       const id = this.props.auth._id;
-      this.props.editUser(id, formProps, () => {
+
+      const form = {
+        firstName: formProps.firstName,
+        lastName: formProps.lastName,
+        description: formProps.description,
+        phone: formProps.phone,
+        avatar: this.state.image || this.props.auth.avatar
+      };
+
+      this.props.editUser(id, form, () => {
         this.props.history.push(`/user/${id}`);
       });
     };
@@ -30,6 +56,7 @@ class UserEdit extends React.Component {
     return (
       <div className="container">
         <div className="card">
+          <h4 className="center">Edit user</h4>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
               <div className="col m6 s12">
@@ -83,13 +110,34 @@ class UserEdit extends React.Component {
               </div>
             </div>
             {error && <strong>{error}</strong>}
+            <div className="upload">
+              <div>Add Photo</div>
+              <p
+                onClick={this.uploadWidget.bind(this)}
+                className="upload-button"
+              >
+                <i className="fas fa-camera"></i>
+              </p>
+
+              {this.state.image ? (
+                <div>
+                  <div className="delete-picture" onClick={this.deletePhoto}>
+                    <i class="far fa-times-circle"></i>
+                  </div>
+                  <img className="photo-show" src={this.state.image} />
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+
             <div className="center">
               <button
                 type="submit"
                 disabled={submitting}
                 className="waves-effect waves-light btn btn-signin"
               >
-                Edit User
+                Save
               </button>
             </div>
           </form>
@@ -101,6 +149,7 @@ class UserEdit extends React.Component {
 }
 
 function mapStateToPros(state) {
+  console.log(state);
   return {
     auth: state.auth.authenticated
   };

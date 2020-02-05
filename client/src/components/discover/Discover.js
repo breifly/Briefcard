@@ -47,23 +47,18 @@ class Discover extends React.Component {
             <TinderCard
               key={user._id}
               onSwipe={dir => this.onSwipe(dir, user._id)}
-              onCardLeftScreen={() => this.onCardLeftScreen('')}
+              onCardLeftScreen={() => this.onCardLeftScreen(user.like)}
               className="swipe"
             >
               <div
                 style={{
-                  backgroundImage:
-                    'url(https://media-exp1.licdn.com/dms/image/C5603AQFGMjb6LWm_kQ/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=SJNVSnTrC7-XWEeKm_kDgNUln2XmgqCHYH53v7Bvi5A)'
+                  backgroundImage: `url(${user.avatar ||
+                    process.env.PUBLIC_URL + '/images/lechef.jpg'})`
                 }}
                 className="card-tinder"
               >
                 <p>{user.email}</p>
               </div>
-              {this.state.direction ? (
-                <h2 className="infoText">You swiped {this.state.direction}</h2>
-              ) : (
-                <h2 className="infoText" />
-              )}
             </TinderCard>
           );
         }
