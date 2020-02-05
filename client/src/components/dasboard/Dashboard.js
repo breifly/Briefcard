@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
             <Discover />
           </div>
         </div>
-        <div className="card">Component ranking</div>
+        <div className="">Component ranking</div>
       </div>
     );
   }
