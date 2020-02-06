@@ -124,7 +124,11 @@ class UserEdit extends React.Component {
                   <div className="delete-picture" onClick={this.deletePhoto}>
                     <i class="far fa-times-circle"></i>
                   </div>
-                  <img className="photo-show" src={this.state.image} />
+                  <img
+                    className="photo-show"
+                    src={this.state.image}
+                    alt="avatar"
+                  />
                 </div>
               ) : (
                 ''
