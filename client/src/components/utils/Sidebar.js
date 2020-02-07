@@ -12,6 +12,11 @@ class Sidebar extends React.Component {
               <i className="material-icons">cloud</i> Signout
             </Link>
           </li>
+          <li>
+            <Link to={`/dashboard/${this.props.authenticated._id}`}>
+              <i className="material-icons">dashboard</i> Dashboard
+            </Link>
+          </li>
         </div>
       );
     } else {
