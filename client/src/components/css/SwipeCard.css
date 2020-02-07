@@ -13,6 +13,7 @@
   left: calc(50vw - (/* width */350px / 2)); 
   margin-top: 60px;
   background-color: #fff;
+  border-radius: 20px;
 }
 
 .card-tinder{

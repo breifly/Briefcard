@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import Sidebar from "../utils/Sidebar";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Sidebar from '../utils/Sidebar';
 
 class Header extends React.Component {
   renderLinks() {
@@ -12,12 +12,17 @@ class Header extends React.Component {
             <Link to="/signout">Signout</Link>
           </li>
           <li>
+            <Link to={`/dashboard/${this.props.authenticated._id}`}>
+              Dashboard
+            </Link>
+          </li>
+          <li>
             <Link to={`/user/${this.props.authenticated._id}`}>
               <img
                 className="avatar"
                 src={
                   this.props.authenticated.avatar ||
-                  process.env.PUBLIC_URL + "/images/background.jpg"
+                  process.env.PUBLIC_URL + '/images/background.jpg'
                 }
                 alt="background"
               />
