@@ -1,19 +1,20 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../actions";
-import TinderCard from "react-tinder-card";
-import ModalForm from "./ModalForm";
-import "../css/SwipeCard.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import TinderCard from 'react-tinder-card';
+import ModalForm from './ModalForm';
+import '../css/SwipeCard.css';
 
 class Discover extends React.Component {
   state = {
-    isMatch: false
+    isMatch: false,
+    user: ''
   };
   componentDidMount() {
     this.props.getAllUser();
   }
 
-  matchDiscover = (userId, friendId, match) => {
+  matchDiscover = (userId, friendId, match, user) => {
     const discover = {
       userId: userId,
       friendId: friendId,
@@ -22,25 +23,25 @@ class Discover extends React.Component {
     this.props.createDiscover(discover);
   };
 
-  onSwipe = (direction, user) => {
-    if (direction === "right" || direction === "up") {
-      this.matchDiscover(this.props.auth._id, user, true);
+  onSwipe = (direction, userId, user) => {
+    if (direction === 'right' || direction === 'up') {
+      this.matchDiscover(this.props.auth._id, userId, true, user);
     } else {
-      this.matchDiscover(this.props.auth._id, user, false);
+      this.matchDiscover(this.props.auth._id, userId, false, user);
     }
   };
 
-  onCardLeftScreen = userFriend => {
+  onCardLeftScreen = user => {
     if (
       this.props.discovers.isMatch === true &&
-      this.props.auth.liked.includes(userFriend)
+      this.props.auth.liked.includes(this.props.discovers.friendId)
     ) {
-      console.log("is match");
       this.setState({ isMatch: true });
+      this.setState({ user: user });
     } else {
       this.setState({ isMatch: false });
+      this.setState({ user: '' });
     }
-    console.log(this.state.isMatch);
   };
 
   renderAllUserTest = () => {
@@ -54,25 +55,19 @@ class Discover extends React.Component {
           return (
             <TinderCard
               key={user._id}
-              onSwipe={dir => this.onSwipe(dir, user._id)}
-              onCardLeftScreen={() => this.onCardLeftScreen(user._id)}
+              onSwipe={dir => this.onSwipe(dir, user._id, user)}
+              onCardLeftScreen={() => this.onCardLeftScreen(user)}
               className="swipe"
             >
               <div
                 style={{
                   backgroundImage: `url(${user.avatar ||
-                    process.env.PUBLIC_URL + "/images/lechef.jpg"})`
+                    process.env.PUBLIC_URL + '/images/lechef.jpg'})`
                 }}
                 className="card-tinder"
               >
                 <p>{user.email}</p>
               </div>
-
-              {this.state.isMatch === true ? (
-                <ModalForm ismatch={this.state.isMatch} user={user} />
-              ) : (
-                ""
-              )}
             </TinderCard>
           );
         }
@@ -84,7 +79,14 @@ class Discover extends React.Component {
     return (
       <div className="">
         <div className="swipe-card-box">
-          <div className="cardContainer">{this.renderAllUserTest()}</div>
+          <div className="cardContainer">
+            {this.renderAllUserTest()}
+            {this.state.isMatch === true ? (
+              <ModalForm user={this.state.user} />
+            ) : (
+              ''
+            )}
+          </div>
         </div>
       </div>
     );
