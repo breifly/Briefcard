@@ -1,30 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'react-materialize';
 
 class ModalForm extends React.Component {
   render() {
-    // const { user } = this.props;
+    const { user } = this.props;
     return (
-      <Modal
-        open={true}
-        bottomSheet={false}
-        fixedFooter={false}
-        id="modal-0"
-        className="modal-match"
-        options={{
-          dismissible: true,
-          endingTop: '10%',
-          inDuration: 250,
-          opacity: 0.5,
-          outDuration: 250,
-          preventScrolling: true,
-          startingTop: '4%'
-        }}
-      >
+      <div className="modal-match slideUp">
         <div className="row center">
           <h4>It's a Match!</h4>
-          {/* <div className="col m6 s6">
+          <div className="col m6 s6">
             <img
               className="avatar-large"
               src={user.avatar || process.env.PUBLIC_URL + '/images/lechef.jpg'}
@@ -40,15 +24,15 @@ class ModalForm extends React.Component {
               }
               alt="avatar-friend"
             />
-          </div> */}
+          </div>
         </div>
         <div className="button-match center">
           <i className="far fa-comments"></i> Send a Message
         </div>
-        <div className="button-match center">
+        <div className="button-match center" onClick={this.props.closeModal}>
           <i className="fas fa-users"></i> Keep Swiping
         </div>
-      </Modal>
+      </div>
     );
   }
 }

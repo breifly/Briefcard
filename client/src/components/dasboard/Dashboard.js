@@ -6,7 +6,6 @@ class Dashboard extends React.Component {
     return (
       <div className="container">
         <div className="card">
-          {' '}
           Component info
           <div>
             <Discover />

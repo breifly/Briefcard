@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import TinderCard from 'react-tinder-card';
-// import ModalForm from './ModalForm';
+import ModalForm from './ModalForm';
 import '../css/SwipeCard.css';
 
 class Discover extends React.Component {
@@ -13,6 +13,10 @@ class Discover extends React.Component {
   componentDidMount() {
     this.props.getAllUser();
   }
+
+  closeModal = () => {
+    this.setState({ isMatch: false });
+  };
 
   matchDiscover = (userId, friendId, match) => {
     const discover = {
@@ -82,9 +86,8 @@ class Discover extends React.Component {
           <div className="cardContainer">{this.renderAllUserTest()}</div>
         </div>
         {this.state.isMatch === true ? (
-          <div>
-            modal is here {''}
-            {this.state.user.email}
+          <div className="backgroud-modal">
+            <ModalForm user={this.state.user} closeModal={this.closeModal} />
           </div>
         ) : (
           ''
