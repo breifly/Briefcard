@@ -5,13 +5,10 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="card">
-          Component info
-          <div>
-            <Discover />
-          </div>
+        <h4 className="center">Component info</h4>
+        <div>
+          <Discover />
         </div>
-        <div className="">Component ranking</div>
       </div>
     );
   }

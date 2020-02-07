@@ -65,12 +65,23 @@ class Discover extends React.Component {
             >
               <div
                 style={{
-                  backgroundImage: `url(${user.avatar ||
-                    process.env.PUBLIC_URL + '/images/lechef.jpg'})`
+                  backgroundImage: `linear-gradient(
+                    rgba(0, 0, 0, 0.0), 
+                    rgba(0, 0, 0, 0.35)
+                  ),url(${user.avatar ||
+                    process.env.PUBLIC_URL + '/images/lechef.jpg'})`,
+                  backgroundPosition: 'center center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover'
                 }}
                 className="card-tinder"
               >
-                <p>{user.email}</p>
+                <div className="card-description">
+                  <p>
+                    {user.firstName} {user.lastName}
+                  </p>
+                  <p>{user.description}</p>
+                </div>
               </div>
             </TinderCard>
           );
@@ -81,10 +92,8 @@ class Discover extends React.Component {
 
   render() {
     return (
-      <div className="">
-        <div className="swipe-card-box">
-          <div className="cardContainer">{this.renderAllUserTest()}</div>
-        </div>
+      <div>
+        <div className="swipe-container">{this.renderAllUserTest()}</div>
         {this.state.isMatch === true ? (
           <div className="backgroud-modal">
             <ModalForm user={this.state.user} closeModal={this.closeModal} />
