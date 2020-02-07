@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import TinderCard from 'react-tinder-card';
-import ModalForm from './ModalForm';
+// import ModalForm from './ModalForm';
 import '../css/SwipeCard.css';
 
 class Discover extends React.Component {
@@ -14,7 +14,7 @@ class Discover extends React.Component {
     this.props.getAllUser();
   }
 
-  matchDiscover = (userId, friendId, match, user) => {
+  matchDiscover = (userId, friendId, match) => {
     const discover = {
       userId: userId,
       friendId: friendId,
@@ -23,11 +23,11 @@ class Discover extends React.Component {
     this.props.createDiscover(discover);
   };
 
-  onSwipe = (direction, userId, user) => {
+  onSwipe = (direction, userId) => {
     if (direction === 'right' || direction === 'up') {
-      this.matchDiscover(this.props.auth._id, userId, true, user);
+      this.matchDiscover(this.props.auth._id, userId, true);
     } else {
-      this.matchDiscover(this.props.auth._id, userId, false, user);
+      this.matchDiscover(this.props.auth._id, userId, false);
     }
   };
 
@@ -36,11 +36,11 @@ class Discover extends React.Component {
       this.props.discovers.isMatch === true &&
       this.props.auth.liked.includes(this.props.discovers.friendId)
     ) {
+      console.log('is match');
       this.setState({ isMatch: true });
       this.setState({ user: user });
     } else {
       this.setState({ isMatch: false });
-      this.setState({ user: '' });
     }
   };
 
@@ -55,7 +55,7 @@ class Discover extends React.Component {
           return (
             <TinderCard
               key={user._id}
-              onSwipe={dir => this.onSwipe(dir, user._id, user)}
+              onSwipe={dir => this.onSwipe(dir, user._id)}
               onCardLeftScreen={() => this.onCardLeftScreen(user)}
               className="swipe"
             >
@@ -79,15 +79,16 @@ class Discover extends React.Component {
     return (
       <div className="">
         <div className="swipe-card-box">
-          <div className="cardContainer">
-            {this.renderAllUserTest()}
-            {this.state.isMatch === true ? (
-              <ModalForm user={this.state.user} />
-            ) : (
-              ''
-            )}
-          </div>
+          <div className="cardContainer">{this.renderAllUserTest()}</div>
         </div>
+        {this.state.isMatch === true ? (
+          <div>
+            modal is here {''}
+            {this.state.user.email}
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   }
