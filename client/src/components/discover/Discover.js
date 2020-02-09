@@ -8,6 +8,7 @@ import '../css/SwipeCard.css';
 class Discover extends React.Component {
   state = {
     isMatch: false,
+    love: '',
     user: ''
   };
   componentDidMount() {
@@ -30,8 +31,10 @@ class Discover extends React.Component {
   onSwipe = (direction, userId) => {
     if (direction === 'right' || direction === 'up') {
       this.matchDiscover(this.props.auth._id, userId, true);
+      this.setState({ love: true });
     } else {
       this.matchDiscover(this.props.auth._id, userId, false);
+      this.setState({ love: false });
     }
   };
 
@@ -46,6 +49,9 @@ class Discover extends React.Component {
     } else {
       this.setState({ isMatch: false });
     }
+    setTimeout(() => {
+      this.setState({ love: '' });
+    }, 500);
   };
 
   renderAllUserTest = () => {
@@ -97,6 +103,20 @@ class Discover extends React.Component {
         {this.state.isMatch === true ? (
           <div className="backgroud-modal">
             <ModalForm user={this.state.user} closeModal={this.closeModal} />
+          </div>
+        ) : (
+          ''
+        )}
+        {this.state.love === true ? (
+          <div className="right love slideUp">
+            <i className="far fa-thumbs-up"></i>
+          </div>
+        ) : (
+          ''
+        )}
+        {this.state.love === false ? (
+          <div className="love slideUp">
+            <i class="far fa-times-circle"></i>
           </div>
         ) : (
           ''
