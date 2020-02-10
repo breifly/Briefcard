@@ -12,7 +12,9 @@ import {
   GET_ALL_DISCOVERS,
   GET_ALL_DISCOVERS_ERROR,
   GET_DISCOVERS,
-  GET_DISCOVERS_ERROR
+  GET_DISCOVERS_ERROR,
+  CREATE_CHAT,
+  ERROR_CHAT
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -175,6 +177,19 @@ export const createDiscover = formValues => async dispatch => {
     dispatch({
       type: DISCOVER_ERROR,
       payload: 'error to create discover'
+    });
+  }
+};
+
+////////////////////////////// Message ///////////////////////////////////
+export const createChatRoom = formValues => async dispatch => {
+  try {
+    const response = await axios.post(`/api/create/chatroom`, formValues);
+    dispatch({ type: CREATE_CHAT, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: ERROR_CHAT,
+      payload: 'error to create chatroom'
     });
   }
 };

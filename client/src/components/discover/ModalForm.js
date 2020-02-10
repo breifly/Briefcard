@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class ModalForm extends React.Component {
   render() {
@@ -27,7 +28,9 @@ class ModalForm extends React.Component {
           You have made a new connection with {user.firstName}!
         </p>
         <div className="button-match center">
-          <i className="far fa-comments"></i> Send a Message
+          <Link to={`/chatroom/${this.props.idchat._id}`}>
+            <i className="far fa-comments"></i> Send a Message
+          </Link>
         </div>
         <div className="button-match center" onClick={this.props.closeModal}>
           <i className="fas fa-users"></i> Keep Swiping
@@ -38,10 +41,10 @@ class ModalForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     auth: state.auth.authenticated,
-    users: state.user.allUsers
+    users: state.user.allUsers,
+    idchat: state.chat.chats
   };
 }
 export default connect(mapStateToProps, null)(ModalForm);

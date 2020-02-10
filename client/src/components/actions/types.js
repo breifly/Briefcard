@@ -15,3 +15,7 @@ export const GET_ALL_DISCOVERS_ERROR = 'get_all_discovers_error';
 export const GET_ALL_DISCOVERS = 'get_all_discovers';
 export const GET_DISCOVERS_ERROR = 'get_discovers_error';
 export const GET_DISCOVERS = 'get_discovers';
+
+// Chat
+export const CREATE_CHAT = 'create_chat';
+export const ERROR_CHAT = 'error_chat';

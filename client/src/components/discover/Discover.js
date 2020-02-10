@@ -12,11 +12,20 @@ class Discover extends React.Component {
     user: ''
   };
   componentDidMount() {
+    this.props.fetchUser();
     this.props.getAllUser();
   }
 
   closeModal = () => {
     this.setState({ isMatch: false });
+  };
+
+  goChatRoom = (sender, receiver) => {
+    const formValues = {
+      sender: sender,
+      receiver: receiver
+    };
+    this.props.createChatRoom(formValues);
   };
 
   matchDiscover = (userId, friendId, match) => {
@@ -46,6 +55,7 @@ class Discover extends React.Component {
       console.log('is match');
       this.setState({ isMatch: true });
       this.setState({ user: user });
+      this.goChatRoom(this.props.auth._id, user._id);
     } else {
       this.setState({ isMatch: false });
     }

@@ -13,6 +13,7 @@ import Signup from './auth/Signup';
 import UserShow from './user/UserShow';
 import UserEdit from './user/UserEdit';
 import Dashboard from './dasboard/Dashboard';
+import ChatRoom from './chat/ChatRoom';
 
 class App extends React.Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ class App extends React.Component {
             <div>
               <Route exact path="/user/:id" component={UserShow} />
               <Route exact path="/user/edit/:id" component={UserEdit} />
+              <Route exact path="/chatroom/:id" component={ChatRoom} />
               <Route
                 path="/dashboard/:id"
                 render={props => <Dashboard {...props} />}
