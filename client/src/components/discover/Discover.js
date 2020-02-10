@@ -59,6 +59,9 @@ class Discover extends React.Component {
       return this.props.users.map(user => {
         if (
           user._id !== this.props.auth._id &&
+          user.firstName &&
+          user.lastName &&
+          user.avatar &&
           !user.liked.includes(this.props.auth._id) &&
           !user.unliked.includes(this.props.auth._id)
         ) {
@@ -74,8 +77,7 @@ class Discover extends React.Component {
                   backgroundImage: `linear-gradient(
                     rgba(0, 0, 0, 0.0), 
                     rgba(0, 0, 0, 0.35)
-                  ),url(${user.avatar ||
-                    process.env.PUBLIC_URL + '/images/lechef.jpg'})`,
+                  ),url(${user.avatar})`,
                   backgroundPosition: 'center center',
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: 'cover'
@@ -127,7 +129,6 @@ class Discover extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     auth: state.auth.authenticated,
     users: state.user.allUsers,

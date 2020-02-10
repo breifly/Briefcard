@@ -11,17 +11,14 @@ class ModalForm extends React.Component {
           <div className="col m6 s6">
             <img
               className="avatar-large slideLeft"
-              src={user.avatar || process.env.PUBLIC_URL + '/images/lechef.jpg'}
+              src={user.avatar}
               alt="avatar-friend"
             />
           </div>
           <div className="col m6 s6">
             <img
               className="avatar-large slideRight "
-              src={
-                this.props.auth.avatar ||
-                process.env.PUBLIC_URL + '/images/lechef.jpg'
-              }
+              src={this.props.auth.avatar}
               alt="avatar-friend"
             />
           </div>
