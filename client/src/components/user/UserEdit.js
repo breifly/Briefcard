@@ -2,9 +2,9 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import validate from './Validation';
 import renderField from './renderField';
 import * as actions from '../actions';
-import validate from './Validation';
 import ModalForm from './ModalForm';
 import normalizePhone from './normalizePhone';
 
@@ -94,6 +94,7 @@ class UserEdit extends React.Component {
                     label="Description"
                     icon="description"
                   />
+                  <span className="asterick right">100 characters Min</span>
                 </div>
               </div>
               <div className="col m6 s12">
@@ -153,7 +154,6 @@ class UserEdit extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     auth: state.auth.authenticated
   };

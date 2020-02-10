@@ -33,7 +33,7 @@ class UserShow extends React.Component {
               <div className="container-description">
                 <Link
                   to={`/user/edit/${this.props.authenticated._id}`}
-                  className="btn-edit btn-floating waves-effect waves-light red"
+                  className="btn-edit btn-floating waves-effect waves-light"
                 >
                   <i className="material-icons">edit</i>
                 </Link>
