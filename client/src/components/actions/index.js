@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   AUTH_USER,
   AUTH_ERROR,
+  AUTH_ERROR_SIGNUP,
   EDIT_USER,
   GET_ALL_USERS,
   GET_ALL_USERS_ERROR,
@@ -40,7 +41,7 @@ export const signup = (formProps, callback) => async dispatch => {
       token = null;
     }
   } catch (e) {
-    dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
+    dispatch({ type: AUTH_ERROR_SIGNUP, payload: 'Email in use' });
   }
 };
 
@@ -113,7 +114,7 @@ export const editUser = (id, formValues, callback) => async dispatch => {
     dispatch({ type: EDIT_USER, payload: response.data });
     callback(); /* history callback */
   } catch (e) {
-    dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
+    dispatch({ type: AUTH_ERROR, payload: 'Cannot edit user' });
   }
 };
 

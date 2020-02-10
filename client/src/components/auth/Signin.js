@@ -32,6 +32,9 @@ class Signin extends React.Component {
                     icon="email"
                   />
                 </div>
+                {this.props.errorMessage && (
+                  <div>{this.props.errorMessage}</div>
+                )}
               </div>
             </div>
             <div className="col m12 s12">
@@ -89,7 +92,13 @@ class Signin extends React.Component {
   }
 }
 
+function mapStateToPros(state) {
+  return {
+    errorMessage: state.auth.errorMessage
+  };
+}
+
 export default compose(
-  connect(null, actions),
+  connect(mapStateToPros, actions),
   reduxForm({ form: 'SignInForm', validate })
 )(Signin);

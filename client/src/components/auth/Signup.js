@@ -35,6 +35,9 @@ class Signup extends React.Component {
                     icon="email"
                   />
                 </div>
+                {this.props.errorMessage && (
+                  <div>{this.props.errorMessage}</div>
+                )}
               </div>
             </div>
             <div className="col m12 s12">
@@ -105,7 +108,14 @@ class Signup extends React.Component {
   }
 }
 
+function mapStateToPros(state) {
+  console.log(state);
+  return {
+    errorMessage: state.auth.errorSignup
+  };
+}
+
 export default compose(
-  connect(null, actions),
+  connect(mapStateToPros, actions),
   reduxForm({ form: 'SignUpForm', validate })
 )(Signup);
