@@ -17,6 +17,9 @@ class Header extends React.Component {
             </Link>
           </li>
           <li>
+            <Link to={`/chat`}>Chat</Link>
+          </li>
+          <li>
             <Link to={`/user/${this.props.authenticated._id}`}>
               <img
                 className="avatar"

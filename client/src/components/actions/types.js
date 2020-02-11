@@ -19,3 +19,5 @@ export const GET_DISCOVERS = 'get_discovers';
 // Chat
 export const CREATE_CHAT = 'create_chat';
 export const ERROR_CHAT = 'error_chat';
+export const GET_CHATROOM = 'get_chatroom';
+export const CHATROOM_ERROR = 'chatroom_error';

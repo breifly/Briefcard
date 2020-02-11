@@ -14,7 +14,9 @@ import {
   GET_DISCOVERS,
   GET_DISCOVERS_ERROR,
   CREATE_CHAT,
-  ERROR_CHAT
+  ERROR_CHAT,
+  GET_CHATROOM,
+  CHATROOM_ERROR
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -190,6 +192,19 @@ export const createChatRoom = formValues => async dispatch => {
     dispatch({
       type: ERROR_CHAT,
       payload: 'error to create chatroom'
+    });
+  }
+};
+
+// Get chatRoom by id
+export const getChatroom = id => async dispatch => {
+  try {
+    const response = await axios.post(`/api/chatroom/${id}`);
+    dispatch({ type: GET_CHATROOM, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: CHATROOM_ERROR,
+      payload: 'error to get chatroom'
     });
   }
 };

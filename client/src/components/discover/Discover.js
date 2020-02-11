@@ -39,9 +39,11 @@ class Discover extends React.Component {
 
   onSwipe = (direction, userId) => {
     if (direction === 'right' || direction === 'up') {
+      console.log('you like');
       this.matchDiscover(this.props.auth._id, userId, true);
       this.setState({ love: true });
     } else {
+      console.log("you don't like");
       this.matchDiscover(this.props.auth._id, userId, false);
       this.setState({ love: false });
     }

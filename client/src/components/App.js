@@ -14,6 +14,7 @@ import UserShow from './user/UserShow';
 import UserEdit from './user/UserEdit';
 import Dashboard from './dasboard/Dashboard';
 import ChatRoom from './chat/ChatRoom';
+import Chat from './chat/Chat';
 
 class App extends React.Component {
   componentDidMount() {
@@ -38,6 +39,7 @@ class App extends React.Component {
               <Route exact path="/user/:id" component={UserShow} />
               <Route exact path="/user/edit/:id" component={UserEdit} />
               <Route exact path="/chatroom/:id" component={ChatRoom} />
+              <Route exact path="/chat" component={Chat} />
               <Route
                 path="/dashboard/:id"
                 render={props => <Dashboard {...props} />}

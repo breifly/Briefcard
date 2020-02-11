@@ -22,7 +22,8 @@ const userSchema = new Schema({
   tiktok: String,
   discover: [{ type: Schema.Types.ObjectId, ref: 'discover' }],
   liked: [],
-  unliked: []
+  unliked: [],
+  chatroom: [{ type: Schema.Types.ObjectId, ref: 'chatroom' }]
 });
 
 // On save Hook, encrypt password
