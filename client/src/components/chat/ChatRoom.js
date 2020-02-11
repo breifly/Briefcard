@@ -4,7 +4,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import renderField from './renderField';
-import MessageList from './MessageList';
+import MessageLists from './MessageLists';
+import '../css/ChatRoom.css';
 
 class ChatRoom extends React.Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class ChatRoom extends React.Component {
   submit = (message, dispatch) => {
     const form = {
       room: this.props.match.params.id,
-      user: this.props.chatRoom.sender,
+      user: this.props.user._id,
       message: message
     };
     if (message) {
@@ -26,62 +27,43 @@ class ChatRoom extends React.Component {
     }
   };
 
-  renderAllMessage = () => {
-    if (this.props.messages)
-      return this.props.messages.map(message => {
-        return <div key={message._id}>{message.message_body}</div>;
-      });
-    return (
-      <div className="preloader-wrapper big active">
-        <div className="spinner-layer spinner-blue-only">
-          <div className="circle-clipper left">
-            <div className="circle"></div>
-          </div>
-          <div className="gap-patch">
-            <div className="circle"></div>
-          </div>
-          <div className="circle-clipper right">
-            <div className="circle"></div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   render() {
     const { error, handleSubmit, submitting } = this.props;
     return (
       <div className="container">
-        <p>chat room id {this.props.chatRoom._id}</p>
+        {/* <p>chat room id {this.props.chatRoom._id}</p>
         <p>receiver {this.props.chatRoom.receiver}</p>
-        <p>sender {this.props.chatRoom.sender}</p>
-        <form onSubmit={handleSubmit(this.submit)}>
-          <div className="col m12 s12">
-            <div className="box-input-signin">
-              <div className="input-field">
-                <Field
-                  name="message"
-                  type="text"
-                  component={renderField}
-                  placeholder="message"
-                  label="message"
-                  icon="create"
-                />
+        <p>sender {this.props.chatRoom.sender}</p> */}
+        <div className="box-chatroom">
+          <h6 className="center title-chat">Chatroom created </h6>
+          <MessageLists id={this.props.match.params.id} />
+          <form onSubmit={handleSubmit(this.submit)}>
+            <div className="row">
+              <div className="col m12 s12">
+                <div className="box-message">
+                  <div className="input-field">
+                    <Field
+                      name="message"
+                      type="text"
+                      component={renderField}
+                      placeholder="message"
+                      label="message"
+                      icon="create"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="waves-effect waves-light btn btn-signin btn-message"
+                  >
+                    Send
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          {error && <strong>{error}</strong>}
-          <div className="center">
-            <button
-              type="submit"
-              disabled={submitting}
-              className="waves-effect waves-light btn btn-signin"
-            >
-              Send
-            </button>
-          </div>
-        </form>
-        <MessageList id={this.props.match.params.id} />
+            {error && <strong>{error}</strong>}
+          </form>
+        </div>
       </div>
     );
   }
@@ -90,6 +72,7 @@ class ChatRoom extends React.Component {
 function mapStateToPros(state) {
   console.log(state);
   return {
+    user: state.auth.authenticated,
     chatRoom: state.chat.chatroom,
     messages: state.message.allMessage
   };

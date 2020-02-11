@@ -10,6 +10,7 @@
     "jwt-decode": "^2.2.0",
     "materialize-css": "^1.0.0",
     "react": "^16.8.6",
+    "react-chat-elements": "^10.8.0",
     "react-dom": "^16.8.6",
     "react-materialize": "^3.5.9",
     "react-redux": "^7.1.0",
