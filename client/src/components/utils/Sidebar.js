@@ -17,6 +17,11 @@ class Sidebar extends React.Component {
               <i className="material-icons">dashboard</i> Dashboard
             </Link>
           </li>
+          <li>
+            <Link to={`/chat`}>
+              <i class="far fa-comments"></i> Chat
+            </Link>
+          </li>
         </div>
       );
     } else {
