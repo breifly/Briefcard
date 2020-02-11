@@ -16,7 +16,10 @@ import {
   CREATE_CHAT,
   ERROR_CHAT,
   GET_CHATROOM,
-  CHATROOM_ERROR
+  CHATROOM_ERROR,
+  CREATE_MESSAGE,
+  MESSAGE_ERROR,
+  GET_MESSAGE
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -183,7 +186,7 @@ export const createDiscover = formValues => async dispatch => {
   }
 };
 
-////////////////////////////// Message ///////////////////////////////////
+////////////////////////////// Chat ///////////////////////////////////
 export const createChatRoom = formValues => async dispatch => {
   try {
     const response = await axios.post(`/api/create/chatroom`, formValues);
@@ -205,6 +208,33 @@ export const getChatroom = id => async dispatch => {
     dispatch({
       type: CHATROOM_ERROR,
       payload: 'error to get chatroom'
+    });
+  }
+};
+
+////////////////////////////////////// Message ///////////////////////////////
+export const createMessage = message => async dispatch => {
+  try {
+    const response = await axios.post(`/api/create/message`, message);
+    dispatch({ type: CREATE_MESSAGE, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: 'error to create message'
+    });
+  }
+};
+
+// Get all Message by chatroom
+export const getAllMessageByChatroom = (id, callback) => async dispatch => {
+  try {
+    const response = await axios.post(`/api/allmessage/${id}`);
+    dispatch({ type: GET_MESSAGE, payload: response.data });
+    callback();
+  } catch (e) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: 'error to get message'
     });
   }
 };

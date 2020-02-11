@@ -21,3 +21,8 @@ export const CREATE_CHAT = 'create_chat';
 export const ERROR_CHAT = 'error_chat';
 export const GET_CHATROOM = 'get_chatroom';
 export const CHATROOM_ERROR = 'chatroom_error';
+
+// Message
+export const CREATE_MESSAGE = 'create_message';
+export const MESSAGE_ERROR = 'message_error';
+export const GET_MESSAGE = 'get_message';

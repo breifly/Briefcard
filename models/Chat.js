@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const chatroomSchema = new Schema({
   sender: [{ type: Schema.Types.ObjectId, ref: 'users' }],
   receiver: [{ type: Schema.Types.ObjectId, ref: 'users' }],
-  messages: [],
+  messages: [{ type: Schema.Types.ObjectId, ref: 'message' }],
   created_at: Date,
   updated_at: { type: Date, default: Date.now }
 });

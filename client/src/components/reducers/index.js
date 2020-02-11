@@ -3,6 +3,7 @@ import auth from './auth';
 import discover from './discover';
 import user from './user';
 import chat from './chat';
+import message from './message';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
   form: formReducer,
   discover: discover,
   user: user,
-  chat: chat
+  chat: chat,
+  message: message
 });

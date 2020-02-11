@@ -39,7 +39,7 @@ class Chat extends React.Component {
   render() {
     return (
       <div className="container">
-        <h2>Tchat List</h2>
+        <h2>Chat List</h2>
         {this.renderAllChatRoom()}
       </div>
     );

@@ -36,17 +36,6 @@ exports.createDiscover = function(req, res, next) {
     }
     res.send(discover);
   });
-  // User.findOneAndUpdate(
-  //   { _id: userId },
-  //   { $push: { postMatch: discover._id } },
-  //   { new: true },
-  //   err => {
-  //     if (err) {
-  //       console.log('Something wrong when updating data!');
-  //     }
-  //   }
-  // );
-
   if (isMatch === true) {
     User.findOneAndUpdate(
       { _id: friendId },
