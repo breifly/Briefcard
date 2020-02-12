@@ -39,7 +39,7 @@ class App extends React.Component {
               <Route exact path="/user/:id" component={UserShow} />
               <Route exact path="/user/edit/:id" component={UserEdit} />
               <Route exact path="/chatroom/:id" component={ChatRoom} />
-              <Route exact path="/chat" component={Chat} />
+              <Route exact path="/chat/:id" component={Chat} />
               <Route
                 path="/dashboard/:id"
                 render={props => <Dashboard {...props} />}

@@ -3,28 +3,33 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
 // Define our model
-const userSchema = new Schema({
-  googleId: String,
-  linkedinId: String,
-  email: { type: String, lowercase: true },
-  password: String,
-  avatar: String,
-  firstName: String,
-  lastName: String,
-  phone: String,
-  description: String,
-  tags: String,
-  membership_status: String,
-  instagram: String,
-  linkedin: String,
-  facebook: String,
-  snapchat: String,
-  tiktok: String,
-  discover: [{ type: Schema.Types.ObjectId, ref: 'discover' }],
-  liked: [],
-  unliked: [],
-  chatroom: [{ type: Schema.Types.ObjectId, ref: 'chatroom' }]
-});
+const userSchema = new Schema(
+  {
+    googleId: String,
+    linkedinId: String,
+    email: { type: String, lowercase: true },
+    password: String,
+    avatar: String,
+    firstName: String,
+    lastName: String,
+    phone: String,
+    description: String,
+    tags: String,
+    membership_status: String,
+    instagram: String,
+    linkedin: String,
+    facebook: String,
+    snapchat: String,
+    tiktok: String,
+    discover: [{ type: Schema.Types.ObjectId, ref: 'discover' }],
+    liked: [],
+    unliked: [],
+    chatroom: [{ type: Schema.Types.ObjectId, ref: 'chatroom' }]
+  },
+  {
+    timestamps: true // Saves createdAt and updatedAt as dates. createdAt will be our timestamp.
+  }
+);
 
 // On save Hook, encrypt password
 // Before saving a model, run this function

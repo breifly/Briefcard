@@ -17,7 +17,7 @@ class Header extends React.Component {
             </Link>
           </li>
           <li>
-            <Link to={`/chat`}>Chat</Link>
+            <Link to={`/chat/${this.props.authenticated._id}`}>Chat</Link>
           </li>
           <li>
             <Link to={`/user/${this.props.authenticated._id}`}>

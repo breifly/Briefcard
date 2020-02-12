@@ -2,22 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Link } from 'react-router-dom';
+import ChatList from './ChatList';
+import moment from 'moment';
 
 class Chat extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
+    this.props.getAllChatRoomByUSer(this.props.match.params.id);
   }
 
   renderAllChatRoom = () => {
-    if (this.props.auth.chatroom)
-      return this.props.auth.chatroom.map(chat => {
-        return (
-          <div key={chat}>
-            <Link key={chat} to={`/chatroom/${chat}`}>
-              <i className="far fa-comments"></i> ChatRoom
-            </Link>
-          </div>
-        );
+    if (this.props.chats)
+      return this.props.chats.map(chat => {
+        const date = moment(chat.updatedAt).calendar();
+        if (chat.sender[0] === this.props.match.params.id) {
+          return (
+            <div key={chat._id}>
+              <Link to={`/chatroom/${chat._id}`}>
+                <ChatList date={date} user={chat.receiver[0]} />
+              </Link>
+            </div>
+          );
+        } else {
+          return (
+            <div key={chat._id}>
+              <Link to={`/chatroom/${chat._id}`}>
+                <ChatList date={date} user={chat.sender[0]} />
+              </Link>
+            </div>
+          );
+        }
       });
     return (
       <div className="preloader-wrapper big active">
@@ -47,9 +61,10 @@ class Chat extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
+    chats: state.chat.allChatByUser,
+    messages: state.message.allMessage
   };
 }
 

@@ -3,20 +3,23 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { MessageList } from 'react-chat-elements';
 import 'react-chat-elements/dist/main.css';
+import moment from 'moment';
+
 class MessageLists extends React.Component {
   componentDidMount() {
     this.props.getAllMessageByChatroom(this.props.id);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.props.getAllMessageByChatroom(this.props.id);
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps !== this.props) {
+  //     this.props.getAllMessageByChatroom(this.props.id);
+  //   }
+  // }
 
   renderAllMessage = () => {
     if (this.props.messages && this.props.user._id)
       return this.props.messages.map(message => {
+        const date = moment(message.createdAt).calendar();
         if (message.user[0] === this.props.user._id) {
           return (
             <MessageList
@@ -29,7 +32,7 @@ class MessageLists extends React.Component {
                   position: 'right',
                   type: 'text',
                   text: `${message.message_body}`,
-                  date: `${message.created_at}`
+                  dateString: `${date}`
                 }
               ]}
             />
@@ -46,7 +49,7 @@ class MessageLists extends React.Component {
                   position: 'left',
                   type: 'text',
                   text: `${message.message_body}`,
-                  date: `${message.created_at}`
+                  dateString: `${date}`
                 }
               ]}
             />
@@ -70,8 +73,20 @@ class MessageLists extends React.Component {
     );
   };
 
+  renderDate = () => {
+    if (this.props.chatRoom) {
+      const date = moment(this.props.chatRoom.createdAt).format('LL');
+      return <h6 className="center title-chat">Chatroom created {date}</h6>;
+    }
+  };
+
   render() {
-    return <div className="box-message-list">{this.renderAllMessage()}</div>;
+    return (
+      <div className="box-message-list">
+        {this.renderDate()}
+        {this.renderAllMessage()}
+      </div>
+    );
   }
 }
 

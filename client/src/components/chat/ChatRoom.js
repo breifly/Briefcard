@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import renderField from './renderField';
 import MessageLists from './MessageLists';
+import validate from './Validate';
 import '../css/ChatRoom.css';
 
 class ChatRoom extends React.Component {
@@ -19,23 +20,15 @@ class ChatRoom extends React.Component {
       user: this.props.user._id,
       message: message
     };
-    if (message) {
-      this.props.createMessage(form, () =>
-        this.props.getAllMessageByChatroom(this.props.match.params.id)
-      );
-      dispatch(reset('MessageRoom'));
-    }
+    this.props.createMessage(form);
+    dispatch(reset('MessageRoom'));
   };
 
   render() {
     const { error, handleSubmit, submitting } = this.props;
     return (
       <div className="container">
-        {/* <p>chat room id {this.props.chatRoom._id}</p>
-        <p>receiver {this.props.chatRoom.receiver}</p>
-        <p>sender {this.props.chatRoom.sender}</p> */}
         <div className="box-chatroom">
-          <h6 className="center title-chat">Chatroom created </h6>
           <MessageLists id={this.props.match.params.id} />
           <form onSubmit={handleSubmit(this.submit)}>
             <div className="row">
@@ -51,6 +44,7 @@ class ChatRoom extends React.Component {
                       icon="create"
                     />
                   </div>
+                  {error && <strong>{error}</strong>}
                   <button
                     type="submit"
                     disabled={submitting}
@@ -61,7 +55,6 @@ class ChatRoom extends React.Component {
                 </div>
               </div>
             </div>
-            {error && <strong>{error}</strong>}
           </form>
         </div>
       </div>
@@ -70,7 +63,6 @@ class ChatRoom extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     user: state.auth.authenticated,
     chatRoom: state.chat.chatroom,
@@ -80,5 +72,5 @@ function mapStateToPros(state) {
 
 export default compose(
   connect(mapStateToPros, actions),
-  reduxForm({ form: 'MessageRoom' })
+  reduxForm({ form: 'MessageRoom', validate })
 )(ChatRoom);

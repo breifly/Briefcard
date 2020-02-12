@@ -18,8 +18,8 @@ class Sidebar extends React.Component {
             </Link>
           </li>
           <li>
-            <Link to={`/chat`}>
-              <i class="far fa-comments"></i> Chat
+            <Link to={`/chat/${this.props.authenticated._id}`}>
+              <i className="far fa-comments"></i> Chat
             </Link>
           </li>
         </div>

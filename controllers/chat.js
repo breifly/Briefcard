@@ -47,3 +47,33 @@ exports.getChatroom = function(req, res, next) {
     res.send(chat);
   });
 };
+
+exports.getReceiver = function(req, res, next) {
+  User.findOne({ _id: req.params.id }, function(error, user) {
+    if (error) {
+      return next(error);
+    }
+    res.send(user);
+  });
+};
+
+exports.getSender = function(req, res, next) {
+  User.findOne({ _id: req.params.id }, function(error, user) {
+    if (error) {
+      return next(error);
+    }
+    res.send(user);
+  });
+};
+
+exports.getAllChatRoomByUSer = function(req, res, next) {
+  const query = {
+    $or: [{ sender: req.params.id }, { receiver: req.params.id }]
+  };
+  Chat.find(query, function(error, user) {
+    if (error) {
+      return next(error);
+    }
+    res.send(user);
+  });
+};
