@@ -40,3 +40,30 @@ exports.getMessageByChatroom = function(req, res, next) {
     res.send(message);
   });
 };
+
+exports.readMessage = function(req, res, next) {
+  Message.findOneAndUpdate({ _id: req.params.id }, { status: true }, function(
+    error,
+    message
+  ) {
+    if (error) {
+      return next(error);
+    }
+    res.send(message);
+  });
+};
+
+exports.allUnreadMessagebyUser = function(req, res, next) {
+  const idchatroom = req.body.chatId;
+  const user = req.body.user;
+  const query = {
+    $and: [{ room: idchatroom }, { user: user }, { status: true }]
+  };
+  Message.find(query, function(error, message) {
+    if (error) {
+      return next(error);
+    }
+    console.log(message.length);
+    res.json(message.length);
+  });
+};

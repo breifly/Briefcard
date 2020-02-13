@@ -70,10 +70,10 @@ exports.getAllChatRoomByUSer = function(req, res, next) {
   const query = {
     $or: [{ sender: req.params.id }, { receiver: req.params.id }]
   };
-  Chat.find(query, function(error, user) {
+  Chat.find(query, function(error, chat) {
     if (error) {
       return next(error);
     }
-    res.send(user);
+    res.send(chat);
   });
 };

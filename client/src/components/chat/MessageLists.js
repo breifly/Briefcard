@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import { MessageList } from 'react-chat-elements';
 import 'react-chat-elements/dist/main.css';
 import moment from 'moment';
+import axios from 'axios';
 
 class MessageLists extends React.Component {
   componentDidMount() {
@@ -38,6 +39,7 @@ class MessageLists extends React.Component {
             />
           );
         } else {
+          axios.post(`/api/read/message/${message._id}`);
           return (
             <MessageList
               key={message._id}
@@ -91,6 +93,7 @@ class MessageLists extends React.Component {
 }
 
 function mapStateToPros(state) {
+  console.log(state);
   return {
     user: state.auth.authenticated,
     chatRoom: state.chat.chatroom,

@@ -11,7 +11,6 @@ import '../css/ChatRoom.css';
 class ChatRoom extends React.Component {
   componentDidMount() {
     this.props.getChatroom(this.props.match.params.id);
-    this.props.getAllMessageByChatroom(this.props.match.params.id);
   }
 
   submit = (message, dispatch) => {
@@ -65,7 +64,6 @@ class ChatRoom extends React.Component {
 function mapStateToPros(state) {
   return {
     user: state.auth.authenticated,
-    chatRoom: state.chat.chatroom,
     messages: state.message.allMessage
   };
 }

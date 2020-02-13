@@ -20,12 +20,10 @@ import {
   CREATE_MESSAGE,
   MESSAGE_ERROR,
   GET_MESSAGE,
-  GET_RECEIVER,
-  GET_SENDER,
-  RECEIVER_ERROR,
-  SENDER_ERROR,
   GET_ALL_CHAT_BY_USER,
-  ERROR_ALL_CHAT_BY_USER
+  ERROR_ALL_CHAT_BY_USER,
+  GET_UNREAD_MESSAGE,
+  ERROR_UNREAD_MESSAGE
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -218,37 +216,12 @@ export const getChatroom = id => async dispatch => {
   }
 };
 
-// Get receiver detail
-export const getReceiver = id => async dispatch => {
-  try {
-    const response = await axios.post(`/api/receiver/${id}`);
-    dispatch({ type: GET_RECEIVER, payload: response.data });
-  } catch (e) {
-    dispatch({
-      type: RECEIVER_ERROR,
-      payload: 'error to get receiver'
-    });
-  }
-};
-
-// Get sender detail
-export const getSender = id => async dispatch => {
-  try {
-    const response = await axios.post(`/api/receiver/${id}`);
-    dispatch({ type: GET_SENDER, payload: response.data });
-  } catch (e) {
-    dispatch({
-      type: SENDER_ERROR,
-      payload: 'error to get sender'
-    });
-  }
-};
-
 // Get get All Chat Room By USer
-export const getAllChatRoomByUSer = id => async dispatch => {
+export const getAllChatRoomByUSer = (id, callback) => async dispatch => {
   try {
     const response = await axios.post(`/api/allchatbyuser/${id}`);
     dispatch({ type: GET_ALL_CHAT_BY_USER, payload: response.data });
+    callback();
   } catch (e) {
     dispatch({
       type: ERROR_ALL_CHAT_BY_USER,
@@ -275,11 +248,24 @@ export const getAllMessageByChatroom = (id, callback) => async dispatch => {
   try {
     const response = await axios.post(`/api/allmessage/${id}`);
     dispatch({ type: GET_MESSAGE, payload: response.data });
-    callback();
+    callback(response.data);
   } catch (e) {
     dispatch({
       type: MESSAGE_ERROR,
       payload: 'error to get message'
+    });
+  }
+};
+
+// Get all Message unread by chatroom and user
+export const getUnreadMessage = form => async dispatch => {
+  try {
+    const response = await axios.post(`/api/unread/message`, form);
+    dispatch({ type: GET_UNREAD_MESSAGE, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: ERROR_UNREAD_MESSAGE,
+      payload: 'error to get unread message'
     });
   }
 };

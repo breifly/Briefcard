@@ -7,7 +7,6 @@ import moment from 'moment';
 
 class Chat extends React.Component {
   componentDidMount() {
-    this.props.fetchUser();
     this.props.getAllChatRoomByUSer(this.props.match.params.id);
   }
 
@@ -19,7 +18,11 @@ class Chat extends React.Component {
           return (
             <div key={chat._id}>
               <Link to={`/chatroom/${chat._id}`}>
-                <ChatList date={date} user={chat.receiver[0]} />
+                <ChatList
+                  chatId={chat._id}
+                  date={date}
+                  user={chat.receiver[0]}
+                />
               </Link>
             </div>
           );
@@ -27,7 +30,7 @@ class Chat extends React.Component {
           return (
             <div key={chat._id}>
               <Link to={`/chatroom/${chat._id}`}>
-                <ChatList date={date} user={chat.sender[0]} />
+                <ChatList chatId={chat._id} date={date} user={chat.sender[0]} />
               </Link>
             </div>
           );
@@ -61,10 +64,10 @@ class Chat extends React.Component {
 }
 
 function mapStateToPros(state) {
+  console.log(state);
   return {
     auth: state.auth.authenticated,
-    chats: state.chat.allChatByUser,
-    messages: state.message.allMessage
+    chats: state.chat.allChatByUser
   };
 }
 
