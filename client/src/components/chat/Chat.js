@@ -14,14 +14,15 @@ class Chat extends React.Component {
     if (this.props.chats)
       return this.props.chats.map(chat => {
         const date = moment(chat.updatedAt).calendar();
-        if (chat.sender[0] === this.props.match.params.id) {
+        if (chat.sender === this.props.match.params.id) {
           return (
             <div key={chat._id}>
               <Link to={`/chatroom/${chat._id}`}>
                 <ChatList
+                  messageUnread={chat.unreadReceiver}
                   chatId={chat._id}
                   date={date}
-                  user={chat.receiver[0]}
+                  user={chat.receiver}
                 />
               </Link>
             </div>
@@ -30,7 +31,12 @@ class Chat extends React.Component {
           return (
             <div key={chat._id}>
               <Link to={`/chatroom/${chat._id}`}>
-                <ChatList chatId={chat._id} date={date} user={chat.sender[0]} />
+                <ChatList
+                  messageUnread={chat.unreadSender}
+                  chatId={chat._id}
+                  date={date}
+                  user={chat.sender}
+                />
               </Link>
             </div>
           );

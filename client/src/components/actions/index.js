@@ -244,11 +244,10 @@ export const createMessage = message => async dispatch => {
 };
 
 // Get all Message by chatroom
-export const getAllMessageByChatroom = (id, callback) => async dispatch => {
+export const getAllMessageByChatroom = id => async dispatch => {
   try {
     const response = await axios.post(`/api/allmessage/${id}`);
     dispatch({ type: GET_MESSAGE, payload: response.data });
-    callback(response.data);
   } catch (e) {
     dispatch({
       type: MESSAGE_ERROR,

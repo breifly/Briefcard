@@ -7,11 +7,6 @@ import 'react-chat-elements/dist/main.css';
 class ChatLists extends React.Component {
   componentDidMount() {
     this.props.getAllUser();
-    const form = {
-      user: this.props.user,
-      chatId: this.props.chatId
-    };
-    this.props.getUnreadMessage(form);
   }
 
   renderChatItem = () => {
@@ -26,7 +21,7 @@ class ChatLists extends React.Component {
                 title={user.firstName}
                 subtitle={user.email}
                 dateString={this.props.date}
-                unread={1}
+                unread={this.props.messageUnread.length}
               />
             </div>
           );

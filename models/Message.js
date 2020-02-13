@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 // Define our model
 const messageSchema = new Schema(
   {
-    room: [{ type: Schema.Types.ObjectId, ref: 'chatroom' }],
-    user: [{ type: Schema.Types.ObjectId, ref: 'users' }],
+    room: { type: Schema.Types.ObjectId, ref: 'chatroom' },
+    user: { type: Schema.Types.ObjectId, ref: 'users' },
     message_body: String,
     status: { type: Boolean, default: false }
   },

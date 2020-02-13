@@ -20,16 +20,35 @@ exports.createMessage = function(req, res, next) {
     res.send(message);
   });
 
-  Chat.findOneAndUpdate(
-    { _id: room },
-    { $push: { messages: message._id } },
-    { new: true },
-    err => {
-      if (err) {
-        console.log('Something wrong when updating data!');
-      }
+  // Function unread message
+  Chat.find({ _id: room }, function(error, chat) {
+    if (error) {
+      return next(error);
     }
-  );
+    if (message.user === chat.sender) {
+      Chat.findOneAndUpdate(
+        { _id: room },
+        { $push: { messages: message._id, unreadReceiver: message._id } },
+        { new: true },
+        err => {
+          if (err) {
+            console.log('Something wrong when updating data!');
+          }
+        }
+      );
+    } else {
+      Chat.findOneAndUpdate(
+        { _id: room },
+        { $push: { messages: message._id, unreadSender: message._id } },
+        { new: true },
+        err => {
+          if (err) {
+            console.log('Something wrong when updating data!');
+          }
+        }
+      );
+    }
+  });
 };
 
 exports.getMessageByChatroom = function(req, res, next) {
@@ -42,15 +61,27 @@ exports.getMessageByChatroom = function(req, res, next) {
 };
 
 exports.readMessage = function(req, res, next) {
-  Message.findOneAndUpdate({ _id: req.params.id }, { status: true }, function(
-    error,
-    message
-  ) {
-    if (error) {
-      return next(error);
+  Chat.findOneAndUpdate(
+    { unreadSender: req.params.id },
+    { $pull: { unreadSender: req.params.id } },
+    { multi: true },
+    function(error, message) {
+      if (error) {
+        return next(error);
+      }
     }
-    res.send(message);
-  });
+  );
+  Chat.findOneAndUpdate(
+    { unreadReceiver: req.params.id },
+    { $pull: { unreadReceiver: req.params.id } },
+    { multi: true },
+    function(error, message) {
+      if (error) {
+        return next(error);
+      }
+      res.send(message);
+    }
+  );
 };
 
 exports.allUnreadMessagebyUser = function(req, res, next) {
@@ -67,3 +98,33 @@ exports.allUnreadMessagebyUser = function(req, res, next) {
     res.json(message.length);
   });
 };
+
+// // Function read message
+// Chat.find({ _id: message.room }, function(error, chat) {
+//   if (error) {
+//     return next(error);
+//   }
+//   if (message.user === chat.sender) {
+//     Chat.findOneAndUpdate(
+//       { _id: room },
+//       { $pull: { unreadSender: req.params.id } },
+//       { multi: true },
+//       err => {
+//         if (err) {
+//           console.log('Something wrong when delete unreadReceiver!');
+//         }
+//       }
+//     );
+//   } else {
+//     Chat.findOneAndUpdate(
+//       { _id: message.room },
+//       { $pull: { unreadReceiver: req.params.id } },
+//       { multi: true },
+//       err => {
+//         if (err) {
+//           console.log('Something wrong when delete unreadSender!');
+//         }
+//       }
+//     );
+//   }
+// });

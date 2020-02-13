@@ -11,17 +11,11 @@ class MessageLists extends React.Component {
     this.props.getAllMessageByChatroom(this.props.id);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps !== this.props) {
-  //     this.props.getAllMessageByChatroom(this.props.id);
-  //   }
-  // }
-
   renderAllMessage = () => {
     if (this.props.messages && this.props.user._id)
       return this.props.messages.map(message => {
         const date = moment(message.createdAt).calendar();
-        if (message.user[0] === this.props.user._id) {
+        if (message.user === this.props.user._id) {
           return (
             <MessageList
               key={message._id}
