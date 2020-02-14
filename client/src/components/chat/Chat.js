@@ -19,7 +19,7 @@ class Chat extends React.Component {
             <div key={chat._id}>
               <Link to={`/chatroom/${chat._id}`}>
                 <ChatList
-                  messageUnread={chat.unreadReceiver}
+                  messageUnread={chat.unreadSender}
                   chatId={chat._id}
                   date={date}
                   user={chat.receiver}
@@ -32,7 +32,7 @@ class Chat extends React.Component {
             <div key={chat._id}>
               <Link to={`/chatroom/${chat._id}`}>
                 <ChatList
-                  messageUnread={chat.unreadSender}
+                  messageUnread={chat.unreadReceiver}
                   chatId={chat._id}
                   date={date}
                   user={chat.sender}

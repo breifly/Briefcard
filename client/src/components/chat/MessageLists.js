@@ -4,17 +4,30 @@ import * as actions from '../actions';
 import { MessageList } from 'react-chat-elements';
 import 'react-chat-elements/dist/main.css';
 import moment from 'moment';
-import axios from 'axios';
 
 class MessageLists extends React.Component {
   componentDidMount() {
     this.props.getAllMessageByChatroom(this.props.id);
+    let formMessage = {
+      user: this.props.myUserId,
+      room: this.props.id
+    };
+    console.log(this.props.myUserId);
+    this.props.readMessage(formMessage);
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps !== this.props)
+  //     this.props.getAllMessageByChatroom(this.props.id);
+  // }
+
   renderAllMessage = () => {
+    console.log(this.props.myUserId);
     if (this.props.messages && this.props.user._id)
       return this.props.messages.map(message => {
         const date = moment(message.createdAt).calendar();
+        console.log(message.user);
+        console.log(this.props.user._id);
         if (message.user === this.props.user._id) {
           return (
             <MessageList
@@ -33,7 +46,6 @@ class MessageLists extends React.Component {
             />
           );
         } else {
-          axios.post(`/api/read/message/${message._id}`);
           return (
             <MessageList
               key={message._id}

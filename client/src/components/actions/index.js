@@ -22,8 +22,8 @@ import {
   GET_MESSAGE,
   GET_ALL_CHAT_BY_USER,
   ERROR_ALL_CHAT_BY_USER,
-  GET_UNREAD_MESSAGE,
-  ERROR_UNREAD_MESSAGE
+  READ_MESSAGE,
+  ERROR_READ_MESSAGE
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -257,13 +257,13 @@ export const getAllMessageByChatroom = id => async dispatch => {
 };
 
 // Get all Message unread by chatroom and user
-export const getUnreadMessage = form => async dispatch => {
+export const readMessage = form => async dispatch => {
   try {
-    const response = await axios.post(`/api/unread/message`, form);
-    dispatch({ type: GET_UNREAD_MESSAGE, payload: response.data });
+    const response = await axios.post(`/api/read/message`, form);
+    dispatch({ type: READ_MESSAGE, payload: response.data });
   } catch (e) {
     dispatch({
-      type: ERROR_UNREAD_MESSAGE,
+      type: ERROR_READ_MESSAGE,
       payload: 'error to get unread message'
     });
   }

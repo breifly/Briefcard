@@ -28,7 +28,12 @@ class ChatRoom extends React.Component {
     return (
       <div className="container">
         <div className="box-chatroom">
-          <MessageLists id={this.props.match.params.id} />
+          {this.props.user._id && (
+            <MessageLists
+              myUserId={this.props.user._id}
+              id={this.props.match.params.id}
+            />
+          )}
           <form onSubmit={handleSubmit(this.submit)}>
             <div className="row">
               <div className="col m12 s12">

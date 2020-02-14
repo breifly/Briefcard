@@ -2,8 +2,8 @@ import {
   CREATE_MESSAGE,
   MESSAGE_ERROR,
   GET_MESSAGE,
-  GET_UNREAD_MESSAGE,
-  ERROR_UNREAD_MESSAGE
+  READ_MESSAGE,
+  ERROR_READ_MESSAGE
 } from '../actions/types';
 const INITIAL_STATE = {
   messageCreate: '',
@@ -21,10 +21,10 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, allMessage: action.payload || false };
     case MESSAGE_ERROR:
       return { ...state, errorMessage: action.payload };
-    case GET_UNREAD_MESSAGE:
+    case READ_MESSAGE:
       return { ...state, unreadMessage: action.payload || false };
-    case ERROR_UNREAD_MESSAGE:
-      return { ...state, errorUnreadMessage: action.payload };
+    case ERROR_READ_MESSAGE:
+      return { ...state, errorMessage: action.payload };
     default:
       return state;
   }

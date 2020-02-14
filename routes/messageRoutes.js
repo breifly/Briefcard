@@ -6,7 +6,7 @@ module.exports = app => {
   // get all message from chatroom
   app.post('/api/allmessage/:id', message.getMessageByChatroom);
   // read message from chatroom
-  app.post(`/api/read/message/:id`, message.readMessage);
+  app.post(`/api/read/message`, message.readMessage);
   // all unread message from chatRoom
   app.post(`/api/unread/message`, message.allUnreadMessagebyUser);
 };

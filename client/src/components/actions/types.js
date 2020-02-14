@@ -27,5 +27,5 @@ export const ERROR_ALL_CHAT_BY_USER = 'error_all_chat_by_user';
 export const CREATE_MESSAGE = 'create_message';
 export const MESSAGE_ERROR = 'message_error';
 export const GET_MESSAGE = 'get_message';
-export const GET_UNREAD_MESSAGE = 'get_unread_message';
-export const ERROR_UNREAD_MESSAGE = 'error_unread_message';
+export const READ_MESSAGE = 'read_message';
+export const ERROR_READ_MESSAGE = 'Error_read_message';
