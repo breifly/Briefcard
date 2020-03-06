@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Sidebar from '../utils/Sidebar';
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import Sidebar from "../utils/Sidebar";
 
 class Header extends React.Component {
   renderLinks() {
@@ -13,7 +13,7 @@ class Header extends React.Component {
           </li>
           <li>
             <Link to={`/dashboard/${this.props.authenticated._id}`}>
-              Dashboard
+              Discover
             </Link>
           </li>
           <li>
@@ -25,7 +25,7 @@ class Header extends React.Component {
                 className="avatar"
                 src={
                   this.props.authenticated.avatar ||
-                  process.env.PUBLIC_URL + '/images/background.jpg'
+                  process.env.PUBLIC_URL + "/images/background.jpg"
                 }
                 alt="background"
               />
@@ -48,7 +48,7 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/">
-              Briefly
+              <i className="far fa-comment-dots"></i> WikiNetwork
             </Link>
             <a href="#/" data-target="slide-out" className="sidenav-trigger">
               <i className="material-icons">menu</i>

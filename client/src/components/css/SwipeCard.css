@@ -4,15 +4,24 @@
   margin-right: auto;
 }
 
+.img-empty{
+  width: 220px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+
 .swipe{
   position: absolute;
   width: 350px;
   height: 500px;
   top: calc(50vh - (/* height */500px / 2));
   left: calc(50vw - (/* width */350px / 2)); 
-  margin-top: 60px;
+  margin-top: 78px;
   background-color: #fff;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .card-tinder{
@@ -39,11 +48,12 @@
   width: 100px;
   height: 100px;
   padding-left: 28px;
-  padding-top: 14px;
+  padding-top: 0px;
   /* border-radius: 50%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23); */
-  margin-top: 150px;
+  margin-top: -140px;
+  color: #fff;
 }
 
 /* card Match */
@@ -69,11 +79,14 @@
   cursor: pointer;
 }
 
+.button-match a{
+  color: #fff
+}
 
 .button-match:hover{
-  color: #fff;
-  background-color: #26a69a;
-  border: 1px solid #26a69a;
+  color: #fff !important;
+  background-color: #0575E6;
+  border: 1px solid #0575E6;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
 }
@@ -85,7 +98,7 @@
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
   border-radius: 20px;
-  margin-top: 60px;
+  margin-top: 78px;
   background-color: #fff;
   top: calc(50vh - (/* height */500px / 2));
   left: calc(50vw - (/* width */350px / 2)); 
@@ -110,10 +123,18 @@
   }
   
   .modal-match{
-    margin-top: 0px;
+    margin-top: 30px;
+    width: 315px;
+    height: 400px;
+    top: calc(50vh - (/* height */490px / 2));
+    left: calc(50vw - (/* width */315px / 2));
   }
 
   .swipe{
-    margin-top: 0px;
+    margin-top: 30px;
+    width: 315px;
+    height: 400px;
+    top: calc(50vh - (/* height */490px / 2));
+    left: calc(50vw - (/* width */315px / 2));
   }
 }

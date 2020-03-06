@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { ChatItem } from 'react-chat-elements';
-import 'react-chat-elements/dist/main.css';
+import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import { ChatItem } from "react-chat-elements";
+import "react-chat-elements/dist/main.css";
 
 class ChatLists extends React.Component {
   componentDidMount() {
@@ -17,9 +17,9 @@ class ChatLists extends React.Component {
             <div key={user._id}>
               <ChatItem
                 avatar={user.avatar}
-                alt={'Reactjs'}
+                alt={"Reactjs"}
                 title={user.firstName}
-                subtitle={user.email}
+                subtitle={this.props.msg}
                 dateString={this.props.date}
                 unread={this.props.messageUnread.length}
               />
@@ -40,7 +40,6 @@ class ChatLists extends React.Component {
 function mapStateToPros(state) {
   return {
     users: state.user.allUsers,
-    messages: state.message.allMessage,
     unread: state.message.unreadMessage
   };
 }

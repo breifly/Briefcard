@@ -1,11 +1,10 @@
-const Message = require('../models/Message');
-const Chat = require('../models/Chat');
+const Message = require("../models/Message");
+const Chat = require("../models/Chat");
 
 exports.createMessage = function(req, res, next) {
   const room = req.body.room;
   const user = req.body.user;
-  console.log(user);
-  const message_body = req.body.message.message;
+  const message_body = req.body.message;
 
   const message = new Message({
     room: room,
@@ -26,7 +25,17 @@ exports.createMessage = function(req, res, next) {
     { new: true },
     err => {
       if (err) {
-        console.log('Something wrong when updating data!');
+        console.log("Something wrong when updating data!");
+      }
+    }
+  );
+
+  Chat.findOneAndUpdate(
+    { _id: room },
+    { lastMessage: message_body, dateMessage: Date.now() },
+    err => {
+      if (err) {
+        console.log("Something wrong when updating data!");
       }
     }
   );
@@ -44,7 +53,7 @@ exports.createMessage = function(req, res, next) {
         { new: true },
         err => {
           if (err) {
-            console.log('Something wrong when delete unreadReceiver!');
+            console.log("Something wrong when delete unreadReceiver!");
           }
         }
       );
@@ -57,7 +66,7 @@ exports.createMessage = function(req, res, next) {
         { new: true },
         err => {
           if (err) {
-            console.log('Something wrong when delete unreadSender!');
+            console.log("Something wrong when delete unreadSender!");
           }
         }
       );
@@ -91,7 +100,6 @@ exports.allUnreadMessagebyUser = function(req, res, next) {
 exports.readMessage = function(req, res, next) {
   const room = req.body.room;
   const user = req.body.user;
-  console.log(user);
 
   Chat.findOne({ _id: room }, function(error, chat) {
     if (error) {
@@ -104,7 +112,7 @@ exports.readMessage = function(req, res, next) {
       // delete to unreadReceiver
       Chat.update({ _id: room }, { $unset: { unreadSender: 1 } }, err => {
         if (err) {
-          console.log('Something wrong when delete unreadReceiver!');
+          console.log("Something wrong when delete unreadReceiver!");
         }
       });
     } else {
@@ -112,48 +120,9 @@ exports.readMessage = function(req, res, next) {
       // delete to unreadReceiver.
       Chat.update({ _id: room }, { $unset: { unreadReceiver: 1 } }, err => {
         if (err) {
-          console.log('Something wrong when delete unreadSender!');
+          console.log("Something wrong when delete unreadSender!");
         }
       });
     }
   });
 };
-
-// Message.findOneAndUpdate({ _id: req.params.id }, { status: true }, function(
-//   error,
-//   message
-// ) {
-//   if (error) {
-//     return next(error);
-//   }
-//   console.log(message.user);
-// });
-
-// Chat.find({ _id: message.room }, function(error, chat) {
-//   if (error) {
-//     return next(error);
-//   }
-//   if (message.user === chat.sender) {
-//     Chat.findOneAndUpdate(
-//       { _id: room },
-//       { $pull: { unreadReceiver: req.params.id } },
-//       { multi: true },
-//       err => {
-//         if (err) {
-//           console.log('Something wrong when delete unreadReceiver!');
-//         }
-//       }
-//     );
-//   } else {
-//     Chat.findOneAndUpdate(
-//       { _id: message.room },
-//       { $pull: { unreadSender: req.params.id } },
-//       { multi: true },
-//       err => {
-//         if (err) {
-//           console.log('Something wrong when delete unreadSender!');
-//         }
-//       }
-//     );
-//   }
-// });

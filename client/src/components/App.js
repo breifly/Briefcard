@@ -1,26 +1,27 @@
-import React from 'react';
-import Header from './utils/Header';
-import { BrowserRouter, Route } from 'react-router-dom';
-import * as actions from './actions';
-import { connect } from 'react-redux';
-import M from 'materialize-css/dist/js/materialize.min.js';
-import './App.css';
+import React from "react";
+import Header from "./utils/Header";
+import { BrowserRouter, Route } from "react-router-dom";
+import * as actions from "./actions";
+import { connect } from "react-redux";
+import M from "materialize-css/dist/js/materialize.min.js";
+import "./App.css";
 
-import Welcome from './pages/Welcome';
-import Signout from './auth/Signout';
-import Signin from './auth/Signin';
-import Signup from './auth/Signup';
-import UserShow from './user/UserShow';
-import UserEdit from './user/UserEdit';
-import Dashboard from './dasboard/Dashboard';
-import ChatRoom from './chat/ChatRoom';
-import Chat from './chat/Chat';
+import Welcome from "./pages/Welcome";
+import Signout from "./auth/Signout";
+import Signin from "./auth/Signin";
+import Signup from "./auth/Signup";
+import UserShow from "./user/UserShow";
+import UserEdit from "./user/UserEdit";
+import Dashboard from "./dasboard/Dashboard";
+import Chat from "./chat/Chat";
+import ChatRoomSocket from "./chat/ChatRoomSocket";
+import User from "./discover/User";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
     // Sidebar
-    var elems = document.querySelectorAll('.sidenav');
+    var elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems, {});
   }
 
@@ -38,15 +39,13 @@ class App extends React.Component {
             <div>
               <Route exact path="/user/:id" component={UserShow} />
               <Route exact path="/user/edit/:id" component={UserEdit} />
-              <Route exact path="/chatroom/:id" component={ChatRoom} />
+              <Route exact path="/chatroom/:id" component={ChatRoomSocket} />
               <Route exact path="/chat/:id" component={Chat} />
-              <Route
-                path="/dashboard/:id"
-                render={props => <Dashboard {...props} />}
-              />
+              <Route exact path="/dashboard/:id" component={Dashboard} />
+              <Route exact path="/chatroom/user/:id" component={User} />
             </div>
           ) : (
-            ''
+            ""
           )}
         </BrowserRouter>
       </div>
