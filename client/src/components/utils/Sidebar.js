@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Sidebar extends React.Component {
   renderLinks() {
@@ -20,6 +20,11 @@ class Sidebar extends React.Component {
           <li>
             <Link to={`/chat/${this.props.authenticated._id}`}>
               <i className="far fa-comments"></i> Chat
+            </Link>
+          </li>
+          <li>
+            <Link to={`/briefcard-templates/${this.props.authenticated._id}`}>
+              <i className="far fa-id-card"></i> Briefcard
             </Link>
           </li>
         </div>
@@ -44,7 +49,7 @@ class Sidebar extends React.Component {
           <div className="user-view">
             <div className="background">
               <img
-                src={process.env.PUBLIC_URL + "/images/water.jpg"}
+                src={process.env.PUBLIC_URL + '/images/water.jpg'}
                 alt="background"
                 className="sidebar-background"
               />
@@ -56,14 +61,14 @@ class Sidebar extends React.Component {
                     className="circle"
                     src={
                       this.props.authenticated.avatar ||
-                      process.env.PUBLIC_URL + "/images/background.jpg"
+                      process.env.PUBLIC_URL + '/images/background.jpg'
                     }
                     alt="avatar"
                   />
                 </Link>
                 <a href="#name">
                   <span className="white-text name">
-                    {this.props.authenticated.firstName || null}{" "}
+                    {this.props.authenticated.firstName || null}{' '}
                     {this.props.authenticated.lastName || null}
                   </span>
                 </a>
@@ -74,11 +79,11 @@ class Sidebar extends React.Component {
                 </span>
               </span>
             ) : (
-              <div style={{ paddingBottom: "10px" }}>
+              <div style={{ paddingBottom: '10px' }}>
                 <a href="#/">
                   <img
                     className="circle"
-                    src={process.env.PUBLIC_URL + "/images/background.jpg"}
+                    src={process.env.PUBLIC_URL + '/images/background.jpg'}
                     alt="avatar"
                   />
                 </a>

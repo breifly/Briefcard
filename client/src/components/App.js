@@ -1,27 +1,29 @@
-import React from "react";
-import Header from "./utils/Header";
-import { BrowserRouter, Route } from "react-router-dom";
-import * as actions from "./actions";
-import { connect } from "react-redux";
-import M from "materialize-css/dist/js/materialize.min.js";
-import "./App.css";
+import React from 'react';
+import Header from './utils/Header';
+import { BrowserRouter, Route } from 'react-router-dom';
+import * as actions from './actions';
+import { connect } from 'react-redux';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import './App.css';
 
-import Welcome from "./pages/Welcome";
-import Signout from "./auth/Signout";
-import Signin from "./auth/Signin";
-import Signup from "./auth/Signup";
-import UserShow from "./user/UserShow";
-import UserEdit from "./user/UserEdit";
-import Dashboard from "./dasboard/Dashboard";
-import Chat from "./chat/Chat";
-import ChatRoomSocket from "./chat/ChatRoomSocket";
-import User from "./discover/User";
+import Welcome from './pages/Welcome';
+import Signout from './auth/Signout';
+import Signin from './auth/Signin';
+import Signup from './auth/Signup';
+import UserShow from './user/UserShow';
+import UserEdit from './user/UserEdit';
+import Dashboard from './dasboard/Dashboard';
+import Chat from './chat/Chat';
+import ChatRoomSocket from './chat/ChatRoomSocket';
+import User from './discover/User';
+import Template from './briefcard/Template';
+import CreateGenericTemplate from './briefcard/CreateGenericTemplate';
 
 class App extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
     // Sidebar
-    var elems = document.querySelectorAll(".sidenav");
+    var elems = document.querySelectorAll('.sidenav');
     M.Sidenav.init(elems, {});
   }
 
@@ -43,9 +45,19 @@ class App extends React.Component {
               <Route exact path="/chat/:id" component={Chat} />
               <Route exact path="/dashboard/:id" component={Dashboard} />
               <Route exact path="/chatroom/user/:id" component={User} />
+              <Route
+                exact
+                path="/briefcard-templates/:id"
+                component={Template}
+              />
+              <Route
+                exact
+                path="/create-breifcard"
+                component={CreateGenericTemplate}
+              />
             </div>
           ) : (
-            ""
+            ''
           )}
         </BrowserRouter>
       </div>
