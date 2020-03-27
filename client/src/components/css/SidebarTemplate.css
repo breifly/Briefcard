@@ -1,0 +1,24 @@
+.padding-none {
+  padding: 0 !important;
+}
+.sidebar-template {
+  width: 100%;
+  height: 100vh;
+  border: 1px solid black;
+}
+
+.sidebar-background img {
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-template ul {
+  margin-top: -5px;
+}
+.li-sidebar li {
+  padding: 10px;
+}
+
+.li-sidebar li:hover {
+  padding: 5px;
+}
