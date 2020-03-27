@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../css/CreateGenericTemplate.css';
 import SidebarTemplate from './SidebarTemplate';
 

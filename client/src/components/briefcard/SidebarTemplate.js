@@ -13,7 +13,10 @@ class sidebarTemplate extends React.Component {
     return (
       <div className="sidebar-template">
         <div class="sidebar-background">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img
+            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+            alt="background"
+          />
         </div>
 
         <ul class="collapsible">

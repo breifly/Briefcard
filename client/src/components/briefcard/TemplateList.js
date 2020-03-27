@@ -9,7 +9,10 @@ class TemplateList extends React.Component {
       <div>
         <h4>List Generic Template</h4>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img
+            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+            alt="image"
+          />
           <div class="card-product-infos">
             <h2>Product name</h2>
             <p>
