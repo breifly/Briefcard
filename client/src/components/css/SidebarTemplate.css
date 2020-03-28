@@ -22,3 +22,12 @@
 .li-sidebar li:hover {
   padding: 5px;
 }
+
+.img-block {
+  cursor: pointer;
+}
+
+.img-block img {
+  width: 100%;
+  height: auto;
+}
