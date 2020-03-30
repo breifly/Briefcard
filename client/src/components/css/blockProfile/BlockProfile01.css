@@ -1,0 +1,30 @@
+.bp-01 {
+  padding: 10px;
+}
+
+.bp-01-block {
+  display: flex;
+  color: white;
+}
+
+.bp-01-block h5 {
+  margin-bottom: 2px;
+}
+
+.bp-01 img {
+  padding: 15px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.job {
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.bp-01-block-02 {
+  margin-top: 7%;
+  font-size: 20px;
+  color: white;
+}

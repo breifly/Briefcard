@@ -12,19 +12,19 @@ class sidebarTemplate extends React.Component {
   render() {
     return (
       <div className="sidebar-template">
-        <div class="sidebar-background">
+        <div className="sidebar-background">
           <img
             src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
             alt="background"
           />
         </div>
 
-        <ul class="collapsible">
+        <ul className="collapsible">
           <li>
-            <div class="collapsible-header">
-              <i class="material-icons">filter_drama</i>BriefCard Goal
+            <div className="collapsible-header">
+              <i className="material-icons">filter_drama</i>BriefCard Goal
             </div>
-            <div class="collapsible-body">
+            <div className="collapsible-body">
               <div className="row">
                 <div className="col m4">
                   <div onClick={this.props.displayGetJob} className="img-block">
@@ -56,18 +56,18 @@ class sidebarTemplate extends React.Component {
             </div>
           </li>
           <li>
-            <div class="collapsible-header">
-              <i class="material-icons">place</i>Generic Template
+            <div className="collapsible-header">
+              <i className="material-icons">place</i>Generic Template
             </div>
-            <div class="collapsible-body">
+            <div className="collapsible-body">
               <span>Lorem ipsum dolor sit amet.</span>
             </div>
           </li>
           <li>
-            <div class="collapsible-header">
-              <i class="material-icons">whatshot</i>Block
+            <div className="collapsible-header">
+              <i className="material-icons">whatshot</i>Block
             </div>
-            <div class="collapsible-body">
+            <div className="collapsible-body">
               <span>Lorem ipsum dolor sit amet.</span>
             </div>
           </li>

@@ -4,6 +4,7 @@ import * as actions from '../actions';
 // import { Link } from 'react-router-dom';
 import '../css/CreateGenericTemplate.css';
 import SidebarTemplate from './SidebarTemplate';
+import GetJob from './briefCardGoal/GetJob';
 
 class CreateGenericTemplate extends React.Component {
   state = {
@@ -32,7 +33,7 @@ class CreateGenericTemplate extends React.Component {
           <div className="col m9 s12">
             {this.state.getJob ? (
               <div>
-                <h2>Get Job</h2>
+                <GetJob />
               </div>
             ) : (
               ''
