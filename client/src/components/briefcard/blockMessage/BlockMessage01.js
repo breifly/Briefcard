@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import '../../css/blockMessage/BlockMessage01.css';
-import EditMessage from '../blockMessage/EditMessage';
+import EditMessage from './EditMessage';
 
 class BlockMessage01 extends React.Component {
   state = {
-    title: 'Hey Bob!',
+    title: 'Bob',
     message:
       'glad we got a chance to sit at thatch. Almost missed you for the holidays! Till next time.'
   };
@@ -18,13 +18,13 @@ class BlockMessage01 extends React.Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="bm-01">
-            {this.state.title} {this.state.message}
-          </div>
-        </div>
         <div className=" row right">
           <EditMessage handleType={this.handleType} />
+        </div>
+        <div className="container">
+          <div className="bm-01">
+            Hey {this.state.title}! {this.state.message}
+          </div>
         </div>
       </div>
     );

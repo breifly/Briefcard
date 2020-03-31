@@ -10,17 +10,6 @@
 }
 
 .edit-block {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #2ea985;
-  padding-left: 7px;
-  padding-top: 7px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.edit-text {
-  color: #fff;
-  cursor: pointer;
+  line-height: 30px !important;
+  padding: 0px 8px !important;
 }

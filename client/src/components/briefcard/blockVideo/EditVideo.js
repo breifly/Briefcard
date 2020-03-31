@@ -1,15 +1,11 @@
 import React from 'react';
 import { Modal, Button } from 'react-materialize';
 
-class EditMessage extends React.Component {
+class EditVideo extends React.Component {
   render() {
     return (
       <div>
-        <Button
-          className="modal-trigger edit-block"
-          href="#modalMessage"
-          node="button"
-        >
+        <Button className="modal-trigger" href="#modalVideo" node="button">
           <i className="fas fa-pencil-alt"></i>
         </Button>
         <Modal
@@ -18,8 +14,8 @@ class EditMessage extends React.Component {
               Save
             </Button>
           ]}
-          header="Edit Your Message"
-          id="modalMessage"
+          header="Edit Your Video"
+          id="modalVideo"
           options={{
             dismissible: false,
             endingTop: '10%',
@@ -47,17 +43,6 @@ class EditMessage extends React.Component {
                   onChange={this.props.handleType}
                 />
               </div>
-              <div className="input-field col s6">
-                <i className="material-icons prefix">message</i>
-                <label htmlFor="message">Message</label>
-                <input
-                  name="message"
-                  id="message"
-                  type="text"
-                  className="validate"
-                  onChange={this.props.handleType}
-                />
-              </div>
             </div>
           </form>
         </Modal>
@@ -65,4 +50,4 @@ class EditMessage extends React.Component {
     );
   }
 }
-export default EditMessage;
+export default EditVideo;

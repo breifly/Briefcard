@@ -7,10 +7,10 @@ import 'react-chat-elements/dist/main.css';
 
 class BlockProfile01 extends React.Component {
   state = {
-    firstName: 'leChef',
-    lastName: 'Otaku',
+    firstName: 'John',
+    lastName: 'Mackenzie',
     job: 'Youtuber',
-    email: 'lechef@gmail.com',
+    email: 'John@gmail.com',
     phone: '786 234 4557'
   };
 
@@ -25,12 +25,18 @@ class BlockProfile01 extends React.Component {
   render() {
     return (
       <div className="row">
+        <div className="right">
+          <EditProfile handleType={this.handleType} />
+        </div>
         <div className="bp-01">
           <div className="col m6">
             <div className="bp-01-block">
               <img
                 alt="avatar"
-                src={process.env.PUBLIC_URL + '/images/lechef.jpg'}
+                src={
+                  this.props.auth.avatar ||
+                  process.env.PUBLIC_URL + '/images/lechef.jpg'
+                }
               />
               <ul>
                 <li>
@@ -54,9 +60,6 @@ class BlockProfile01 extends React.Component {
               </p>
             </div>
           </div>
-        </div>
-        <div className="right">
-          <EditProfile handleType={this.handleType} />
         </div>
       </div>
     );

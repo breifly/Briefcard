@@ -11,7 +11,7 @@ class TemplateList extends React.Component {
         <div class="card-product">
           <img
             src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
-            alt="image"
+            alt="image01"
           />
           <div class="card-product-infos">
             <h2>Product name</h2>
