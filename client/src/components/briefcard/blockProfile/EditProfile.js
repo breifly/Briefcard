@@ -12,25 +12,13 @@ class EditProfile extends React.Component {
         <Modal
           actions={[
             <Button flat modal="close" node="button" waves="green">
-              Close
-            </Button>,
-            <Button
-              onClick={this.props.preSaveForm}
-              flat
-              modal="close"
-              node="button"
-              waves="green"
-            >
               Save
             </Button>
           ]}
-          bottomSheet={false}
-          fixedFooter={false}
           header="Edit Your Profile"
           id="modalProfile"
-          open={false}
           options={{
-            dismissible: true,
+            dismissible: false,
             endingTop: '10%',
             inDuration: 250,
             onCloseEnd: null,
@@ -43,18 +31,69 @@ class EditProfile extends React.Component {
             startingTop: '4%'
           }}
         >
-          <div className="row">
-            <div className="input-field col s6">
-              <i className="material-icons prefix">account_circle</i>
-              <label htmlFor="icon_prefix">First Name</label>
-              <input id="icon_prefix" type="text" className="validate" />
+          <form onSubmit={this.props.handleOnSubmit} className="col s12">
+            <div className="row">
+              <div className="input-field col s6">
+                <i className="material-icons prefix">account_circle</i>
+                <label htmlFor="icon_prefix">First Name</label>
+                <input
+                  name="firstName"
+                  id="icon_prefix"
+                  type="text"
+                  className="validate"
+                  onChange={this.props.handleType}
+                />
+              </div>
+              <div className="input-field col s6">
+                <i className="material-icons prefix">account_circle</i>
+                <label htmlFor="icon_prefix1">Last Name</label>
+                <input
+                  name="lastName"
+                  onChange={this.props.handleType}
+                  id="icon_prefix1"
+                  type="text"
+                  className="validate"
+                />
+              </div>
             </div>
-            <div className="input-field col s6">
-              <i className="material-icons prefix">account_circle</i>
-              <label htmlFor="icon_prefix1">Last Name</label>
-              <input id="icon_prefix1" type="text" className="validate" />
+            <div className="row">
+              <div className="input-field col s6">
+                <i className="material-icons prefix">business_center</i>
+                <label htmlFor="icon_prefix2">Job</label>
+                <input
+                  name="job"
+                  id="icon_prefix2"
+                  type="text"
+                  className="validate"
+                  onChange={this.props.handleType}
+                />
+              </div>
+              <div className="input-field col s6">
+                <i className="material-icons prefix">email</i>
+                <label htmlFor="icon_prefix3">Email</label>
+                <input
+                  name="email"
+                  onChange={this.props.handleType}
+                  id="icon_prefix3"
+                  type="text"
+                  className="validate"
+                />
+              </div>
             </div>
-          </div>
+            <div className="row">
+              <div className="input-field col s6">
+                <i className="material-icons prefix">local_phone</i>
+                <label htmlFor="icon_prefix4">Phone</label>
+                <input
+                  name="phone"
+                  id="icon_prefix4"
+                  type="text"
+                  className="validate"
+                  onChange={this.props.handleType}
+                />
+              </div>
+            </div>
+          </form>
         </Modal>
       </div>
     );

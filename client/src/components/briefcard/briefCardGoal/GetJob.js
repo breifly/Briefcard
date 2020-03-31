@@ -3,12 +3,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import BlockProfile01 from '../blockProfile/BlockProfile01';
+import BlockMessage01 from '../blockMessage/BlockMessage01';
 
 class GetJob extends React.Component {
   render() {
     return (
       <div className="container">
         <BlockProfile01 />
+        <BlockMessage01 />
       </div>
     );
   }

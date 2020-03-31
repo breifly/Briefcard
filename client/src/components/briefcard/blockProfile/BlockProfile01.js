@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import '../../css/blockProfile/BlockProfile01.css';
@@ -8,19 +7,19 @@ import 'react-chat-elements/dist/main.css';
 
 class BlockProfile01 extends React.Component {
   state = {
-    title: 'LeChef Otaku',
+    firstName: 'leChef',
+    lastName: 'Otaku',
     job: 'Youtuber',
     email: 'lechef@gmail.com',
-    phone: '786 234 4557',
-    modal: false
+    phone: '786 234 4557'
   };
 
-  openModal = () => {
-    this.setState({ modal: true });
+  preSaveForm = event => {
+    event.preventDefault();
   };
 
-  preSaveForm = form => {
-    console.log(form);
+  handleType = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -35,7 +34,9 @@ class BlockProfile01 extends React.Component {
               />
               <ul>
                 <li>
-                  <h5>{this.state.title}</h5>
+                  <h5>
+                    {this.state.firstName} {this.state.lastName}
+                  </h5>
                 </li>
                 <li className="job">{this.state.job}</li>
                 <li>{this.state.email}</li>
@@ -55,7 +56,7 @@ class BlockProfile01 extends React.Component {
           </div>
         </div>
         <div className="right">
-          <EditProfile preSaveForm={this.preSaveForm} />
+          <EditProfile handleType={this.handleType} />
         </div>
       </div>
     );
