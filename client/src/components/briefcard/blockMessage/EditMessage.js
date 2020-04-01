@@ -34,7 +34,7 @@ class EditMessage extends React.Component {
             startingTop: '4%'
           }}
         >
-          <form onSubmit={this.props.handleOnSubmit} className="col s12">
+          <form className="col s12">
             <div className="row">
               <div className="input-field col s6">
                 <i className="material-icons prefix">person</i>

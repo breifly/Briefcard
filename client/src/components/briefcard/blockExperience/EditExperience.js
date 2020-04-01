@@ -14,11 +14,17 @@ class EditExperience extends React.Component {
         </Button>
         <Modal
           actions={[
-            <Button flat modal="close" node="button" waves="green">
+            <Button
+              onClick={this.props.onSubmitExperience}
+              flat
+              modal="close"
+              node="button"
+              waves="green"
+            >
               Save
             </Button>
           ]}
-          header="Edit Your Message"
+          header="Edit Your Experience"
           id="modalExperience"
           options={{
             dismissible: false,
@@ -34,7 +40,7 @@ class EditExperience extends React.Component {
             startingTop: '4%'
           }}
         >
-          <form onSubmit={this.props.handleOnSubmit} className="col s12">
+          <form className="col s12">
             <div className="row">
               <div className="input-field col s6">
                 <i className="material-icons prefix">home</i>
@@ -43,6 +49,7 @@ class EditExperience extends React.Component {
                   name="company"
                   id="company"
                   type="text"
+                  value={this.props.company}
                   className="validate"
                   onChange={this.props.handleType}
                 />
@@ -55,6 +62,7 @@ class EditExperience extends React.Component {
                   id="position"
                   type="text"
                   className="validate"
+                  value={this.props.position}
                   onChange={this.props.handleType}
                 />
               </div>
@@ -68,17 +76,19 @@ class EditExperience extends React.Component {
                   id="dateStart"
                   type="text"
                   className="validate"
+                  value={this.props.dateStart}
                   onChange={this.props.handleType}
                 />
               </div>
               <div className="input-field col s6">
                 <i className="material-icons prefix">date_range</i>
-                <label htmlFor="DateEnd">Date End</label>
+                <label htmlFor="dateEnd">Date End</label>
                 <input
-                  name="DateEnd"
-                  id="DateEnd"
+                  name="dateEnd"
+                  id="dateEnd"
                   type="text"
                   className="validate"
+                  value={this.props.dateEnd}
                   onChange={this.props.handleType}
                 />
               </div>
@@ -92,10 +102,12 @@ class EditExperience extends React.Component {
                   id="description"
                   type="text"
                   className="validate"
+                  value={this.props.description}
                   onChange={this.props.handleType}
                 />
               </div>
             </div>
+            <div style={{ color: 'red' }}>{this.props.errorMessage}</div>
           </form>
         </Modal>
       </div>

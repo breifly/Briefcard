@@ -17,9 +17,9 @@ class Template extends React.Component {
           <h5>Create your first BriefCard!</h5>
           <Link
             to="/create-breifcard"
-            class="btn-floating btn-large waves-effect waves-light"
+            className="btn-floating btn-large waves-effect waves-light"
           >
-            <i class="material-icons">add</i>
+            <i className="material-icons">add</i>
           </Link>
         </div>
         <TemplateList />
