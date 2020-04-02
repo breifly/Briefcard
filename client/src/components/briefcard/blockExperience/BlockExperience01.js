@@ -4,6 +4,7 @@ import * as actions from '../../actions';
 import '../../css/blockExperience/BlockExperience01.css';
 import AddExperience from './AddExperience';
 import EditExperience from './EditExperience';
+import DeleteExperience from './DeleteExperience';
 
 class BlockExperience01 extends React.Component {
   state = {
@@ -96,6 +97,11 @@ class BlockExperience01 extends React.Component {
     });
   };
 
+  deleteExperience = idx => {
+    this.state.experiences.splice(idx);
+    this.forceUpdate();
+  };
+
   renderExperience = () => {
     if (this.state.experiences.length)
       return this.state.experiences.map((exp, idx) => {
@@ -111,17 +117,23 @@ class BlockExperience01 extends React.Component {
                     {exp.dateStart} - {exp.dateEnd}
                   </span>
                 </h3>
-                <p>{exp.description}</p>
-                <EditExperience
-                  index={idx}
-                  editExperience={this.editExperience}
-                  handleType={this.handleType}
-                  editCompany={this.state.editCompany}
-                  editPosition={this.state.editPosition}
-                  editDateStart={this.state.editDateStart}
-                  editDateEnd={this.state.editDateEnd}
-                  editDescription={this.state.editDescription}
-                />
+                <p>{exp.description} </p>
+                <div className="right" style={{ display: 'flex' }}>
+                  <EditExperience
+                    index={idx}
+                    editExperience={this.editExperience}
+                    handleType={this.handleType}
+                    editCompany={this.state.editCompany}
+                    editPosition={this.state.editPosition}
+                    editDateStart={this.state.editDateStart}
+                    editDateEnd={this.state.editDateEnd}
+                    editDescription={this.state.editDescription}
+                  />
+                  <DeleteExperience
+                    index={idx}
+                    deleteExperience={this.deleteExperience}
+                  />
+                </div>
               </div>
             </div>
           </div>

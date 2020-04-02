@@ -13,3 +13,9 @@
   line-height: 30px !important;
   padding: 0px 8px !important;
 }
+
+.delete-block {
+  line-height: 30px !important;
+  padding: 0px 8px !important;
+  margin-left: 5px;
+}
