@@ -98,7 +98,7 @@ class BlockExperience01 extends React.Component {
   };
 
   deleteExperience = idx => {
-    this.state.experiences.splice(idx);
+    this.state.experiences.splice(idx, idx);
     this.forceUpdate();
   };
 
