@@ -2,10 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import '../../css/blockExperience/BlockExperience01.css';
+import AddExperience from './AddExperience';
 import EditExperience from './EditExperience';
 
 class BlockExperience01 extends React.Component {
   state = {
+    editCompany: '',
+    editPosition: '',
+    editDateStart: '',
+    editDateEnd: '',
+    editDescription: '',
+
     company: '',
     position: '',
     dateStart: '',
@@ -24,19 +31,11 @@ class BlockExperience01 extends React.Component {
     ]
   };
 
-  componentDidMount() {
-    this.state.experiences.shift();
-  }
-
   handleType = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleFormReset = () => {
-    this.setState(() => this.initialState);
-  };
-
-  onSubmitExperience = e => {
+  onSubmitAdd = e => {
     if (
       this.state.company !== '' &&
       this.state.position !== '' &&
@@ -70,34 +69,75 @@ class BlockExperience01 extends React.Component {
     }
   };
 
-  renderExperience = experiences => {
-    return experiences.map((exp, idx) => (
-      <div key={idx} className="be-01">
-        <div className="card-experience">
-          <i className="fas fa-city"></i>
-          <div className="card-experience-infos">
-            <h2>{exp.company}</h2>
-            <h3>
-              {exp.position}{' '}
-              <span>
-                {exp.dateStart} - {exp.dateEnd}
-              </span>
-            </h3>
-            <p>{exp.description}</p>
+  editExperience = idx => {
+    console.log(this.state.experiences[idx].company);
+    if (this.state.editCompany) {
+      this.state.experiences[idx].company = this.state.editCompany;
+    }
+    if (this.state.editPosition) {
+      this.state.experiences[idx].position = this.state.editPosition;
+    }
+    if (this.state.editDateStart) {
+      this.state.experiences[idx].dateStart = this.state.editDateStart;
+    }
+    if (this.state.editDateEnd) {
+      this.state.experiences[idx].dateEnd = this.state.editDateEnd;
+    }
+    if (this.state.editDescription) {
+      this.state.experiences[idx].description = this.state.editDescription;
+    }
+    this.forceUpdate();
+    this.setState({
+      editCompany: '',
+      editPosition: '',
+      editDateStart: '',
+      editDateEnd: '',
+      editDescription: ''
+    });
+  };
+
+  renderExperience = () => {
+    if (this.state.experiences.length)
+      return this.state.experiences.map((exp, idx) => {
+        return (
+          <div key={idx} className="be-01">
+            <div className="card-experience">
+              <i className="fas fa-city"></i>
+              <div className="card-experience-infos">
+                <h2>{exp.company}</h2>
+                <h3>
+                  {exp.position}{' '}
+                  <span>
+                    {exp.dateStart} - {exp.dateEnd}
+                  </span>
+                </h3>
+                <p>{exp.description}</p>
+                <EditExperience
+                  index={idx}
+                  editExperience={this.editExperience}
+                  handleType={this.handleType}
+                  editCompany={this.state.editCompany}
+                  editPosition={this.state.editPosition}
+                  editDateStart={this.state.editDateStart}
+                  editDateEnd={this.state.editDateEnd}
+                  editDescription={this.state.editDescription}
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    ));
+        );
+      });
   };
 
   render() {
-    console.log(this.state.experiences);
+    const { experiences } = this.state;
+    console.log(experiences);
     return (
       <div className="row">
-        {this.renderExperience(this.state.experiences)}
+        {this.renderExperience(experiences)}
         <div className="right">
-          <EditExperience
-            onSubmitExperience={this.onSubmitExperience}
+          <AddExperience
+            onSubmitAdd={this.onSubmitAdd}
             handleType={this.handleType}
             errorMessage={this.state.errorMessage}
             company={this.state.company}

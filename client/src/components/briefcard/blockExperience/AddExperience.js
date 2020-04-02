@@ -1,22 +1,21 @@
 import React from 'react';
 import { Modal, Button } from 'react-materialize';
 
-class EditExperience extends React.Component {
+class AddExperience extends React.Component {
   render() {
-    console.log(this.props.index);
     return (
       <div>
         <Button
           className="modal-trigger edit-block"
-          href={`#modalExperience${this.props.index}`}
+          href="#modalAddExperience"
           node="button"
         >
-          <i className="fas fa-pencil-alt"></i>
+          <i className="fas fa-plus"></i>
         </Button>
         <Modal
           actions={[
             <Button
-              onClick={() => this.props.editExperience(this.props.index)}
+              onClick={this.props.onSubmitAdd}
               flat
               modal="close"
               node="button"
@@ -25,8 +24,8 @@ class EditExperience extends React.Component {
               Save
             </Button>
           ]}
-          header={`Edit Your Experience${this.props.index}`}
-          id={`modalExperience${this.props.index}`}
+          header="Add Your Experience"
+          id="modalAddExperience"
           options={{
             dismissible: false,
             endingTop: '10%',
@@ -45,29 +44,25 @@ class EditExperience extends React.Component {
             <div className="row">
               <div className="input-field col s6">
                 <i className="material-icons prefix">home</i>
-                <label htmlFor={`editCompany${this.props.index}`}>
-                  Company
-                </label>
+                <label htmlFor="company">Company</label>
                 <input
-                  name="editCompany"
-                  id={`editCompany${this.props.index}`}
+                  name="company"
+                  id="company"
                   type="text"
+                  value={this.props.company}
                   className="validate"
                   onChange={this.props.handleType}
-                  value={this.props.editCompany}
                 />
               </div>
               <div className="input-field col s6">
                 <i className="material-icons prefix">business_center</i>
-                <label htmlFor={`editPosition${this.props.index}`}>
-                  Position
-                </label>
+                <label htmlFor="position">Position</label>
                 <input
-                  name="editPosition"
-                  id={`editPosition${this.props.index}`}
+                  name="position"
+                  id="position"
                   type="text"
                   className="validate"
-                  value={this.props.editPosition}
+                  value={this.props.position}
                   onChange={this.props.handleType}
                 />
               </div>
@@ -75,29 +70,25 @@ class EditExperience extends React.Component {
             <div className="row">
               <div className="input-field col s6">
                 <i className="material-icons prefix">date_range</i>
-                <label htmlFor={`editDateStart${this.props.index}`}>
-                  Date Start
-                </label>
+                <label htmlFor="dateStart">Date Start</label>
                 <input
-                  name="editDateStart"
-                  id={`editDateStart${this.props.index}`}
+                  name="dateStart"
+                  id="dateStart"
                   type="text"
                   className="validate"
-                  value={this.props.editDateStart}
+                  value={this.props.dateStart}
                   onChange={this.props.handleType}
                 />
               </div>
               <div className="input-field col s6">
                 <i className="material-icons prefix">date_range</i>
-                <label htmlFor={`editDateEnd${this.props.index}`}>
-                  Date End
-                </label>
+                <label htmlFor="dateEnd">Date End</label>
                 <input
-                  name="editDateEnd"
-                  id={`editDateEnd${this.props.index}`}
+                  name="dateEnd"
+                  id="dateEnd"
                   type="text"
                   className="validate"
-                  value={this.props.editDateEnd}
+                  value={this.props.dateEnd}
                   onChange={this.props.handleType}
                 />
               </div>
@@ -105,23 +96,22 @@ class EditExperience extends React.Component {
             <div className="row">
               <div className="input-field col s6">
                 <i className="material-icons prefix">date_range</i>
-                <label htmlFor={`editDescription${this.props.index}`}>
-                  Description
-                </label>
+                <label htmlFor="description">Description</label>
                 <input
-                  name="editDescription"
-                  id={`editDescription${this.props.index}`}
+                  name="description"
+                  id="description"
                   type="text"
                   className="validate"
-                  value={this.props.editDescription}
+                  value={this.props.description}
                   onChange={this.props.handleType}
                 />
               </div>
             </div>
+            <div style={{ color: 'red' }}>{this.props.errorMessage}</div>
           </form>
         </Modal>
       </div>
     );
   }
 }
-export default EditExperience;
+export default AddExperience;
