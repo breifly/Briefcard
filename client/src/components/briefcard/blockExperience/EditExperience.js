@@ -3,7 +3,6 @@ import { Modal, Button } from 'react-materialize';
 
 class EditExperience extends React.Component {
   render() {
-    console.log(this.props.index);
     return (
       <div>
         <Button

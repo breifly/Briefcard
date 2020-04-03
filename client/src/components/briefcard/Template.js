@@ -5,6 +5,17 @@ import * as actions from '../actions';
 import TemplateList from './TemplateList';
 
 class Template extends React.Component {
+  componentDidMount() {
+    this.props.getAllBriefCard(this.props.match.params.id);
+  }
+
+  renderTemplateList = () => {
+    if (this.props.templates) {
+      return this.props.templates.map(breifcard => {
+        return <TemplateList breifcard={breifcard} />;
+      });
+    }
+  };
   render() {
     return (
       <div className="white-text container">
@@ -22,15 +33,18 @@ class Template extends React.Component {
             <i className="material-icons">add</i>
           </Link>
         </div>
-        <TemplateList />
+        <h4>List Generic Template</h4>
+        {this.renderTemplateList()}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
+    templates: state.briefcard.briefCards
   };
 }
 export default connect(mapStateToProps, actions)(Template);

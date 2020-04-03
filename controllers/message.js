@@ -1,5 +1,5 @@
-const Message = require("../models/Message");
-const Chat = require("../models/Chat");
+const Message = require('../models/Message');
+const Chat = require('../models/Chat');
 
 exports.createMessage = function(req, res, next) {
   const room = req.body.room;
@@ -25,7 +25,7 @@ exports.createMessage = function(req, res, next) {
     { new: true },
     err => {
       if (err) {
-        console.log("Something wrong when updating data!");
+        console.log('Something wrong when updating data!');
       }
     }
   );
@@ -35,7 +35,7 @@ exports.createMessage = function(req, res, next) {
     { lastMessage: message_body, dateMessage: Date.now() },
     err => {
       if (err) {
-        console.log("Something wrong when updating data!");
+        console.log('Something wrong when updating data!');
       }
     }
   );
@@ -53,7 +53,7 @@ exports.createMessage = function(req, res, next) {
         { new: true },
         err => {
           if (err) {
-            console.log("Something wrong when delete unreadReceiver!");
+            console.log('Something wrong when delete unreadReceiver!');
           }
         }
       );
@@ -66,7 +66,7 @@ exports.createMessage = function(req, res, next) {
         { new: true },
         err => {
           if (err) {
-            console.log("Something wrong when delete unreadSender!");
+            console.log('Something wrong when delete unreadSender!');
           }
         }
       );
@@ -105,14 +105,12 @@ exports.readMessage = function(req, res, next) {
     if (error) {
       return next(error);
     }
-    // console.log(chat.sender);
-    // console.log(user);
     if (user == chat.sender) {
       // if i am the Sender in this chat
       // delete to unreadReceiver
       Chat.update({ _id: room }, { $unset: { unreadSender: 1 } }, err => {
         if (err) {
-          console.log("Something wrong when delete unreadReceiver!");
+          console.log('Something wrong when delete unreadReceiver!');
         }
       });
     } else {
@@ -120,7 +118,7 @@ exports.readMessage = function(req, res, next) {
       // delete to unreadReceiver.
       Chat.update({ _id: room }, { $unset: { unreadReceiver: 1 } }, err => {
         if (err) {
-          console.log("Something wrong when delete unreadSender!");
+          console.log('Something wrong when delete unreadSender!');
         }
       });
     }

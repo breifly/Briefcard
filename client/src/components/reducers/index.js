@@ -4,6 +4,7 @@ import discover from './discover';
 import user from './user';
 import chat from './chat';
 import message from './message';
+import briefcard from './briefCard';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   discover: discover,
   user: user,
   chat: chat,
-  message: message
+  message: message,
+  briefcard: briefcard
 });

@@ -7,104 +7,14 @@ import EditExperience from './EditExperience';
 import DeleteExperience from './DeleteExperience';
 
 class BlockExperience01 extends React.Component {
-  state = {
-    editCompany: '',
-    editPosition: '',
-    editDateStart: '',
-    editDateEnd: '',
-    editDescription: '',
-
-    company: '',
-    position: '',
-    dateStart: '',
-    dateEnd: '',
-    description: '',
-    errorMEssage: '',
-    experiences: [
-      {
-        company: 'Apple Store',
-        position: 'Sales',
-        dateStart: '2016',
-        dateEnd: '2020',
-        description:
-          'Apple Inc. is an American multinational technology company headquartered in Cupertino, California'
-      }
-    ]
-  };
-
-  handleType = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  onSubmitAdd = e => {
-    if (
-      this.state.company !== '' &&
-      this.state.position !== '' &&
-      this.state.dateStart !== '' &&
-      this.state.dateEnd !== '' &&
-      this.state.description !== ''
-    ) {
-      this.setState({
-        experiences: [
-          ...this.state.experiences,
-          {
-            company: this.state.company,
-            position: this.state.position,
-            dateStart: this.state.dateStart,
-            dateEnd: this.state.dateEnd,
-            description: this.state.description
-          }
-        ],
-        errorMessage: '',
-        company: '',
-        position: '',
-        dateStart: '',
-        dateEnd: '',
-        description: ''
-      });
-    } else {
-      this.setState({
-        errorMessage: 'Missing field to complete',
-        modalClose: ''
-      });
-    }
-  };
-
-  editExperience = idx => {
-    console.log(this.state.experiences[idx].company);
-    if (this.state.editCompany) {
-      this.state.experiences[idx].company = this.state.editCompany;
-    }
-    if (this.state.editPosition) {
-      this.state.experiences[idx].position = this.state.editPosition;
-    }
-    if (this.state.editDateStart) {
-      this.state.experiences[idx].dateStart = this.state.editDateStart;
-    }
-    if (this.state.editDateEnd) {
-      this.state.experiences[idx].dateEnd = this.state.editDateEnd;
-    }
-    if (this.state.editDescription) {
-      this.state.experiences[idx].description = this.state.editDescription;
-    }
-    this.forceUpdate();
-    this.setState({
-      editCompany: '',
-      editPosition: '',
-      editDateStart: '',
-      editDateEnd: '',
-      editDescription: ''
-    });
-  };
-
   deleteExperience = idx => {
-    this.state.experiences.splice(idx, idx);
+    console.log(idx);
+    this.props.experiences.splice(idx, idx);
     this.forceUpdate();
   };
-
   renderExperience = () => {
-    if (this.state.experiences.length)
-      return this.state.experiences.map((exp, idx) => {
+    if (this.props.experiences.length)
+      return this.props.experiences.map((exp, idx) => {
         return (
           <div key={idx} className="be-01">
             <div className="card-experience">
@@ -121,16 +31,16 @@ class BlockExperience01 extends React.Component {
                 <div className="right" style={{ display: 'flex' }}>
                   <EditExperience
                     index={idx}
-                    editExperience={this.editExperience}
-                    handleType={this.handleType}
-                    editCompany={this.state.editCompany}
-                    editPosition={this.state.editPosition}
-                    editDateStart={this.state.editDateStart}
-                    editDateEnd={this.state.editDateEnd}
-                    editDescription={this.state.editDescription}
+                    editExperience={this.props.editExperience}
+                    handleType={this.props.handleType}
+                    editCompany={this.props.editCompany}
+                    editPosition={this.props.editPosition}
+                    editDateStart={this.props.editDateStart}
+                    editDateEnd={this.props.editDateEnd}
+                    editDescription={this.props.editDescription}
                   />
                   <DeleteExperience
-                    index={idx}
+                    idx={idx}
                     deleteExperience={this.deleteExperience}
                   />
                 </div>
@@ -142,21 +52,19 @@ class BlockExperience01 extends React.Component {
   };
 
   render() {
-    const { experiences } = this.state;
-    console.log(experiences);
     return (
       <div className="row">
-        {this.renderExperience(experiences)}
+        {this.renderExperience(this.props.experiences)}
         <div className="right">
           <AddExperience
-            onSubmitAdd={this.onSubmitAdd}
-            handleType={this.handleType}
-            errorMessage={this.state.errorMessage}
-            company={this.state.company}
-            position={this.state.position}
-            dateStart={this.state.dateStart}
-            dateEnd={this.state.dateEnd}
-            description={this.state.description}
+            onSubmitAdd={this.props.onSubmitAdd}
+            handleType={this.props.handleType}
+            errorMessage={this.props.errorMessage}
+            company={this.props.company}
+            position={this.props.position}
+            dateStart={this.props.dateStart}
+            dateEnd={this.props.dateEnd}
+            description={this.props.description}
           />
         </div>
       </div>

@@ -3,30 +3,13 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import '../../css/blockProfile/BlockProfile01.css';
 import EditProfile from './EditProfile';
-import 'react-chat-elements/dist/main.css';
 
 class BlockProfile01 extends React.Component {
-  state = {
-    firstName: 'John',
-    lastName: 'Mackenzie',
-    job: 'Youtuber',
-    email: 'John@gmail.com',
-    phone: '786 234 4557'
-  };
-
-  preSaveForm = event => {
-    event.preventDefault();
-  };
-
-  handleType = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
   render() {
     return (
       <div className="row">
         <div className="right">
-          <EditProfile handleType={this.handleType} />
+          <EditProfile handleType={this.props.handleType} />
         </div>
         <div className="bp-01">
           <div className="col m6">
@@ -41,12 +24,12 @@ class BlockProfile01 extends React.Component {
               <ul>
                 <li>
                   <h5>
-                    {this.state.firstName} {this.state.lastName}
+                    {this.props.firstName} {this.props.lastName}
                   </h5>
                 </li>
-                <li className="job">{this.state.job}</li>
-                <li>{this.state.email}</li>
-                <li>{this.state.phone}</li>
+                <li className="job">{this.props.job}</li>
+                <li>{this.props.email}</li>
+                <li>{this.props.phone}</li>
               </ul>
             </div>
           </div>

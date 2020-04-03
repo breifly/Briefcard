@@ -5,7 +5,7 @@ class DeleteExperience extends React.Component {
     return (
       <div>
         <button
-          onClick={() => this.props.deleteExperience(this.props.index)}
+          onClick={() => this.props.deleteExperience(this.props.idx)}
           className="delete-block btn red"
         >
           <i className="far fa-trash-alt"></i>
