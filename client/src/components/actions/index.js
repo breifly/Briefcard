@@ -32,7 +32,8 @@ import {
   // briefcard
   CREATE_BRIEFCARD,
   ERROR_BRIEFCARD,
-  GET_ALL_BRIEFCARD
+  GET_ALL_BRIEFCARD,
+  GET_BRIEFCARD
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -305,6 +306,7 @@ export const createBriefCard = (form, callback) => async dispatch => {
   }
 };
 
+//Get ALL BriefCard By user ID
 export const getAllBriefCard = id => async dispatch => {
   try {
     const response = await axios.post(`/api/allbriefcard/${id}`);
@@ -313,6 +315,19 @@ export const getAllBriefCard = id => async dispatch => {
     dispatch({
       type: ERROR_BRIEFCARD,
       payload: 'error to get all briefcard'
+    });
+  }
+};
+
+// Show Briefcard by ID
+export const getBriefCard = id => async dispatch => {
+  try {
+    const response = await axios.post(`/api/briefCard/${id}`);
+    dispatch({ type: GET_BRIEFCARD, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD,
+      payload: 'error to get briefcard'
     });
   }
 };

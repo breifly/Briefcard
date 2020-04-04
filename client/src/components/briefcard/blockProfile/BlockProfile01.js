@@ -9,7 +9,11 @@ class BlockProfile01 extends React.Component {
     return (
       <div className="row">
         <div className="right">
-          <EditProfile handleType={this.props.handleType} />
+          {!this.props.briefcard ? (
+            <EditProfile handleType={this.props.handleType} />
+          ) : (
+            ''
+          )}
         </div>
         <div className="bp-01">
           <div className="col m6">
@@ -36,10 +40,17 @@ class BlockProfile01 extends React.Component {
           <div className="col m6">
             <div className="bp-01-block-02 right">
               <p>
-                <i className="fas fa-phone"></i>
+                <a style={{ color: 'white' }} href={`tel:${this.props.phone}`}>
+                  <i className="fas fa-phone"></i>
+                </a>
               </p>
               <p>
-                <i className="far fa-envelope"></i>
+                <a
+                  style={{ color: 'white' }}
+                  href={`mailto:${this.props.email}`}
+                >
+                  <i className="far fa-envelope"></i>
+                </a>
               </p>
             </div>
           </div>

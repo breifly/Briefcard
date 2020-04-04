@@ -28,22 +28,26 @@ class BlockExperience01 extends React.Component {
                   </span>
                 </h3>
                 <p>{exp.description} </p>
-                <div className="right" style={{ display: 'flex' }}>
-                  <EditExperience
-                    index={idx}
-                    editExperience={this.props.editExperience}
-                    handleType={this.props.handleType}
-                    editCompany={this.props.editCompany}
-                    editPosition={this.props.editPosition}
-                    editDateStart={this.props.editDateStart}
-                    editDateEnd={this.props.editDateEnd}
-                    editDescription={this.props.editDescription}
-                  />
-                  <DeleteExperience
-                    idx={idx}
-                    deleteExperience={this.deleteExperience}
-                  />
-                </div>
+                {!this.props.briefcard ? (
+                  <div className="right" style={{ display: 'flex' }}>
+                    <EditExperience
+                      index={idx}
+                      editExperience={this.props.editExperience}
+                      handleType={this.props.handleType}
+                      editCompany={this.props.editCompany}
+                      editPosition={this.props.editPosition}
+                      editDateStart={this.props.editDateStart}
+                      editDateEnd={this.props.editDateEnd}
+                      editDescription={this.props.editDescription}
+                    />
+                    <DeleteExperience
+                      idx={idx}
+                      deleteExperience={this.deleteExperience}
+                    />
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
           </div>
@@ -55,18 +59,22 @@ class BlockExperience01 extends React.Component {
     return (
       <div className="row">
         {this.renderExperience(this.props.experiences)}
-        <div className="right">
-          <AddExperience
-            onSubmitAdd={this.props.onSubmitAdd}
-            handleType={this.props.handleType}
-            errorMessage={this.props.errorMessage}
-            company={this.props.company}
-            position={this.props.position}
-            dateStart={this.props.dateStart}
-            dateEnd={this.props.dateEnd}
-            description={this.props.description}
-          />
-        </div>
+        {!this.props.briefcard ? (
+          <div className="right">
+            <AddExperience
+              onSubmitAdd={this.props.onSubmitAdd}
+              handleType={this.props.handleType}
+              errorMessage={this.props.errorMessage}
+              company={this.props.company}
+              position={this.props.position}
+              dateStart={this.props.dateStart}
+              dateEnd={this.props.dateEnd}
+              description={this.props.description}
+            />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   }

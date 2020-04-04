@@ -9,7 +9,11 @@ class BlockMessage01 extends React.Component {
     return (
       <div>
         <div className=" row right">
-          <EditMessage handleType={this.props.handleType} />
+          {!this.props.briefcard ? (
+            <EditMessage handleType={this.props.handleType} />
+          ) : (
+            ''
+          )}
         </div>
         <div className="container">
           <div className="bm-01">

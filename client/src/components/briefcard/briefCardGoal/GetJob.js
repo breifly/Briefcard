@@ -46,12 +46,8 @@ class GetJob extends React.Component {
   saveBriefCard = () => {
     const form = {
       user: this.props.auth._id,
-      experiences: {
-        id: 'blockexperience01',
-        experience: this.state.experiences
-      },
       profile: {
-        id: 'blockprofile01',
+        id: 'BlockProfile02',
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         job: this.state.job,
@@ -59,13 +55,15 @@ class GetJob extends React.Component {
         phone: this.state.phone
       },
       note: {
-        id: 'blockmessage01',
+        id: 'BlockMessage01',
         title: this.state.title,
         message: this.state.message
+      },
+      experiences: {
+        id: 'BlockExperience01',
+        experience: this.state.experiences
       }
     };
-    console.log(form);
-    console.log(this.props);
     this.props.createBriefCard(form, () =>
       this.props.history.push(`/briefcard-templates/${this.props.auth._id}`)
     );
@@ -109,7 +107,6 @@ class GetJob extends React.Component {
   };
 
   editExperience = idx => {
-    console.log(this.state.experiences[idx].company);
     if (this.state.editCompany) {
       this.state.experiences[idx].company = this.state.editCompany;
     }
@@ -136,7 +133,6 @@ class GetJob extends React.Component {
   };
 
   render() {
-    console.log(this.state.experiences);
     return (
       <div className="container">
         <BlockProfile01

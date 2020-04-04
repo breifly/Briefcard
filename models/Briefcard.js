@@ -5,10 +5,6 @@ const Schema = mongoose.Schema;
 const briefcardSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'users' },
-    experiences: {
-      id: String,
-      experience: {}
-    },
     profile: {
       type: Map,
       of: String
@@ -16,6 +12,10 @@ const briefcardSchema = new Schema(
     note: {
       type: Map,
       of: String
+    },
+    experiences: {
+      id: String,
+      experience: {}
     }
   },
   {

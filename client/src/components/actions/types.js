@@ -32,4 +32,5 @@ export const ERROR_READ_MESSAGE = 'Error_read_message';
 // BriefCard
 export const CREATE_BRIEFCARD = 'create_briefcard';
 export const GET_ALL_BRIEFCARD = 'get_all_briefcard';
+export const GET_BRIEFCARD = 'get_briefcard';
 export const ERROR_BRIEFCARD = 'error_briefcard';

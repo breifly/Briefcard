@@ -4,13 +4,6 @@ import * as actions from '../actions';
 import '../css/TemplateList.css';
 
 class TemplateList extends React.Component {
-  renderTemplateList = () => {
-    if (this.props.templates) {
-      return this.props.templates.map(breifcard => {
-        return <div>{breifcard.profile.firstname}</div>;
-      });
-    }
-  };
   render() {
     return (
       <div className="card-product">
