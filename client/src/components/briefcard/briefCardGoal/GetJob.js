@@ -47,7 +47,7 @@ class GetJob extends React.Component {
     const form = {
       user: this.props.auth._id,
       profile: {
-        id: 'BlockProfile02',
+        id: 'BlockProfile01',
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         job: this.state.job,
