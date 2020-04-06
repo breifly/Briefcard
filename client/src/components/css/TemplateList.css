@@ -31,3 +31,9 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+.edit-briefcard {
+  position: relative;
+  margin-left: -40px;
+  margin-top: 20px;
+}

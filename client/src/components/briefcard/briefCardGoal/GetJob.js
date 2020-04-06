@@ -38,9 +38,9 @@ class GetJob extends React.Component {
         dateStart: '2016',
         dateEnd: '2020',
         description:
-          'Apple Inc. is an American multinational technology company headquartered in Cupertino, California'
-      }
-    ]
+          'Apple Inc. is an American multinational technology company headquartered in Cupertino, California',
+      },
+    ],
   };
 
   saveBriefCard = () => {
@@ -52,27 +52,27 @@ class GetJob extends React.Component {
         lastName: this.state.lastName,
         job: this.state.job,
         email: this.state.email,
-        phone: this.state.phone
+        phone: this.state.phone,
       },
       note: {
         id: 'BlockMessage01',
         title: this.state.title,
-        message: this.state.message
+        message: this.state.message,
       },
       experiences: {
         id: 'BlockExperience01',
-        experience: this.state.experiences
-      }
+        experience: this.state.experiences,
+      },
     };
     this.props.createBriefCard(form, () =>
       this.props.history.push(`/briefcard-templates/${this.props.auth._id}`)
     );
   };
 
-  handleType = event => {
+  handleType = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  onSubmitAdd = e => {
+  onSubmitAdd = (e) => {
     if (
       this.state.company !== '' &&
       this.state.position !== '' &&
@@ -88,25 +88,25 @@ class GetJob extends React.Component {
             position: this.state.position,
             dateStart: this.state.dateStart,
             dateEnd: this.state.dateEnd,
-            description: this.state.description
-          }
+            description: this.state.description,
+          },
         ],
         errorMessage: '',
         company: '',
         position: '',
         dateStart: '',
         dateEnd: '',
-        description: ''
+        description: '',
       });
     } else {
       this.setState({
         errorMessage: 'Missing field to complete',
-        modalClose: ''
+        modalClose: '',
       });
     }
   };
 
-  editExperience = idx => {
+  editExperience = (idx) => {
     if (this.state.editCompany) {
       this.state.experiences[idx].company = this.state.editCompany;
     }
@@ -128,7 +128,7 @@ class GetJob extends React.Component {
       editPosition: '',
       editDateStart: '',
       editDateEnd: '',
-      editDescription: ''
+      editDescription: '',
     });
   };
 
@@ -173,7 +173,7 @@ class GetJob extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
   };
 }
 export default withRouter(connect(mapStateToProps, actions)(GetJob));

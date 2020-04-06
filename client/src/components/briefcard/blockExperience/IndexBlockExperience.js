@@ -5,7 +5,6 @@ import BlockExperience01 from './BlockExperience01';
 
 class IndexBlockExperience extends React.Component {
   renderBlockExperience = () => {
-    console.log(this.props.experiences);
     switch (this.props.idBlock) {
       case 'BlockExperience01':
         return (
@@ -29,7 +28,7 @@ class IndexBlockExperience extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
   };
 }
 export default connect(mapStateToProps, actions)(IndexBlockExperience);

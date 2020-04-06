@@ -19,6 +19,7 @@ import User from './discover/User';
 import Template from './briefcard/Template';
 import CreateGenericTemplate from './briefcard/CreateGenericTemplate';
 import ShowBriefCard from './briefcard/ShowBriefCard';
+import EditBriefCard from './briefcard/EditBriefCard';
 
 class App extends React.Component {
   componentDidMount() {
@@ -47,6 +48,11 @@ class App extends React.Component {
               <Route exact path="/dashboard/:id" component={Dashboard} />
               <Route exact path="/chatroom/user/:id" component={User} />
               <Route exact path="/briefcard/:id" component={ShowBriefCard} />
+              <Route
+                exact
+                path="/briefcard/edit/:id"
+                component={EditBriefCard}
+              />
               <Route
                 exact
                 path="/briefcard-templates/:id"

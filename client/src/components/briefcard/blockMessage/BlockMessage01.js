@@ -27,7 +27,7 @@ class BlockMessage01 extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
   };
 }
 export default connect(mapStateToProps, actions)(BlockMessage01);

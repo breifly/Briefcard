@@ -6,7 +6,7 @@ import '../css/TemplateList.css';
 class TemplateList extends React.Component {
   render() {
     return (
-      <div className="card-product">
+      <div style={{ marginTop: '10px' }} className="card-product">
         <img
           src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
           alt="image01"
@@ -24,7 +24,7 @@ class TemplateList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
   };
 }
 export default connect(mapStateToProps, actions)(TemplateList);

@@ -11,11 +11,13 @@ class Template extends React.Component {
 
   renderTemplateList = () => {
     if (this.props.templates) {
-      return this.props.templates.map(breifcard => {
+      return this.props.templates.map((breifcard) => {
         return (
-          <Link key={breifcard._id} to={`/briefcard/${breifcard._id}`}>
-            <TemplateList breifcard={breifcard} />
-          </Link>
+          <div key={breifcard._id}>
+            <Link to={`/briefcard/${breifcard._id}`}>
+              <TemplateList breifcard={breifcard} />
+            </Link>
+          </div>
         );
       });
     }
@@ -47,7 +49,7 @@ class Template extends React.Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth.authenticated,
-    templates: state.briefcard.briefCards
+    templates: state.briefcard.briefCards,
   };
 }
 export default connect(mapStateToProps, actions)(Template);
