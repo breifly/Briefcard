@@ -43,7 +43,7 @@ class GetJob extends React.Component {
     ],
   };
 
-  saveBriefCard = () => {
+  saveBriefCardTemplate = () => {
     const form = {
       user: this.props.auth._id,
       profile: {
@@ -64,7 +64,7 @@ class GetJob extends React.Component {
         experience: this.state.experiences,
       },
     };
-    this.props.createBriefCard(form, () =>
+    this.props.createBriefCardTemplate(form, () =>
       this.props.history.push(`/briefcard-templates/${this.props.auth._id}`)
     );
   };
@@ -107,22 +107,27 @@ class GetJob extends React.Component {
   };
 
   editExperience = (idx) => {
+    const newExp = this.state.experiences.slice(); //copy the array
     if (this.state.editCompany) {
-      this.state.experiences[idx].company = this.state.editCompany;
+      newExp[idx].company = this.state.editCompany; //execute the manipulations
+      this.setState({ experiences: newExp }); //set the new state
     }
     if (this.state.editPosition) {
-      this.state.experiences[idx].position = this.state.editPosition;
+      newExp[idx].position = this.state.editPosition; //execute the manipulations
+      this.setState({ experiences: newExp }); //set the new state
     }
     if (this.state.editDateStart) {
-      this.state.experiences[idx].dateStart = this.state.editDateStart;
+      newExp[idx].dateStart = this.state.editDateStart; //execute the manipulations
+      this.setState({ experiences: newExp }); //set the new state
     }
     if (this.state.editDateEnd) {
-      this.state.experiences[idx].dateEnd = this.state.editDateEnd;
+      newExp[idx].dateEnd = this.state.editDateEnd; //execute the manipulations
+      this.setState({ experiences: newExp }); //set the new state
     }
     if (this.state.editDescription) {
-      this.state.experiences[idx].description = this.state.editDescription;
+      newExp[idx].description = this.state.editDescription; //execute the manipulations
+      this.setState({ experiences: newExp }); //set the new state
     }
-    this.forceUpdate();
     this.setState({
       editCompany: '',
       editPosition: '',
@@ -165,7 +170,7 @@ class GetJob extends React.Component {
           editDateEnd={this.state.editDateEnd}
           editDescription={this.state.editDescription}
         />
-        <button onClick={this.saveBriefCard}>here</button>
+        <button onClick={this.saveBriefCardTemplate}>here</button>
       </div>
     );
   }

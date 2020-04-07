@@ -6,16 +6,16 @@ import TemplateList from './TemplateList';
 
 class Template extends React.Component {
   componentDidMount() {
-    this.props.getAllBriefCard(this.props.match.params.id);
+    this.props.getAllBriefCardTemplate(this.props.match.params.id);
   }
 
   renderTemplateList = () => {
     if (this.props.templates) {
-      return this.props.templates.map((breifcard) => {
+      return this.props.templates.map((briefcardTemplate) => {
         return (
-          <div key={breifcard._id}>
-            <Link to={`/briefcard/${breifcard._id}`}>
-              <TemplateList breifcard={breifcard} />
+          <div key={briefcardTemplate._id}>
+            <Link to={`/briefcard-template/${briefcardTemplate._id}`}>
+              <TemplateList briefcardTemplate={briefcardTemplate} />
             </Link>
           </div>
         );
@@ -33,7 +33,7 @@ class Template extends React.Component {
           />
           <h5>Create your first BriefCard!</h5>
           <Link
-            to="/create-breifcard"
+            to="/create-briefcard-template"
             className="btn-floating btn-large waves-effect waves-light"
           >
             <i className="material-icons">add</i>
@@ -49,7 +49,7 @@ class Template extends React.Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth.authenticated,
-    templates: state.briefcard.briefCards,
+    templates: state.briefcardTemplate.templates,
   };
 }
 export default connect(mapStateToProps, actions)(Template);

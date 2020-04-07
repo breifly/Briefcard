@@ -16,10 +16,9 @@ import Dashboard from './dasboard/Dashboard';
 import Chat from './chat/Chat';
 import ChatRoomSocket from './chat/ChatRoomSocket';
 import User from './discover/User';
-import Template from './briefcard/Template';
-import CreateGenericTemplate from './briefcard/CreateGenericTemplate';
-import ShowBriefCard from './briefcard/ShowBriefCard';
-import EditBriefCard from './briefcard/EditBriefCard';
+import Template from './briefcardTemplate/Template';
+import CreateGenericTemplate from './briefcardTemplate/CreateGenericTemplate';
+import ShowBriefCardTemplate from './briefcardTemplate/ShowBriefCardTemplate';
 
 class App extends React.Component {
   componentDidMount() {
@@ -47,11 +46,10 @@ class App extends React.Component {
               <Route exact path="/chat/:id" component={Chat} />
               <Route exact path="/dashboard/:id" component={Dashboard} />
               <Route exact path="/chatroom/user/:id" component={User} />
-              <Route exact path="/briefcard/:id" component={ShowBriefCard} />
               <Route
                 exact
-                path="/briefcard/edit/:id"
-                component={EditBriefCard}
+                path="/briefcard-template/:id"
+                component={ShowBriefCardTemplate}
               />
               <Route
                 exact
@@ -60,7 +58,7 @@ class App extends React.Component {
               />
               <Route
                 exact
-                path="/create-breifcard"
+                path="/create-briefcard-template"
                 component={CreateGenericTemplate}
               />
             </div>

@@ -14,9 +14,15 @@ class EditMessage extends React.Component {
         </Button>
         <Modal
           actions={[
-            <Button flat modal="close" node="button" waves="green">
+            <Button
+              onClick={this.props.saveMessage}
+              flat
+              modal="close"
+              node="button"
+              waves="green"
+            >
               Save
-            </Button>
+            </Button>,
           ]}
           header="Edit Your Message"
           id="modalMessage"
@@ -31,7 +37,7 @@ class EditMessage extends React.Component {
             opacity: 0.5,
             outDuration: 250,
             preventScrolling: true,
-            startingTop: '4%'
+            startingTop: '4%',
           }}
         >
           <form className="col s12">

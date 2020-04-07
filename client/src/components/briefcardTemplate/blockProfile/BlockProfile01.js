@@ -8,13 +8,6 @@ class BlockProfile01 extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="right">
-          {!this.props.briefcard ? (
-            <EditProfile handleType={this.props.handleType} />
-          ) : (
-            ''
-          )}
-        </div>
         <div className="bp-01">
           <div className="col m6">
             <div className="bp-01-block">
@@ -55,6 +48,12 @@ class BlockProfile01 extends React.Component {
             </div>
           </div>
         </div>
+        <div className="right">
+          <EditProfile
+            handleType={this.props.handleType}
+            saveProfile={this.props.saveProfile}
+          />
+        </div>
       </div>
     );
   }
@@ -62,7 +61,7 @@ class BlockProfile01 extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
   };
 }
 export default connect(mapStateToProps, actions)(BlockProfile01);

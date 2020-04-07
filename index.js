@@ -21,7 +21,7 @@ app.use(bodyParser.json({ type: '*/*' })); /* used to parse incoming requests */
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
+    keys: [keys.cookieKey],
   })
 );
 app.use(cors());
@@ -33,12 +33,12 @@ require('./routes/authRoutes')(app);
 require('./routes/discoverRoutes')(app);
 require('./routes/chatRoutes')(app);
 require('./routes/messageRoutes')(app);
-require('./routes/briefcardRoutes')(app);
+require('./routes/briefcardTemplateRoutes')(app);
 
 // Connect Mongo Atlas
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -59,17 +59,17 @@ console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 server.listen(PORT);
 
 //// Socket Io ////////////
-io.on('connection', socket => {
+io.on('connection', (socket) => {
   const { id } = socket.client;
   console.log(`User connected: ${id}`);
   // Send Message
-  socket.on('chat message', msg => {
+  socket.on('chat message', (msg) => {
     const msgForm = {
       id: id,
       msg: msg.message,
       user: msg.user,
       room: msg.room,
-      date: msg.date
+      date: msg.date,
     };
     console.log(msg);
     io.emit('chat message', msgForm);

@@ -1,27 +1,31 @@
 import React from 'react';
-import '../../css/blockProfile/EditProfile.css';
 import { Modal, Button } from 'react-materialize';
 
-class EditProfile extends React.Component {
+class AddExperience extends React.Component {
   render() {
     return (
       <div>
         <Button
           className="modal-trigger edit-block"
-          style={{ marginTop: '20px' }}
-          href="#modalProfile"
+          href="#modalAddExperience"
           node="button"
         >
-          <i className="fas fa-pencil-alt"></i>
+          <i className="fas fa-plus"></i>
         </Button>
         <Modal
           actions={[
-            <Button flat modal="close" node="button" waves="green">
+            <Button
+              onClick={this.props.onSubmitAdd}
+              flat
+              modal="close"
+              node="button"
+              waves="green"
+            >
               Save
-            </Button>
+            </Button>,
           ]}
-          header="Edit Your Profile"
-          id="modalProfile"
+          header="Add Your Experience"
+          id="modalAddExperience"
           options={{
             dismissible: false,
             endingTop: '10%',
@@ -33,75 +37,81 @@ class EditProfile extends React.Component {
             opacity: 0.5,
             outDuration: 250,
             preventScrolling: true,
-            startingTop: '4%'
+            startingTop: '4%',
           }}
         >
           <form className="col s12">
             <div className="row">
               <div className="input-field col s6">
-                <i className="material-icons prefix">account_circle</i>
-                <label htmlFor="icon_prefix">First Name</label>
+                <i className="material-icons prefix">home</i>
+                <label htmlFor="company">Company</label>
                 <input
-                  name="firstName"
-                  id="icon_prefix"
+                  name="company"
+                  id="company"
                   type="text"
+                  value={this.props.company}
                   className="validate"
                   onChange={this.props.handleType}
                 />
               </div>
-              <div className="input-field col s6">
-                <i className="material-icons prefix">account_circle</i>
-                <label htmlFor="icon_prefix1">Last Name</label>
-                <input
-                  name="lastName"
-                  onChange={this.props.handleType}
-                  id="icon_prefix1"
-                  type="text"
-                  className="validate"
-                />
-              </div>
-            </div>
-            <div className="row">
               <div className="input-field col s6">
                 <i className="material-icons prefix">business_center</i>
-                <label htmlFor="icon_prefix2">Job</label>
+                <label htmlFor="position">Position</label>
                 <input
-                  name="job"
-                  id="icon_prefix2"
+                  name="position"
+                  id="position"
                   type="text"
                   className="validate"
+                  value={this.props.position}
                   onChange={this.props.handleType}
-                />
-              </div>
-              <div className="input-field col s6">
-                <i className="material-icons prefix">email</i>
-                <label htmlFor="icon_prefix3">Email</label>
-                <input
-                  name="email"
-                  onChange={this.props.handleType}
-                  id="icon_prefix3"
-                  type="text"
-                  className="validate"
                 />
               </div>
             </div>
             <div className="row">
               <div className="input-field col s6">
-                <i className="material-icons prefix">local_phone</i>
-                <label htmlFor="icon_prefix4">Phone</label>
+                <i className="material-icons prefix">date_range</i>
+                <label htmlFor="dateStart">Date Start</label>
                 <input
-                  name="phone"
-                  id="icon_prefix4"
+                  name="dateStart"
+                  id="dateStart"
                   type="text"
                   className="validate"
+                  value={this.props.dateStart}
+                  onChange={this.props.handleType}
+                />
+              </div>
+              <div className="input-field col s6">
+                <i className="material-icons prefix">date_range</i>
+                <label htmlFor="dateEnd">Date End</label>
+                <input
+                  name="dateEnd"
+                  id="dateEnd"
+                  type="text"
+                  className="validate"
+                  value={this.props.dateEnd}
                   onChange={this.props.handleType}
                 />
               </div>
             </div>
+            <div className="row">
+              <div className="input-field col s6">
+                <i className="material-icons prefix">date_range</i>
+                <label htmlFor="description">Description</label>
+                <input
+                  name="description"
+                  id="description"
+                  type="text"
+                  className="validate"
+                  value={this.props.description}
+                  onChange={this.props.handleType}
+                />
+              </div>
+            </div>
+            <div style={{ color: 'red' }}>{this.props.errorMessage}</div>
           </form>
         </Modal>
       </div>
     );
   }
 }
-export default EditProfile;
+export default AddExperience;
