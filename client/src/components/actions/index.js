@@ -20,6 +20,7 @@ import {
   // chat
   CREATE_CHAT,
   ERROR_CHAT,
+  GET_CHATROOM,
   GET_USERS_BY_CHATROOM,
   GET_USERS_BY_CHATROOM_ERROR,
   CREATE_MESSAGE,
@@ -41,6 +42,7 @@ import {
   GET_BRIEFCARD,
   EDIT_BRIEFCARD,
   GET_BRIEFCARD_BY_CHATROOM,
+  SEND_BRIEFCARD,
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -259,6 +261,19 @@ export const getAllChatRoomByUSer = (id, callback) => async (dispatch) => {
   }
 };
 
+// Get get  Chat Room
+export const getChatRoomDetails = (id) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/chatroomdetails/${id}`);
+    dispatch({ type: GET_CHATROOM, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: ERROR_ALL_CHAT_BY_USER,
+      payload: 'error to get chatroom',
+    });
+  }
+};
+
 ////////////////////////////////////// Message ///////////////////////////////
 export const createMessage = (message) => async (dispatch) => {
   try {
@@ -429,6 +444,20 @@ export const getBriefCardByChatroom = (id) => async (dispatch) => {
     dispatch({
       type: ERROR_BRIEFCARD,
       payload: 'error to get briefcards by chatroom',
+    });
+  }
+};
+
+// send briefcard to chat room
+export const sendBriefCard = (id, form, callback) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/send/briefcard/${id}`, form);
+    dispatch({ type: SEND_BRIEFCARD, payload: response.data });
+    callback();
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD,
+      payload: 'error to send briefcard',
     });
   }
 };

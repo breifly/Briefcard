@@ -20,6 +20,7 @@ class ChatRoomSocket extends Component {
   }
 
   componentDidMount() {
+    this.props.getChatRoomDetails(this.props.match.params.id);
     this.props.getAllMessageByChatroom(this.props.match.params.id);
     this.props.getAllBriefCardTemplate(this.props.authenticated._id);
     // get briefcard by chatroom id
@@ -44,64 +45,6 @@ class ChatRoomSocket extends Component {
 
   onTextChange = (e) => {
     this.setState({ msg: e.target.value });
-  };
-
-  renderForm = () => {
-    if (this.props.briefcardChat) {
-      console.log(this.props.briefcardChat.length);
-      return this.props.briefcardChat.map((briefcard, idx) => {
-        if (
-          briefcard.user !== this.props.authenticated._id &&
-          this.props.briefcardChat.length !== 2
-        ) {
-          return (
-            <form className="select-briefCard" onSubmit={this.handleSubmit}>
-              <select
-                className="select-briefCard"
-                value={this.state.value}
-                onChange={this.handleChange}
-              >
-                <option value="" disabled selected>
-                  Choose your BriefCard
-                </option>
-                {this.renderListBriefCardTemplate()}
-              </select>
-              <button
-                type="submit"
-                value="Submit"
-                className="btn btn-signin btn-message"
-              >
-                Select
-              </button>
-            </form>
-          );
-        } else {
-          return null;
-        }
-      });
-    }
-  };
-
-  renderBriefCardSent = () => {
-    if (this.props.briefcardChat) {
-      return this.props.briefcardChat.map((briefcard, idx) => {
-        return <div key={idx}>{briefcard._id}</div>;
-      });
-    }
-  };
-
-  renderListBriefCardTemplate = () => {
-    if (this.props.templates) {
-      return this.props.templates.map((briefcardTemplate, idx) => {
-        return (
-          <option key={idx} value={briefcardTemplate._id}>
-            {idx}
-          </option>
-        );
-      });
-    } else {
-      return null;
-    }
   };
 
   onMessageSubmit = () => {
@@ -201,8 +144,73 @@ class ChatRoomSocket extends Component {
     );
   }
 
+  renderBriefCardSent = () => {
+    if (this.props.chatdetails) {
+      return this.props.chatdetails.map((briefcard, idx) => {
+        if (briefcard.user !== this.props.authenticated._id)
+          return (
+            <Link
+              className="hoverable center"
+              key={idx}
+              to={`/briefcard/${briefcard.briefcardId}`}
+            >
+              <div>His BriefCard</div>
+            </Link>
+          );
+        if (briefcard.user === this.props.authenticated._id)
+          return (
+            <Link
+              className="hoverable center"
+              key={idx}
+              to={`/briefcard/${briefcard.briefcardId}`}
+            >
+              <div>Your BriefCard</div>
+            </Link>
+          );
+      });
+    }
+  };
+
+  renderListBriefCardTemplate = () => {
+    if (this.props.templates) {
+      return this.props.templates.map((briefcardTemplate, idx) => {
+        return (
+          <option key={idx} value={briefcardTemplate._id}>
+            {idx}
+          </option>
+        );
+      });
+    } else {
+      return null;
+    }
+  };
+
+  renderForm = () => {
+    return (
+      <form className="select-briefCard" onSubmit={this.handleSubmit}>
+        <select
+          className="select-briefCard"
+          value={this.state.value}
+          onChange={this.handleChange}
+        >
+          <option value="" disabled selected>
+            Choose your BriefCard
+          </option>
+          {this.renderListBriefCardTemplate()}
+        </select>
+        <button
+          type="submit"
+          value="Submit"
+          className="btn btn-signin btn-message"
+        >
+          Select
+        </button>
+      </form>
+    );
+  };
+
   render() {
-    console.log(this.props.briefcardChat);
+    console.log(this.props.chatdetails);
     return (
       <div className="background-chat">
         <div className="container">
@@ -211,30 +219,7 @@ class ChatRoomSocket extends Component {
               Chatroom <i className="far fa-comments"></i>
             </h5>
             <div className="center">{this.renderUser()}</div>
-            {!this.props.briefcardChat.length ? (
-              <form className="select-briefCard" onSubmit={this.handleSubmit}>
-                <select
-                  className="select-briefCard"
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                >
-                  <option value="" disabled selected>
-                    Choose your BriefCard
-                  </option>
-                  {this.renderListBriefCardTemplate()}
-                </select>
-                <button
-                  type="submit"
-                  value="Submit"
-                  className="btn btn-signin btn-message"
-                >
-                  Select
-                </button>
-              </form>
-            ) : (
-              this.renderForm()
-            )}
-
+            {this.renderForm()}
             {this.renderBriefCardSent()}
           </div>
           <div className="box-chatroom">
@@ -277,6 +262,7 @@ function mapStateToPros(state) {
     chatRoom: state.chat.chatroom,
     templates: state.briefcardTemplate.templates,
     briefcardChat: state.briefcard.briefcardChatroom,
+    chatdetails: state.chat.chatroomDetails.sendBriefcard,
   };
 }
 

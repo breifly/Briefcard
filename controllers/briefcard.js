@@ -1,5 +1,6 @@
 const Briefcard = require('../models/Briefcard');
 const BriefcardTemplate = require('../models/BriefcardTemplate');
+const Chat = require('../models/Chat');
 
 // Create BriefCard
 exports.createBriefcard = function (req, res, next) {
@@ -79,5 +80,29 @@ exports.getBriefcardByChatroom = function (req, res, next) {
       return next(error);
     }
     res.send(briefcard);
+  });
+};
+
+exports.sendBriefcard = function (req, res, next) {
+  // briefcard id req.params.id
+  // req.body.user iduser
+  // req.body.id idchat
+
+  Chat.updateOne(
+    { _id: req.body.id },
+    {
+      $push: {
+        sendBriefcard: { user: req.body.user, briefcardId: req.params.id },
+      },
+    },
+    { new: true }
+  ).then(function (chat) {
+    res.json(chat);
+  });
+
+  Briefcard.findByIdAndUpdate(req.params.id, { sent: true }).then(function (
+    Briefcard
+  ) {
+    res.json(Briefcard);
   });
 };

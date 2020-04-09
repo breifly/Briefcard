@@ -4,18 +4,22 @@ import {
   GET_USERS_BY_CHATROOM,
   GET_USERS_BY_CHATROOM_ERROR,
   GET_ALL_CHAT_BY_USER,
-  ERROR_ALL_CHAT_BY_USER
-} from "../actions/types";
+  ERROR_ALL_CHAT_BY_USER,
+  GET_CHATROOM,
+} from '../actions/types';
 const INITIAL_STATE = {
-  chats: "",
-  errorChat: "",
-  users: "",
-  allChatByUser: "",
-  errorAllChatByUser: ""
+  chatroomDetails: '',
+  chats: '',
+  errorChat: '',
+  users: '',
+  allChatByUser: '',
+  errorAllChatByUser: '',
 };
 
-export default function(state = INITIAL_STATE, action) {
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
+    case GET_CHATROOM:
+      return { ...state, chatroomDetails: action.payload || false };
     case CREATE_CHAT:
       return { ...state, chats: action.payload || false };
     case ERROR_CHAT || GET_USERS_BY_CHATROOM_ERROR:

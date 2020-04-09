@@ -6,6 +6,7 @@ const BriefcardSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'users' },
     chatroom: { type: Schema.Types.ObjectId, ref: 'chatroom' },
+    sent: { type: Boolean, default: false },
     profile: {
       type: Map,
       of: String,

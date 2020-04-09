@@ -14,7 +14,7 @@ class BlockProfile01 extends React.Component {
               <img
                 alt="avatar"
                 src={
-                  this.props.auth.avatar ||
+                  this.props.image ||
                   process.env.PUBLIC_URL + '/images/lechef.jpg'
                 }
               />
@@ -48,12 +48,16 @@ class BlockProfile01 extends React.Component {
             </div>
           </div>
         </div>
-        <div className="right">
-          <EditProfile
-            handleType={this.props.handleType}
-            saveProfile={this.props.saveProfile}
-          />
-        </div>
+        {this.props.briefUser === this.props.auth._id ? (
+          <div className="right">
+            <EditProfile
+              handleType={this.props.handleType}
+              saveProfile={this.props.saveProfile}
+            />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   }

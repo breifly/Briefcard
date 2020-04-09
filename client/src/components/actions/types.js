@@ -18,6 +18,7 @@ export const GET_DISCOVERS = 'get_discovers';
 
 // Chat
 export const CREATE_CHAT = 'create_chat';
+export const GET_CHATROOM = 'get_chatroom';
 export const ERROR_CHAT = 'error_chat';
 export const GET_USERS_BY_CHATROOM = 'get_users_chatroom';
 export const GET_USERS_BY_CHATROOM_ERROR = 'users_chatroom_error';
@@ -38,6 +39,7 @@ export const ERROR_BRIEFCARD_TEMPLATE = 'error_briefcard_template';
 // BriefCard
 export const CREATE_BRIEFCARD = 'create_briefcard';
 export const GET_BRIEFCARD = 'get_briefcard';
+export const SEND_BRIEFCARD = 'send_briefcard';
 export const EDIT_BRIEFCARD = 'edit_briefcard';
 export const ERROR_BRIEFCARD = 'error_briefcard';
 export const GET_BRIEFCARD_BY_CHATROOM = 'get_briefcard_by_chatroom';

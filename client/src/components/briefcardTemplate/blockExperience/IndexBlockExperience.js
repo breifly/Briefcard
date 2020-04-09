@@ -139,6 +139,7 @@ class IndexBlockExperience extends React.Component {
             handleType={this.handleType}
             onSubmitAdd={this.onSubmitAdd}
             briefcardEdit={this.props.briefcardEdit}
+            briefUser={this.props.briefUser}
           />
         );
       case 'BlockMessage02':

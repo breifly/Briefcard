@@ -8,12 +8,16 @@ class BlockMessage01 extends React.Component {
   render() {
     return (
       <div>
-        <div className=" row right">
-          <EditMessage
-            handleType={this.props.handleType}
-            saveMessage={this.props.saveMessage}
-          />
-        </div>
+        {this.props.briefUser === this.props.auth._id ? (
+          <div className=" row right">
+            <EditMessage
+              handleType={this.props.handleType}
+              saveMessage={this.props.saveMessage}
+            />
+          </div>
+        ) : (
+          ''
+        )}
         <div className="container">
           <div className="bm-01">
             Hey {this.props.title}! {this.props.message}

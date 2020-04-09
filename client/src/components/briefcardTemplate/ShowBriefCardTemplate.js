@@ -20,6 +20,7 @@ class ShowBriefCardTemplate extends React.Component {
               briefcard={brief}
               idBlock={brief.profile.id}
               id={this.props.match.params.id}
+              briefUser={brief.user}
             />
           );
         } else {
@@ -39,6 +40,7 @@ class ShowBriefCardTemplate extends React.Component {
               briefcard={brief}
               idBlock={brief.note.id}
               id={this.props.match.params.id}
+              briefUser={brief.user}
             />
           );
         else {
@@ -58,6 +60,7 @@ class ShowBriefCardTemplate extends React.Component {
               briefcard={brief}
               idBlock={brief.experiences.id}
               id={this.props.match.params.id}
+              briefUser={brief.user}
             />
           );
         else {

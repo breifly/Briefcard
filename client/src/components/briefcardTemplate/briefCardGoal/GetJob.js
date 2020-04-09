@@ -53,6 +53,7 @@ class GetJob extends React.Component {
         job: this.state.job,
         email: this.state.email,
         phone: this.state.phone,
+        image: this.props.auth.avatar,
       },
       note: {
         id: 'BlockMessage01',
@@ -147,11 +148,14 @@ class GetJob extends React.Component {
           job={this.state.job}
           email={this.state.email}
           phone={this.state.phone}
+          image={this.props.auth.avatar}
+          briefUser={this.props.auth._id}
         />
         <BlockMessage01
           handleType={this.handleType}
           title={this.state.title}
           message={this.state.message}
+          briefUser={this.props.auth._id}
         />
         <BlockExperience01
           editExperience={this.editExperience}
@@ -169,6 +173,7 @@ class GetJob extends React.Component {
           editDateStart={this.state.editDateStart}
           editDateEnd={this.state.editDateEnd}
           editDescription={this.state.editDescription}
+          briefUser={this.props.auth._id}
         />
         <button className="btn" onClick={this.saveBriefCardTemplate}>
           Save

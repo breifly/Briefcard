@@ -43,6 +43,7 @@ class IndexBlockMessage extends React.Component {
             handleType={this.handleType}
             saveMessage={this.saveMessage}
             index={this.props.id}
+            briefUser={this.props.briefUser}
           />
         );
       case 'BlockMessage02':

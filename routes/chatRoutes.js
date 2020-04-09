@@ -1,10 +1,12 @@
-const chat = require("../controllers/chat");
+const chat = require('../controllers/chat');
 
-module.exports = app => {
+module.exports = (app) => {
   // create chatRoom
-  app.post("/api/create/chatroom", chat.createChatroom);
+  app.post('/api/create/chatroom', chat.createChatroom);
+  // get all chatroom
+  app.post('/api/chatroom/:id', chat.getAllUserByChatroom);
   // get chatroom
-  app.post("/api/chatroom/:id", chat.getAllUserByChatroom);
+  app.post('/api/chatroomdetails/:id', chat.getChatroom);
   //get All ChatRoom By USer
   app.post(`/api/allchatbyuser/:id`, chat.getAllChatRoomByUSer);
 };

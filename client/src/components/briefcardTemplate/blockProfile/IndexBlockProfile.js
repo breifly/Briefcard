@@ -11,6 +11,7 @@ class IndexBlockProfile extends React.Component {
     job: this.props.briefcard.profile.job,
     email: this.props.briefcard.profile.email,
     phone: this.props.briefcard.profile.phone,
+    image: this.props.briefcard.profile.image,
   };
 
   handleType = (event) => {
@@ -26,6 +27,7 @@ class IndexBlockProfile extends React.Component {
       job: this.state.job,
       email: this.state.email,
       phone: this.state.phone,
+      image: this.state.image,
     };
 
     if (this.props.briefcardEdit) {
@@ -51,8 +53,10 @@ class IndexBlockProfile extends React.Component {
             job={this.state.job}
             email={this.state.email}
             phone={this.state.phone}
+            image={this.state.image}
             handleType={this.handleType}
             saveProfile={this.saveProfile}
+            briefUser={this.props.briefUser}
           />
         );
       case 'BlockProfile02':
