@@ -29,9 +29,15 @@ export const MESSAGE_ERROR = 'message_error';
 export const GET_MESSAGE = 'get_message';
 export const READ_MESSAGE = 'read_message';
 export const ERROR_READ_MESSAGE = 'Error_read_message';
-// BriefCard
+// BriefCard Template
 export const CREATE_BRIEFCARD_TEMPLATE = 'create_briefcard_template';
 export const GET_ALL_BRIEFCARD_TEMPLATE = 'get_all_briefcard_template';
 export const GET_BRIEFCARD_TEMPLATE = 'get_briefcard_template';
 export const EDIT_BRIEFCARD_TEMPLATE = 'edit_briefcard_template';
 export const ERROR_BRIEFCARD_TEMPLATE = 'error_briefcard_template';
+// BriefCard
+export const CREATE_BRIEFCARD = 'create_briefcard';
+export const GET_BRIEFCARD = 'get_briefcard';
+export const EDIT_BRIEFCARD = 'edit_briefcard';
+export const ERROR_BRIEFCARD = 'error_briefcard';
+export const GET_BRIEFCARD_BY_CHATROOM = 'get_briefcard_by_chatroom';

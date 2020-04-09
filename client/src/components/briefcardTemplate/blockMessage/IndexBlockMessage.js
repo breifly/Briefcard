@@ -20,9 +20,17 @@ class IndexBlockMessage extends React.Component {
       title: this.state.title,
       message: this.state.message,
     };
-    this.props.editBriefCardTemplate(id, form, () =>
-      this.props.getBriefCardTemplate(this.props.id)
-    );
+    if (this.props.briefcardEdit) {
+      // edit from briefCard
+      this.props.editBriefCard(id, form, () =>
+        this.props.getBriefCard(this.props.id)
+      );
+    } else {
+      // edit from briefCard Template
+      this.props.editBriefCardTemplate(id, form, () =>
+        this.props.getBriefCardTemplate(this.props.id)
+      );
+    }
   };
 
   renderBlockMessage = () => {

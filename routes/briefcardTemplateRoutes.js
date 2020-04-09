@@ -16,7 +16,7 @@ module.exports = (app) => {
     '/api/briefcard-template/:id',
     briefcardTemplate.getBriefcardTemplate
   );
-  // Create BriefCard template by id
+  // edit BriefCard template by id
   app.post(
     '/api/edit/briefcard-template/:id',
     briefcardTemplate.editBriefcardTemplate

@@ -1,4 +1,4 @@
-.background-chatlist{
+.background-chatlist {
   background-image: url(/images/friends.svg);
   background-repeat: no-repeat;
   background-position: right;
@@ -6,18 +6,19 @@
   min-height: 500px;
 }
 
-.background-chat{
+.background-chat {
   background-image: url(/images/chat.svg);
   background-repeat: no-repeat;
   background-size: 400px 300px;
   min-height: 400px;
 }
-.box-chatroom{
+.box-chatroom {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 10px;
   padding: 15px;
   max-height: 450px;
@@ -25,11 +26,11 @@
   overflow: auto;
 }
 
-.box-date{
- margin-bottom: 20px;
+.box-date {
+  margin-bottom: 20px;
 }
 
-.box-message{
+.box-message {
   display: flex;
   width: 50%;
   margin-left: auto;
@@ -44,12 +45,12 @@
   width: 100%;
 }
 
-.title-chat{
+.title-chat {
   padding-top: 15px;
   padding-bottom: 5px;
 }
 
-.btn-message{
+.btn-message {
   margin-top: 22px;
   width: 100px;
   margin-left: 5px;
@@ -59,8 +60,8 @@
   margin-right: 45px;
 }
 
-.rce-citem{
-  background-color: transparent ;
+.rce-citem {
+  background-color: transparent;
   color: #fff;
 }
 
@@ -73,43 +74,60 @@
 }
 
 .rce-citem:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .rce-mbox-right-notch {
-  fill: #1488CC;
+  fill: #1488cc;
 }
 
 .rce-mbox.rce-mbox-right {
-  background: #1488CC;
-  color: #fff
+  background: #1488cc;
+  color: #fff;
 }
 
-.rce-container-mlist{
+.rce-container-mlist {
   margin-bottom: 3px;
 }
 
-.rce-mbox-time{
- font-size: 10px;
+.rce-mbox-time {
+  font-size: 10px;
 }
+
+/* Select BriefCard */
+.select-briefCard {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.select-briefCard select {
+  width: 30%;
+  margin-right: 5%;
+}
+
+.select-briefCard button {
+  margin-top: 5px;
+}
+
 @media only screen and (max-width: 600px) {
- .box-chatroom{
-   width: 100%;
-   max-height: 520px;
-   overflow: auto;
- }
+  .box-chatroom {
+    width: 100%;
+    max-height: 520px;
+    overflow: auto;
+  }
 
- .background-chatlist{
-  background-size: 300px 300px;
-  max-height: 100vh;
-  background-position: bottom;
-}
+  .background-chatlist {
+    background-size: 300px 300px;
+    max-height: 100vh;
+    background-position: bottom;
+  }
 
- .box-message{
-  width: 90%;
- }
+  .box-message {
+    width: 90%;
+  }
 
- .background-chat{
-  background-image: none;
-}
+  .background-chat {
+    background-image: none;
+  }
 }

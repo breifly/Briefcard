@@ -170,7 +170,9 @@ class GetJob extends React.Component {
           editDateEnd={this.state.editDateEnd}
           editDescription={this.state.editDescription}
         />
-        <button onClick={this.saveBriefCardTemplate}>here</button>
+        <button className="btn" onClick={this.saveBriefCardTemplate}>
+          Save
+        </button>
       </div>
     );
   }

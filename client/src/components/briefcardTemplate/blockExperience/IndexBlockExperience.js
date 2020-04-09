@@ -53,10 +53,17 @@ class IndexBlockExperience extends React.Component {
       id: this.props.idBlock,
       experience: this.state.experiences,
     };
-    console.log(form);
-    this.props.editBriefCardTemplate(id, form, () =>
-      this.props.getBriefCardTemplate(this.props.id)
-    );
+    if (this.props.briefcardEdit) {
+      // edit from briefCard
+      this.props.editBriefCard(id, form, () =>
+        this.props.getBriefCard(this.props.id)
+      );
+    } else {
+      // edit from briefCard Template
+      this.props.editBriefCardTemplate(id, form, () =>
+        this.props.getBriefCardTemplate(this.props.id)
+      );
+    }
   };
 
   onSubmitAdd = () => {
@@ -101,9 +108,17 @@ class IndexBlockExperience extends React.Component {
         id: this.props.briefcard.experiences.id,
         experience: newExp,
       };
-      this.props.editBriefCardTemplate(id, form, () =>
-        this.props.getBriefCardTemplate(this.props.id)
-      );
+      if (this.props.briefcardEdit) {
+        // edit from briefCard
+        this.props.editBriefCard(id, form, () =>
+          this.props.getBriefCard(this.props.id)
+        );
+      } else {
+        // edit from briefCard Template
+        this.props.editBriefCardTemplate(id, form, () =>
+          this.props.getBriefCardTemplate(this.props.id)
+        );
+      }
     } else {
       this.setState({
         errorMessage: 'Missing field to complete',
@@ -123,6 +138,7 @@ class IndexBlockExperience extends React.Component {
             editExperience={this.editExperience}
             handleType={this.handleType}
             onSubmitAdd={this.onSubmitAdd}
+            briefcardEdit={this.props.briefcardEdit}
           />
         );
       case 'BlockMessage02':
@@ -139,7 +155,6 @@ class IndexBlockExperience extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     auth: state.auth.authenticated,
   };

@@ -5,6 +5,7 @@ import user from './user';
 import chat from './chat';
 import message from './message';
 import briefcardTemplate from './briefcardTemplate';
+import briefcard from './briefcard';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
@@ -15,4 +16,5 @@ export default combineReducers({
   chat: chat,
   message: message,
   briefcardTemplate: briefcardTemplate,
+  briefcard: briefcard,
 });

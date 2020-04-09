@@ -11,15 +11,25 @@ class BlockExperience01 extends React.Component {
     this.props.experiences.splice(idx, idx);
     this.forceUpdate();
 
+    // from briefcard and briefcard template
     if (this.props.briefcard) {
       const id = this.props.id;
       const form = {
         id: this.props.briefcard.experiences.id,
         experience: this.props.experiences,
       };
-      this.props.editBriefCardTemplate(id, form, () =>
-        this.props.getBriefCardTemplate(this.props.id)
-      );
+
+      if (this.props.briefcardEdit) {
+        // edit from briefCard
+        this.props.editBriefCard(id, form, () =>
+          this.props.getBriefCard(this.props.id)
+        );
+      } else {
+        // edit from briefCard Template
+        this.props.editBriefCardTemplate(id, form, () =>
+          this.props.getBriefCardTemplate(this.props.id)
+        );
+      }
     }
   };
   renderExperience = () => {

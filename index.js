@@ -34,6 +34,7 @@ require('./routes/discoverRoutes')(app);
 require('./routes/chatRoutes')(app);
 require('./routes/messageRoutes')(app);
 require('./routes/briefcardTemplateRoutes')(app);
+require('./routes/briefcardRoutes')(app);
 
 // Connect Mongo Atlas
 mongoose.connect(keys.mongoURI, {

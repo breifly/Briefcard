@@ -27,9 +27,18 @@ class IndexBlockProfile extends React.Component {
       email: this.state.email,
       phone: this.state.phone,
     };
-    this.props.editBriefCardTemplate(id, form, () =>
-      this.props.getBriefCardTemplate(this.props.id)
-    );
+
+    if (this.props.briefcardEdit) {
+      // edit from briefCard
+      this.props.editBriefCard(id, form, () =>
+        this.props.getBriefCard(this.props.id)
+      );
+    } else {
+      // edit from briefCard Template
+      this.props.editBriefCardTemplate(id, form, () =>
+        this.props.getBriefCardTemplate(this.props.id)
+      );
+    }
   };
 
   renderBlockBrofile = () => {

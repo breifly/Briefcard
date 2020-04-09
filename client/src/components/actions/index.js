@@ -35,6 +35,12 @@ import {
   GET_ALL_BRIEFCARD_TEMPLATE,
   GET_BRIEFCARD_TEMPLATE,
   EDIT_BRIEFCARD_TEMPLATE,
+  // BriefCard
+  CREATE_BRIEFCARD,
+  ERROR_BRIEFCARD,
+  GET_BRIEFCARD,
+  EDIT_BRIEFCARD,
+  GET_BRIEFCARD_BY_CHATROOM,
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -352,7 +358,7 @@ export const editBriefCardTemplate = (id, form, callback) => async (
   }
 };
 
-// Edit BriefCard Template by Id
+// add BriefCard Template by Id
 export const addExperienceBriefCardTemplate = (id, form, callback) => async (
   dispatch
 ) => {
@@ -367,6 +373,62 @@ export const addExperienceBriefCardTemplate = (id, form, callback) => async (
     dispatch({
       type: ERROR_BRIEFCARD_TEMPLATE,
       payload: 'error to add experience briefcard',
+    });
+  }
+};
+
+/////////////////////////////////// BriefCard //////////////////////////////////
+
+// Create BriefCard
+export const createBriefCard = (form, callback) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/create/briefcard`, form);
+    dispatch({ type: CREATE_BRIEFCARD, payload: response.data });
+    callback(response.data._id);
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD,
+      payload: 'error to create briefcard',
+    });
+  }
+};
+
+// Get BriefCard
+export const getBriefCard = (id) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/briefcard/${id}`);
+    dispatch({ type: GET_BRIEFCARD, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD,
+      payload: 'error to get briefcard',
+    });
+  }
+};
+
+// Edit BriefCard by Id
+export const editBriefCard = (id, form, callback) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/edit/briefcard/${id}`, form);
+    dispatch({ type: EDIT_BRIEFCARD, payload: response.data });
+    callback();
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD,
+      payload: 'error to edit briefcard',
+    });
+  }
+};
+
+//get briefcard send by chatroom id
+export const getBriefCardByChatroom = (id) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/briefcard/chatroom/${id}`);
+    dispatch({ type: GET_BRIEFCARD_BY_CHATROOM, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD,
+      payload: 'error to get briefcards by chatroom',
     });
   }
 };
