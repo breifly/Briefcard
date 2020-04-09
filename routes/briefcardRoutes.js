@@ -11,4 +11,6 @@ module.exports = (app) => {
   app.post('/api/briefcard/chatroom/:id', briefcard.getBriefcardByChatroom);
   // send BriefCard
   app.post('/api/send/briefcard/:id', briefcard.sendBriefcard);
+  // delete Briefcard
+  app.post('/api/delete/briefcard/:id', briefcard.deleteBriefcard);
 };

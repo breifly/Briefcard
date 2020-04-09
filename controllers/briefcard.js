@@ -87,7 +87,6 @@ exports.sendBriefcard = function (req, res, next) {
   // briefcard id req.params.id
   // req.body.user iduser
   // req.body.id idchat
-
   Chat.updateOne(
     { _id: req.body.id },
     {
@@ -105,4 +104,27 @@ exports.sendBriefcard = function (req, res, next) {
   ) {
     res.json(Briefcard);
   });
+};
+
+exports.deleteBriefcard = function (req, res, next) {
+  Chat.updateOne(
+    { _id: req.body.id },
+    {
+      $pull: {
+        sendBriefcard: { user: req.body.user, briefcardId: req.params.id },
+      },
+    },
+
+    { safe: true, multi: true }
+  ).then(function (chat) {
+    res.json(chat);
+  });
+
+  Briefcard.findByIdAndRemove(req.params.id)
+    .then(function (user) {
+      res.json(user);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
 };

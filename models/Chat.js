@@ -9,7 +9,12 @@ const chatroomSchema = new Schema(
     messages: [{ type: Schema.Types.ObjectId, ref: 'message' }],
     unreadSender: [{ type: Schema.Types.ObjectId, ref: 'message' }],
     unreadReceiver: [{ type: Schema.Types.ObjectId, ref: 'message' }],
-    sendBriefcard: [{ user: String, briefcardId: String }],
+    sendBriefcard: [
+      {
+        user: { type: Schema.Types.ObjectId, ref: 'users' },
+        briefcardId: { type: Schema.Types.ObjectId, ref: 'briefcard' },
+      },
+    ],
     lastMessage: String,
     dateMessage: Date,
   },

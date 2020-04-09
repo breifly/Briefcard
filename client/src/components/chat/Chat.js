@@ -1,25 +1,25 @@
-import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../actions";
-import { Link } from "react-router-dom";
-import ChatList from "./ChatList";
-import moment from "moment";
-import io from "socket.io-client";
-import keys from "../../config/keys";
-import ScrollAnimation from "react-animate-on-scroll";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { Link } from 'react-router-dom';
+import ChatList from './ChatList';
+import moment from 'moment';
+import io from 'socket.io-client';
+import keys from '../../config/keys';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const socket = io.connect(`${keys.siteUrl}`);
 
 class Chat extends React.Component {
   componentDidMount() {
     this.props.getAllChatRoomByUSer(this.props.match.params.id);
-    socket.on("chat message", () => {
+    socket.on('chat message', () => {
       this.props.getAllChatRoomByUSer(this.props.match.params.id);
     });
   }
   renderAllChatRoom = () => {
     if (this.props.chats)
-      return this.props.chats.map(chat => {
+      return this.props.chats.map((chat) => {
         let date = moment(chat.dateMessage).calendar();
         if (chat.sender === this.props.match.params.id) {
           return (
@@ -85,7 +85,7 @@ class Chat extends React.Component {
 function mapStateToPros(state) {
   return {
     auth: state.auth.authenticated,
-    chats: state.chat.allChatByUser
+    chats: state.chat.allChatByUser,
   };
 }
 

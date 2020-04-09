@@ -43,6 +43,7 @@ import {
   EDIT_BRIEFCARD,
   GET_BRIEFCARD_BY_CHATROOM,
   SEND_BRIEFCARD,
+  DELETE_BRIEFCARD,
 } from './types';
 import * as JWT from 'jwt-decode';
 
@@ -458,6 +459,21 @@ export const sendBriefCard = (id, form, callback) => async (dispatch) => {
     dispatch({
       type: ERROR_BRIEFCARD,
       payload: 'error to send briefcard',
+    });
+  }
+};
+
+//delete briefcard
+
+export const deleteBriefCard = (id, form, callback) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/delete/briefcard/${id}`, form);
+    dispatch({ type: DELETE_BRIEFCARD, payload: response.data });
+    callback();
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD,
+      payload: 'error to delete briefcard',
     });
   }
 };

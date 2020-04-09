@@ -40,6 +40,7 @@ export const ERROR_BRIEFCARD_TEMPLATE = 'error_briefcard_template';
 export const CREATE_BRIEFCARD = 'create_briefcard';
 export const GET_BRIEFCARD = 'get_briefcard';
 export const SEND_BRIEFCARD = 'send_briefcard';
+export const DELETE_BRIEFCARD = 'delete_briefcard';
 export const EDIT_BRIEFCARD = 'edit_briefcard';
 export const ERROR_BRIEFCARD = 'error_briefcard';
 export const GET_BRIEFCARD_BY_CHATROOM = 'get_briefcard_by_chatroom';

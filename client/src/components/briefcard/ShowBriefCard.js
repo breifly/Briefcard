@@ -90,6 +90,23 @@ class ShowBriefCard extends React.Component {
     );
   };
 
+  deleteBriefcard = () => {
+    const idchatroom = [];
+    this.props.briefCardCon.map((brief) => {
+      const a = brief.chatroom;
+      idchatroom.push(a);
+    });
+
+    const form = {
+      id: idchatroom[0],
+      user: this.props.auth._id,
+    };
+    console.log(form);
+    this.props.deleteBriefCard(this.props.match.params.id, form, () =>
+      this.props.history.push(`/chatroom/${form.id}`)
+    );
+  };
+
   renderSendButton = () => {
     if (this.props.briefCardCon) {
       return this.props.briefCardCon.map((brief) => {
@@ -108,6 +125,27 @@ class ShowBriefCard extends React.Component {
     }
   };
 
+  renderDeleteBriefcard = () => {
+    if (this.props.briefCardCon) {
+      return this.props.briefCardCon.map((brief) => {
+        if (brief.user === this.props.auth._id)
+          return (
+            <div style={{ padding: '20px' }} className="center">
+              <button
+                onClick={() => this.deleteBriefcard()}
+                className="btn red"
+              >
+                Delete
+              </button>
+            </div>
+          );
+        else {
+          return null;
+        }
+      });
+    }
+  };
+
   render() {
     return (
       <div className="container">
@@ -115,6 +153,7 @@ class ShowBriefCard extends React.Component {
         {this.renderBlockMessage()}
         {this.renderBlockExperience()}
         {this.renderSendButton()}
+        {this.renderDeleteBriefcard()}
       </div>
     );
   }
