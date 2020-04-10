@@ -75,10 +75,11 @@ class ShowBriefCard extends React.Component {
 
   sendBriefcard = () => {
     const idchatroom = [];
-    this.props.briefCardCon.map((brief) => {
-      const a = brief.chatroom;
-      idchatroom.push(a);
-    });
+    for (let i = 0; i < this.props.briefCardCon.length; i++) {
+      const element = this.props.briefCardCon[i].chatroom;
+      idchatroom.push(element);
+      console.log();
+    }
 
     const form = {
       id: idchatroom[0],
@@ -92,10 +93,11 @@ class ShowBriefCard extends React.Component {
 
   deleteBriefcard = () => {
     const idchatroom = [];
-    this.props.briefCardCon.map((brief) => {
-      const a = brief.chatroom;
-      idchatroom.push(a);
-    });
+    for (let i = 0; i < this.props.briefCardCon.length; i++) {
+      const element = this.props.briefCardCon[i].chatroom;
+      idchatroom.push(element);
+      console.log();
+    }
 
     const form = {
       id: idchatroom[0],
@@ -112,7 +114,7 @@ class ShowBriefCard extends React.Component {
       return this.props.briefCardCon.map((brief) => {
         if (brief.user === this.props.auth._id && brief.sent !== true)
           return (
-            <div style={{ padding: '20px' }} className="center">
+            <div key={brief._id} style={{ padding: '20px' }} className="center">
               <button onClick={() => this.sendBriefcard()} className="btn">
                 Send
               </button>
@@ -130,7 +132,7 @@ class ShowBriefCard extends React.Component {
       return this.props.briefCardCon.map((brief) => {
         if (brief.user === this.props.auth._id)
           return (
-            <div style={{ padding: '20px' }} className="center">
+            <div key={brief._id} style={{ padding: '20px' }} className="center">
               <button
                 onClick={() => this.deleteBriefcard()}
                 className="btn red"

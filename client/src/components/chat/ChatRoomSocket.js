@@ -176,7 +176,7 @@ class ChatRoomSocket extends Component {
       return this.props.templates.map((briefcardTemplate, idx) => {
         return (
           <option key={idx} value={briefcardTemplate._id}>
-            {idx}
+            {briefcardTemplate.name || idx}
           </option>
         );
       });
@@ -210,7 +210,6 @@ class ChatRoomSocket extends Component {
   };
 
   render() {
-    console.log(this.props.chatdetails);
     return (
       <div className="background-chat">
         <div className="container">
@@ -255,7 +254,6 @@ class ChatRoomSocket extends Component {
   }
 }
 function mapStateToPros(state) {
-  console.log(state);
   return {
     users: state.chat.users,
     authenticated: state.auth.authenticated,

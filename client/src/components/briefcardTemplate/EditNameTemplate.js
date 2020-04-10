@@ -15,6 +15,9 @@ class EditNameTemplate extends React.Component {
         </Button>
         <Modal
           actions={[
+            <Button flat modal="close" node="button" waves="green">
+              close
+            </Button>,
             <Button
               onClick={this.props.saveBriefCardTemplate}
               flat
@@ -23,9 +26,6 @@ class EditNameTemplate extends React.Component {
               waves="green"
             >
               Save
-            </Button>,
-            <Button flat modal="close" node="button" waves="green">
-              close
             </Button>,
           ]}
           header="Name and Discribe your template"

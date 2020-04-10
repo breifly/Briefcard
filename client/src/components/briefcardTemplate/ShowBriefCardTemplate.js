@@ -72,11 +72,12 @@ class ShowBriefCardTemplate extends React.Component {
 
   deleteBriefCardTemplate = () => {
     if (this.props.briefCardCon) {
-      this.props.briefCardCon.map((brief) => {
-        this.props.deleteBriefCardTemplate(brief._id, () =>
+      for (let i = 0; i < this.props.briefCardCon.length; i++) {
+        const id = this.props.briefCardCon[i]._id;
+        this.props.deleteBriefCardTemplate(id, () =>
           this.props.history.push(`/briefcard-templates/${this.props.auth._id}`)
         );
-      });
+      }
     }
   };
 
