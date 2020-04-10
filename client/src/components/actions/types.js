@@ -35,6 +35,7 @@ export const CREATE_BRIEFCARD_TEMPLATE = 'create_briefcard_template';
 export const GET_ALL_BRIEFCARD_TEMPLATE = 'get_all_briefcard_template';
 export const GET_BRIEFCARD_TEMPLATE = 'get_briefcard_template';
 export const EDIT_BRIEFCARD_TEMPLATE = 'edit_briefcard_template';
+export const DELETE_BRIEFCARD_TEMPLATE = 'delete_briefcard_template';
 export const ERROR_BRIEFCARD_TEMPLATE = 'error_briefcard_template';
 // BriefCard
 export const CREATE_BRIEFCARD = 'create_briefcard';

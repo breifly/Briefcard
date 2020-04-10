@@ -70,12 +70,25 @@ class ShowBriefCardTemplate extends React.Component {
     }
   };
 
+  deleteBriefCardTemplate = () => {
+    if (this.props.briefCardCon) {
+      this.props.briefCardCon.map((brief) => {
+        this.props.deleteBriefCardTemplate(brief._id, () =>
+          this.props.history.push(`/briefcard-templates/${this.props.auth._id}`)
+        );
+      });
+    }
+  };
+
   render() {
     return (
       <div className="container">
         {this.renderBlockProfile()}
         {this.renderBlockMessage()}
         {this.renderBlockExperience()}
+        <button onClick={this.deleteBriefCardTemplate} className="btn red">
+          Delete
+        </button>
       </div>
     );
   }

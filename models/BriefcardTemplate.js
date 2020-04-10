@@ -5,6 +5,8 @@ const Schema = mongoose.Schema;
 const BriefcardTemplateSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'users' },
+    name: String,
+    description: String,
     profile: {
       type: Map,
       of: String,

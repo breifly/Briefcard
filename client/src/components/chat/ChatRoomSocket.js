@@ -226,6 +226,7 @@ class ChatRoomSocket extends Component {
             {this.props.messages && <div>{this.renderOldMessage()}</div>}
             <div>{this.renderChat()}</div>
           </div>
+
           <div className="box-message">
             {this.state.error && (
               <div className="red-text center">{this.state.error}</div>

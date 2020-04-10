@@ -6,12 +6,16 @@ exports.createBriefcardTemplate = function (req, res, next) {
   const note = req.body.note;
   const experiences = req.body.experiences;
   const user = req.body.user;
+  const name = req.body.name;
+  const description = req.body.describe;
 
   const Briefcard = new BriefcardTemplate({
     profile: profile,
     note: note,
     experiences: experiences,
     user: user,
+    name: name,
+    description: description,
   });
 
   Briefcard.save(function (error, BriefcardTemplate) {
@@ -84,4 +88,14 @@ exports.addExperienceBriefcardTemplate = function (req, res, next) {
   ).then(function (BriefcardTemplate) {
     res.json(BriefcardTemplate);
   });
+};
+
+exports.deleteBriefcardTemplate = function (req, res, next) {
+  BriefcardTemplate.findByIdAndRemove(req.params.id)
+    .then(function (user) {
+      res.json(user);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
 };

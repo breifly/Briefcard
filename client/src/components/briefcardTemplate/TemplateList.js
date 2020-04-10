@@ -12,10 +12,8 @@ class TemplateList extends React.Component {
           alt="image01"
         />
         <div className="card-product-infos">
-          <h2>Product name</h2>
-          <p>
-            Product description with <strong>relevant info</strong> only.
-          </p>
+          <h2>{this.props.briefcardTemplate.name}</h2>
+          <p>{this.props.briefcardTemplate.description}</p>
         </div>
       </div>
     );

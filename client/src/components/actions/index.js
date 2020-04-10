@@ -36,6 +36,7 @@ import {
   GET_ALL_BRIEFCARD_TEMPLATE,
   GET_BRIEFCARD_TEMPLATE,
   EDIT_BRIEFCARD_TEMPLATE,
+  DELETE_BRIEFCARD_TEMPLATE,
   // BriefCard
   CREATE_BRIEFCARD,
   ERROR_BRIEFCARD,
@@ -393,6 +394,20 @@ export const addExperienceBriefCardTemplate = (id, form, callback) => async (
   }
 };
 
+//delete briefcard
+export const deleteBriefCardTemplate = (id, callback) => async (dispatch) => {
+  try {
+    const response = await axios.post(`/api/delete/briefcard-template/${id}`);
+    dispatch({ type: DELETE_BRIEFCARD_TEMPLATE, payload: response.data });
+    callback();
+  } catch (e) {
+    dispatch({
+      type: ERROR_BRIEFCARD_TEMPLATE,
+      payload: 'error to delete briefcard template',
+    });
+  }
+};
+
 /////////////////////////////////// BriefCard //////////////////////////////////
 
 // Create BriefCard
@@ -464,7 +479,6 @@ export const sendBriefCard = (id, form, callback) => async (dispatch) => {
 };
 
 //delete briefcard
-
 export const deleteBriefCard = (id, form, callback) => async (dispatch) => {
   try {
     const response = await axios.post(`/api/delete/briefcard/${id}`, form);

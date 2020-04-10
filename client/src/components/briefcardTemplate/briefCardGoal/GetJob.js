@@ -5,9 +5,13 @@ import BlockProfile01 from '../blockProfile/BlockProfile01';
 import BlockMessage01 from '../blockMessage/BlockMessage01';
 import BlockExperience01 from '../blockExperience/BlockExperience01';
 import { withRouter } from 'react-router-dom';
+import EditNameTemplate from '../EditNameTemplate';
 
 class GetJob extends React.Component {
   state = {
+    // name and describ
+    name: '',
+    describe: '',
     // Block Profile
     firstName: 'John',
     lastName: 'Mackenzie',
@@ -45,6 +49,8 @@ class GetJob extends React.Component {
 
   saveBriefCardTemplate = () => {
     const form = {
+      name: this.state.name,
+      describe: this.state.describe,
       user: this.props.auth._id,
       profile: {
         id: 'BlockProfile01',
@@ -175,9 +181,12 @@ class GetJob extends React.Component {
           editDescription={this.state.editDescription}
           briefUser={this.props.auth._id}
         />
-        <button className="btn" onClick={this.saveBriefCardTemplate}>
-          Save
-        </button>
+        <EditNameTemplate
+          name={this.state.name}
+          describe={this.state.name}
+          handleType={this.handleType}
+          saveBriefCardTemplate={this.saveBriefCardTemplate}
+        />
       </div>
     );
   }

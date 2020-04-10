@@ -26,4 +26,10 @@ module.exports = (app) => {
     '/api/add/experience/briefcard-template/:id',
     briefcardTemplate.addExperienceBriefcardTemplate
   );
+
+  // delete template deleteBriefcardTemplate
+  app.post(
+    '/api/delete/briefcard-template/:id',
+    briefcardTemplate.deleteBriefcardTemplate
+  );
 };
