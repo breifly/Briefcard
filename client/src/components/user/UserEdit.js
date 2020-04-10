@@ -1,16 +1,16 @@
-import React from "react";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { reduxForm, Field } from "redux-form";
-import validate from "./Validation";
-import renderField from "./renderField";
-import * as actions from "../actions";
-import ModalForm from "./ModalForm";
-import normalizePhone from "./normalizePhone";
+import React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
+import validate from './Validation';
+import renderField from './renderField';
+import * as actions from '../actions';
+import ModalForm from './ModalForm';
+import normalizePhone from './normalizePhone';
 
 class UserEdit extends React.Component {
   state = {
-    image: ""
+    image: '',
   };
   onDelete = () => {
     const id = this.props.auth._id;
@@ -20,12 +20,12 @@ class UserEdit extends React.Component {
   };
 
   deletePhoto = () => {
-    this.setState({ image: "" });
+    this.setState({ image: '' });
   };
 
   uploadWidget = () => {
     window.cloudinary.openUploadWidget(
-      { cloud_name: "dwtc6zep7", upload_preset: "xglbitak", tags: ["xmas"] },
+      { cloud_name: 'dxc3kuw7v', upload_preset: 'vj9pfx2t', tags: ['xmas'] },
       (error, result) => {
         if (result) {
           this.setState({ image: result[0].url });
@@ -37,7 +37,7 @@ class UserEdit extends React.Component {
   render() {
     const { error, handleSubmit, submitting } = this.props;
 
-    const onSubmit = formProps => {
+    const onSubmit = (formProps) => {
       const id = this.props.auth._id;
 
       const form = {
@@ -45,7 +45,7 @@ class UserEdit extends React.Component {
         lastName: formProps.lastName,
         description: formProps.description,
         phone: formProps.phone,
-        avatar: this.state.image || this.props.auth.avatar
+        avatar: this.state.image || this.props.auth.avatar,
       };
 
       this.props.editUser(id, form, () => {
@@ -132,7 +132,7 @@ class UserEdit extends React.Component {
                   />
                 </div>
               ) : (
-                ""
+                ''
               )}
             </div>
 
@@ -155,11 +155,11 @@ class UserEdit extends React.Component {
 
 function mapStateToPros(state) {
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
   };
 }
 
 export default compose(
   connect(mapStateToPros, actions),
-  reduxForm({ form: "userEdit", validate })
+  reduxForm({ form: 'userEdit', validate })
 )(UserEdit);
