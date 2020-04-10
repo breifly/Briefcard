@@ -147,7 +147,7 @@ class ChatRoomSocket extends Component {
   renderBriefCardSent = () => {
     if (this.props.chatdetails) {
       return this.props.chatdetails.map((briefcard, idx) => {
-        if (briefcard.user !== this.props.authenticated._id)
+        if (briefcard.user !== this.props.authenticated._id) {
           return (
             <Link
               className="hoverable center"
@@ -157,7 +157,7 @@ class ChatRoomSocket extends Component {
               <div>His BriefCard</div>
             </Link>
           );
-        if (briefcard.user === this.props.authenticated._id)
+        } else {
           return (
             <Link
               className="hoverable center"
@@ -167,8 +167,10 @@ class ChatRoomSocket extends Component {
               <div>Your BriefCard</div>
             </Link>
           );
+        }
       });
     }
+    return null;
   };
 
   renderListBriefCardTemplate = () => {
@@ -194,7 +196,7 @@ class ChatRoomSocket extends Component {
           onChange={this.handleChange}
         >
           <option value="" disabled selected>
-            Choose your BriefCard
+            Choose your Template
           </option>
           {this.renderListBriefCardTemplate()}
         </select>

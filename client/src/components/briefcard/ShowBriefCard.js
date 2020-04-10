@@ -74,36 +74,25 @@ class ShowBriefCard extends React.Component {
   };
 
   sendBriefcard = () => {
-    const idchatroom = [];
-    for (let i = 0; i < this.props.briefCardCon.length; i++) {
-      const element = this.props.briefCardCon[i].chatroom;
-      idchatroom.push(element);
-      console.log();
-    }
-
+    // const idchatroom = [];
+    // for (let i = 0; i < this.props.briefCardCon.length; i++) {
+    //   const element = this.props.briefCardCon[i].chatroom;
+    //   idchatroom.push(element);
+    // }
     const form = {
-      id: idchatroom[0],
+      id: this.props.briefCardCon[0].chatroom,
       user: this.props.auth._id,
     };
-    console.log(form);
     this.props.sendBriefCard(this.props.match.params.id, form, () =>
       this.props.history.push(`/chatroom/${form.id}`)
     );
   };
 
   deleteBriefcard = () => {
-    const idchatroom = [];
-    for (let i = 0; i < this.props.briefCardCon.length; i++) {
-      const element = this.props.briefCardCon[i].chatroom;
-      idchatroom.push(element);
-      console.log();
-    }
-
     const form = {
-      id: idchatroom[0],
+      id: this.props.briefCardCon[0].chatroom,
       user: this.props.auth._id,
     };
-    console.log(form);
     this.props.deleteBriefCard(this.props.match.params.id, form, () =>
       this.props.history.push(`/chatroom/${form.id}`)
     );
@@ -162,7 +151,6 @@ class ShowBriefCard extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     auth: state.auth.authenticated,
     briefCardCon: state.briefcard.briefcardDetails,
