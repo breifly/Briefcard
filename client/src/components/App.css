@@ -1,15 +1,23 @@
-body{
+body {
   font-family: 'Montserrat', sans-serif;
-  background: #0575E6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #0575e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #021b79,
+    #0575e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #021b79,
+    #0575e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 /* Navbar */
-nav{
-  background-color: transparent  !important;
+nav {
+  background-color: transparent !important;
 }
-nav .brand-logo{
+nav .brand-logo {
   margin-left: 10px;
 }
 .avatar {
@@ -20,38 +28,42 @@ nav .brand-logo{
 }
 
 /* Footer */
-.page-footer{
+.page-footer {
+  margin-top: 40px;
   border-top: 1px solid #fff;
-  background: transparent !important;  /* fallback for old browsers */
+  background: transparent !important; /* fallback for old browsers */
 }
 
 /* Signin & Signup */
-.box-input-signin{
+.box-input-signin {
   display: block;
   width: 45%;
   margin-left: auto;
   margin-right: auto;
 }
-.box-input-signin input{
+.box-input-signin input {
   color: #fff;
 }
-.btn-signin{
+.btn-signin {
   width: 45%;
-  background-color: #1488CC !important;
+  background-color: #1488cc !important;
 }
 
-.input-field .prefix.active{
-  color: #1488CC !important;
+.input-field .prefix.active {
+  color: #1488cc !important;
 }
 
 /* UserShow */
-.card{
+.card {
   padding: 10px;
 }
 
-  input[type=text]:not(.browser-default).validate+label,  input.valid[type=text]:not(.browser-default),  input[type=text]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]){
-  border-bottom: 1px solid #1488CC !important;
-  box-shadow: 0 1px 0 0 #1488CC !important;
+input[type='text']:not(.browser-default).validate + label,
+input.valid[type='text']:not(.browser-default),
+input[type='text']:not(.browser-default):focus:not([readonly]),
+input[type='tel']:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #1488cc !important;
+  box-shadow: 0 1px 0 0 #1488cc !important;
 }
 
 .top-left {
@@ -71,29 +83,28 @@ nav .brand-logo{
 
 /* User Edit */
 
-.asterick{
+.asterick {
   color: #bbb6b6;
   font-size: 12px;
 }
-.photo-show{
+.photo-show {
   width: 100px;
   height: 100px;
-  border: 2px solid #1488CC;
+  border: 2px solid #1488cc;
   border-radius: 5px;
 }
 .photo-show img {
   max-width: 100%;
   height: auto;
-
 }
-.upload{
+.upload {
   padding-left: 15px;
 }
 
-.upload-button{
+.upload-button {
   width: 50px;
   height: 50px;
-  background-color: #1488CC;
+  background-color: #1488cc;
   font-size: 25px;
   color: #fff;
   border-radius: 50%;
@@ -103,35 +114,36 @@ nav .brand-logo{
   -webkit-transform: scale(1.05);
   -ms-transform: scale(1.05);
   transform: scale(1.05);
-  -webkit-box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
-  box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
-  -webkit-transition: .1s;
-  -o-transition: .1s;
-  transition: .1s;
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
 }
 
-.delete-picture{
+.delete-picture {
   position: absolute;
   cursor: pointer;
   margin-left: 96px;
   margin-top: -12px;
-  color: #1488CC;
+  color: #1488cc;
 }
 
 @media only screen and (max-width: 600px) {
   nav .brand-logo {
     font-size: 1.1rem !important;
     margin-left: 0px;
-}
+  }
 
-nav .brand-logo i{
-  margin-top: 15px;
-}
+  nav .brand-logo i {
+    margin-top: 15px;
+  }
   /* Signin Signup */
-  .box-input-signin{
+  .box-input-signin {
     width: 100%;
   }
-  .btn-signin{
+  .btn-signin {
     width: 100%;
   }
 }

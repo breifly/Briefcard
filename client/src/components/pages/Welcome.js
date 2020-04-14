@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import '../css/Welcome.css';
-import Footer from '../utils/Footer';
 import { Parallax } from 'react-materialize';
 import '../css/Welcome.css';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 class Welcome extends React.Component {
-  onSubmit = formValues => {
+  onSubmit = (formValues) => {
     console.log(formValues);
   };
   render() {
@@ -22,7 +21,7 @@ class Welcome extends React.Component {
             }
             className="image-parallax white-text"
             options={{
-              responsiveThreshold: 0
+              responsiveThreshold: 0,
             }}
           >
             <ScrollAnimation animateOnce={true} animateIn="fadeInLeft">
@@ -91,11 +90,10 @@ class Welcome extends React.Component {
             }
             className="image-parallax hide-on-small-only"
             options={{
-              responsiveThreshold: 0
+              responsiveThreshold: 0,
             }}
           />
         </div>
-        <Footer />
       </div>
     );
   }
@@ -103,7 +101,7 @@ class Welcome extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth.authenticated
+    auth: state.auth.authenticated,
   };
 }
 export default connect(mapStateToProps, actions)(Welcome);

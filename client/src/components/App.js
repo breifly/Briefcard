@@ -20,6 +20,7 @@ import Template from './briefcardTemplate/Template';
 import CreateGenericTemplate from './briefcardTemplate/CreateGenericTemplate';
 import ShowBriefCardTemplate from './briefcardTemplate/ShowBriefCardTemplate';
 import ShowBriefCard from './briefcard/ShowBriefCard';
+import Footer from './utils/Footer';
 
 class App extends React.Component {
   componentDidMount() {
@@ -68,6 +69,7 @@ class App extends React.Component {
             ''
           )}
         </BrowserRouter>
+        <Footer />
       </div>
     );
   }
