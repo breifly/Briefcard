@@ -211,7 +211,20 @@ class ChatRoomSocket extends Component {
     );
   };
 
+  renderForm2 = () => {
+    if (this.props.briefcardChat) {
+      if (this.props.briefcardChat.length !== 2) {
+        return this.props.briefcardChat.map((brief) => {
+          if (brief.user !== this.props.authenticated._id) {
+            return this.renderForm();
+          }
+        });
+      }
+    }
+  };
+
   render() {
+    console.log(this.props.chatdetails);
     return (
       <div className="background-chat">
         <div className="container">
@@ -220,7 +233,10 @@ class ChatRoomSocket extends Component {
               Chatroom <i className="far fa-comments"></i>
             </h5>
             <div className="center">{this.renderUser()}</div>
-            {this.renderForm()}
+            {this.props.chatdetails === undefined ||
+            this.props.chatdetails.length == 0
+              ? this.renderForm()
+              : this.renderForm2()}
             {this.renderBriefCardSent()}
           </div>
           <div className="box-chatroom">
@@ -256,6 +272,7 @@ class ChatRoomSocket extends Component {
   }
 }
 function mapStateToPros(state) {
+  console.log(state);
   return {
     users: state.chat.users,
     authenticated: state.auth.authenticated,
