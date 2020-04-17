@@ -14,6 +14,7 @@ class sidebarTemplate extends React.Component {
       <div className="sidebar-template">
         <div className="sidebar-background">
           <img
+            style={{ height: '100px' }}
             src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
             alt="background"
           />

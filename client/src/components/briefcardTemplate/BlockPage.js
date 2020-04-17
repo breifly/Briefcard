@@ -7,7 +7,7 @@ class BlockPage extends React.Component {
   render() {
     return (
       <div>
-        <h4>Block Page Custom</h4>
+        <h4 className="center">Block Page Custom</h4>
         {/* Interest Block */}
         {this.props.interest01 ? <BlockInterest01 /> : ''}
         {this.props.interest02 ? <BlockInterest02 /> : ''}
