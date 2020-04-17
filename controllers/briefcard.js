@@ -78,12 +78,6 @@ exports.getBriefcardByChatroom = function (req, res, next) {
   const query = {
     $and: [{ chatroom: req.params.id }, { sent: false }],
   };
-  // Briefcard.find(query, function (error, briefcard) {
-  //   if (error) {
-  //     return next(error);
-  //   }
-  //   console.log(briefcard);
-  // });
 
   Briefcard.find(query).remove((err, doc) => {});
 

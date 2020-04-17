@@ -215,16 +215,15 @@ class ChatRoomSocket extends Component {
     if (this.props.briefcardChat) {
       if (this.props.briefcardChat.length !== 2) {
         return this.props.briefcardChat.map((brief) => {
-          if (brief.user !== this.props.authenticated._id) {
+          if (brief.user !== this.props.authenticated._id)
             return this.renderForm();
-          }
+          else return null;
         });
       }
     }
   };
 
   render() {
-    console.log(this.props.chatdetails);
     return (
       <div className="background-chat">
         <div className="container">
@@ -234,7 +233,7 @@ class ChatRoomSocket extends Component {
             </h5>
             <div className="center">{this.renderUser()}</div>
             {this.props.chatdetails === undefined ||
-            this.props.chatdetails.length == 0
+            this.props.chatdetails.length === 0
               ? this.renderForm()
               : this.renderForm2()}
             {this.renderBriefCardSent()}
@@ -272,7 +271,6 @@ class ChatRoomSocket extends Component {
   }
 }
 function mapStateToPros(state) {
-  console.log(state);
   return {
     users: state.chat.users,
     authenticated: state.auth.authenticated,
