@@ -22,7 +22,7 @@ class BlockPage extends React.Component {
     super(props);
     this.state = {
       name: '',
-      description: '',
+      describe: '',
       // Block Profile
       firstName: 'John',
       lastName: 'Mackenzie',
@@ -295,7 +295,7 @@ class BlockPage extends React.Component {
         this.props.idExperience ? (
           <EditNameTemplate
             name={this.state.name}
-            describe={this.state.name}
+            describe={this.state.describe}
             handleType={this.handleType}
             saveBriefCardTemplate={this.saveBriefCardTemplate}
           />

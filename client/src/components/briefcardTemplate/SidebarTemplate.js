@@ -56,14 +56,15 @@ class sidebarTemplate extends React.Component {
               </div>
             </div>
           </li>
-          <li>
+          {/* Generic template */}
+          {/* <li>
             <div className="collapsible-header">
               <i className="material-icons">place</i>Generic Template
             </div>
             <div className="collapsible-body">
               <span>Lorem ipsum dolor sit amet.</span>
             </div>
-          </li>
+          </li> */}
           {/* Block */}
           <li>
             <div
