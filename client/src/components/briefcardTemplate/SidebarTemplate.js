@@ -74,6 +74,43 @@ class sidebarTemplate extends React.Component {
             </div>
             <div className="collapsible-body padding-none">
               <ul className="collapsible">
+                {/* profile */}
+                <li>
+                  <div
+                    style={{ paddingLeft: '70px' }}
+                    className="collapsible-header"
+                  >
+                    <i className="material-icons">place</i>Profile
+                  </div>
+                  <div className="collapsible-body">
+                    <div className="row">
+                      <div className="col m4">
+                        <div
+                          onClick={this.props.displayBlockProfile01}
+                          className="img-block"
+                        >
+                          <img
+                            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+                            alt="background"
+                          />
+                          <p className="center white-text">profile 01</p>
+                        </div>
+                      </div>
+                      <div className="col m4">
+                        <div
+                          onClick={this.props.displayBlockProfile02}
+                          className="img-block"
+                        >
+                          <img
+                            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+                            alt="background"
+                          />
+                          <p className="center white-text">profile 02</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
                 {/* Interest */}
                 <li>
                   <div
@@ -106,23 +143,13 @@ class sidebarTemplate extends React.Component {
                             src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
                             alt="background"
                           />
-                          <p className="center white-text">Interest 01</p>
+                          <p className="center white-text">Interest 02</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <div
-                    style={{ paddingLeft: '70px' }}
-                    className="collapsible-header"
-                  >
-                    <i className="material-icons">place</i>Second
-                  </div>
-                  <div className="collapsible-body">
-                    <span>Lorem ipsum dolor sit amet.</span>
-                  </div>
-                </li>
+                {/* Skill */}
                 <li>
                   <div
                     style={{ paddingLeft: '70px' }}

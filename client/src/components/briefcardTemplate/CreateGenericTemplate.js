@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-// import { Link } from 'react-router-dom';
 import '../css/CreateGenericTemplate.css';
 import SidebarTemplate from './SidebarTemplate';
 import GetJob from './briefCardGoal/GetJob';
@@ -14,6 +13,9 @@ class CreateGenericTemplate extends React.Component {
     block: false,
     interest01: false,
     interest02: false,
+    profile01: false,
+    idProfile: '',
+    idInterest: '',
   };
 
   displayGetJob = () => {
@@ -29,10 +31,22 @@ class CreateGenericTemplate extends React.Component {
   };
   // Interest
   displayBlockInterest01 = () => {
-    this.setState({ interest01: true, interest02: false });
+    this.setState({
+      interest01: true,
+      interest02: false,
+      idInterest: 'BlockInterest01',
+    });
   };
   displayBlockInterest02 = () => {
-    this.setState({ interest02: true, interest01: false });
+    this.setState({
+      interest02: true,
+      interest01: false,
+      idInterest: 'BlockInterest02',
+    });
+  };
+  // Profile
+  displayBlockProfile01 = () => {
+    this.setState({ profile01: true, idProfile: 'BlockProfile01' });
   };
 
   render() {
@@ -46,6 +60,7 @@ class CreateGenericTemplate extends React.Component {
               displayBlock={this.displayBlock}
               displayBlockInterest01={this.displayBlockInterest01}
               displayBlockInterest02={this.displayBlockInterest02}
+              displayBlockProfile01={this.displayBlockProfile01}
             />
           </div>
           <div className="col m9 s12">
@@ -64,6 +79,9 @@ class CreateGenericTemplate extends React.Component {
               <BlockPage
                 interest01={this.state.interest01}
                 interest02={this.state.interest02}
+                idProfile={this.state.idProfile}
+                profile01={this.state.profile01}
+                idInterest={this.state.idInterest}
               />
             ) : (
               ''

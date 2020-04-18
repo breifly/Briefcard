@@ -87,7 +87,7 @@ class BlockInterest01 extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="">
         <div className="blockInterest">
           <form onSubmit={this.handleSubmit}>
             <label>
