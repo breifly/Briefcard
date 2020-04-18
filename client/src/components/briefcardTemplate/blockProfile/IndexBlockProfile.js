@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import '../../css/blockProfile/BlockProfile01.css';
 import BlockProfile01 from './BlockProfile01';
+import BlockProfile02 from './BlockProfile02';
 
 class IndexBlockProfile extends React.Component {
   state = {
@@ -60,7 +61,19 @@ class IndexBlockProfile extends React.Component {
           />
         );
       case 'BlockProfile02':
-        return <div>hello block 02</div>;
+        return (
+          <BlockProfile02
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            job={this.state.job}
+            email={this.state.email}
+            phone={this.state.phone}
+            image={this.state.image}
+            handleType={this.handleType}
+            saveProfile={this.saveProfile}
+            briefUser={this.props.briefUser}
+          />
+        );
       default:
         return;
     }

@@ -8,11 +8,13 @@ exports.createBriefcardTemplate = function (req, res, next) {
   const user = req.body.user;
   const name = req.body.name;
   const description = req.body.describe;
+  const interest = req.body.interest;
 
   const Briefcard = new BriefcardTemplate({
     profile: profile,
     note: note,
     experiences: experiences,
+    interest: interest,
     user: user,
     name: name,
     description: description,

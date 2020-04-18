@@ -111,6 +111,43 @@ class sidebarTemplate extends React.Component {
                     </div>
                   </div>
                 </li>
+                {/* Message */}
+                <li>
+                  <div
+                    style={{ paddingLeft: '70px' }}
+                    className="collapsible-header"
+                  >
+                    <i className="material-icons">whatshot</i>Message
+                  </div>
+                  <div className="collapsible-body">
+                    <div className="row">
+                      <div className="col m4">
+                        <div
+                          onClick={this.props.displayBlockMessage01}
+                          className="img-block"
+                        >
+                          <img
+                            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+                            alt="background"
+                          />
+                          <p className="center white-text">message 01</p>
+                        </div>
+                      </div>
+                      <div className="col m4">
+                        <div
+                          onClick={this.props.displayBlockMessage02}
+                          className="img-block"
+                        >
+                          <img
+                            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+                            alt="background"
+                          />
+                          <p className="center white-text">message 02</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
                 {/* Interest */}
                 <li>
                   <div
@@ -149,16 +186,42 @@ class sidebarTemplate extends React.Component {
                     </div>
                   </div>
                 </li>
-                {/* Skill */}
+                {/* Experience */}
                 <li>
                   <div
-                    style={{ paddingLeft: '70px' }}
                     className="collapsible-header"
+                    style={{ paddingLeft: '70px' }}
                   >
-                    <i className="material-icons">whatshot</i>Third
+                    <i className="material-icons">whatshot</i>
+                    Experience
                   </div>
                   <div className="collapsible-body">
-                    <span>Lorem ipsum dolor sit amet.</span>
+                    <div className="row">
+                      <div className="col m4">
+                        <div
+                          onClick={this.props.displayBlockExperience01}
+                          className="img-block"
+                        >
+                          <img
+                            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+                            alt="background"
+                          />
+                          <p className="center white-text">Experience 01</p>
+                        </div>
+                      </div>
+                      <div className="col m4">
+                        <div
+                          onClick={this.props.displayBlockExperience02}
+                          className="img-block"
+                        >
+                          <img
+                            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+                            alt="background"
+                          />
+                          <p className="center white-text">Experience 02</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </li>
               </ul>

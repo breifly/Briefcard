@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import BlockMessage01 from './BlockMessage01';
+import BlockMessage02 from './BlockMessage02';
 
 class IndexBlockMessage extends React.Component {
   state = {
@@ -47,7 +48,16 @@ class IndexBlockMessage extends React.Component {
           />
         );
       case 'BlockMessage02':
-        return <div>hello block Message02</div>;
+        return (
+          <BlockMessage02
+            title={this.state.title}
+            message={this.state.message}
+            handleType={this.handleType}
+            saveMessage={this.saveMessage}
+            index={this.props.id}
+            briefUser={this.props.briefUser}
+          />
+        );
       default:
         return;
     }

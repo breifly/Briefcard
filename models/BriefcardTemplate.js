@@ -19,6 +19,10 @@ const BriefcardTemplateSchema = new Schema(
       id: String,
       experience: {},
     },
+    interest: {
+      id: String,
+      interest: [],
+    },
   },
   {
     timestamps: true, // Saves createdAt and updatedAt as dates. createdAt will be our timestamp.

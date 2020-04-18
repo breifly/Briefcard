@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import IndexBlockProfile from '../briefcardTemplate/blockProfile/IndexBlockProfile';
 import IndexBlockMessage from '../briefcardTemplate/blockMessage/IndexBlockMessage';
 import IndexBlockExperience from '../briefcardTemplate/blockExperience/IndexBlockExperience';
+import IndexBlockInterest from '../briefcardTemplate/blockInterest/IndexBlockInterest';
 
 class ShowBriefCard extends React.Component {
   componentDidMount() {
@@ -73,12 +74,28 @@ class ShowBriefCard extends React.Component {
     }
   };
 
+  renderBlockInterest = () => {
+    if (this.props.briefCardCon) {
+      return this.props.briefCardCon.map((brief) => {
+        if (brief.interest)
+          return (
+            <IndexBlockInterest
+              key={brief._id}
+              briefcard={brief}
+              idBlock={brief.interest.id}
+              id={this.props.match.params.id}
+              briefUser={brief.user}
+              briefcardEdit={true}
+            />
+          );
+        else {
+          return null;
+        }
+      });
+    }
+  };
+
   sendBriefcard = () => {
-    // const idchatroom = [];
-    // for (let i = 0; i < this.props.briefCardCon.length; i++) {
-    //   const element = this.props.briefCardCon[i].chatroom;
-    //   idchatroom.push(element);
-    // }
     const form = {
       id: this.props.briefCardCon[0].chatroom,
       user: this.props.auth._id,
@@ -143,6 +160,7 @@ class ShowBriefCard extends React.Component {
         {this.renderBlockProfile()}
         {this.renderBlockMessage()}
         {this.renderBlockExperience()}
+        {this.renderBlockInterest()}
         {this.renderSendButton()}
         {this.renderDeleteBriefcard()}
       </div>

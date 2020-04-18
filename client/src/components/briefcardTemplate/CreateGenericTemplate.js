@@ -11,11 +11,22 @@ class CreateGenericTemplate extends React.Component {
     getJob: false,
     newClient: false,
     block: false,
+    // Interest
     interest01: false,
     interest02: false,
-    profile01: false,
-    idProfile: '',
     idInterest: '',
+    // Profile
+    profile01: false,
+    profile02: false,
+    idProfile: '',
+    // Message
+    message01: false,
+    message02: false,
+    idMessage: false,
+    // Experience
+    experience01: false,
+    experience02: false,
+    idExperience: '',
   };
 
   displayGetJob = () => {
@@ -46,7 +57,48 @@ class CreateGenericTemplate extends React.Component {
   };
   // Profile
   displayBlockProfile01 = () => {
-    this.setState({ profile01: true, idProfile: 'BlockProfile01' });
+    this.setState({
+      profile01: true,
+      profile02: false,
+      idProfile: 'BlockProfile01',
+    });
+  };
+  displayBlockProfile02 = () => {
+    this.setState({
+      profile02: true,
+      profile01: false,
+      idProfile: 'BlockProfile02',
+    });
+  };
+  // Message
+  displayBlockMessage01 = () => {
+    this.setState({
+      message01: true,
+      message02: false,
+      idMessage: 'BlockMessage01',
+    });
+  };
+  displayBlockMessage02 = () => {
+    this.setState({
+      message02: true,
+      message01: false,
+      idMessage: 'BlockMessage02',
+    });
+  };
+  // Experience
+  displayBlockExperience01 = () => {
+    this.setState({
+      experience01: true,
+      experience02: false,
+      idExperience: 'BlockExperience01',
+    });
+  };
+  displayBlockExperience02 = () => {
+    this.setState({
+      experience02: true,
+      experience01: false,
+      idExperience: 'BlockExperience02',
+    });
   };
 
   render() {
@@ -58,9 +110,18 @@ class CreateGenericTemplate extends React.Component {
               displayGetJob={this.displayGetJob}
               displayNewClient={this.displayNewClient}
               displayBlock={this.displayBlock}
+              // Interest
               displayBlockInterest01={this.displayBlockInterest01}
               displayBlockInterest02={this.displayBlockInterest02}
+              // Profile
               displayBlockProfile01={this.displayBlockProfile01}
+              displayBlockProfile02={this.displayBlockProfile02}
+              // Message
+              displayBlockMessage01={this.displayBlockMessage01}
+              displayBlockMessage02={this.displayBlockMessage02}
+              // Experience
+              displayBlockExperience01={this.displayBlockExperience01}
+              displayBlockExperience02={this.displayBlockExperience02}
             />
           </div>
           <div className="col m9 s12">
@@ -77,11 +138,22 @@ class CreateGenericTemplate extends React.Component {
             {/* Block */}
             {this.state.block ? (
               <BlockPage
+                // Interest
+                idInterest={this.state.idInterest}
                 interest01={this.state.interest01}
                 interest02={this.state.interest02}
+                // Profile
                 idProfile={this.state.idProfile}
                 profile01={this.state.profile01}
-                idInterest={this.state.idInterest}
+                profile02={this.state.profile02}
+                // Message
+                idMessage={this.state.idMessage}
+                message01={this.state.message01}
+                message02={this.state.message02}
+                // Experience
+                idExperience={this.state.idExperience}
+                experience01={this.state.experience01}
+                experience02={this.state.experience02}
               />
             ) : (
               ''

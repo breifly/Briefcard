@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import BlockExperience01 from './BlockExperience01';
+import BlockExperience02 from './BlockExperience02';
 
 class IndexBlockExperience extends React.Component {
   state = {
@@ -142,8 +143,19 @@ class IndexBlockExperience extends React.Component {
             briefUser={this.props.briefUser}
           />
         );
-      case 'BlockMessage02':
-        return <div>hello block Message02</div>;
+      case 'BlockExperience02':
+        return (
+          <BlockExperience02
+            id={this.props.id}
+            briefcard={this.props.briefcard}
+            experiences={this.state.experiences}
+            editExperience={this.editExperience}
+            handleType={this.handleType}
+            onSubmitAdd={this.onSubmitAdd}
+            briefcardEdit={this.props.briefcardEdit}
+            briefUser={this.props.briefUser}
+          />
+        );
       default:
         return;
     }

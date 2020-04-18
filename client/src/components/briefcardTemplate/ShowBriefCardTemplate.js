@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import IndexBlockProfile from './blockProfile/IndexBlockProfile';
 import IndexBlockMessage from './blockMessage/IndexBlockMessage';
 import IndexBlockExperience from './blockExperience/IndexBlockExperience';
+import IndexBlockInterest from './blockInterest/IndexBlockInterest';
 
 class ShowBriefCardTemplate extends React.Component {
   componentDidMount() {
@@ -70,6 +71,26 @@ class ShowBriefCardTemplate extends React.Component {
     }
   };
 
+  renderBlockInterest = () => {
+    if (this.props.briefCardCon) {
+      return this.props.briefCardCon.map((brief) => {
+        if (brief.interest)
+          return (
+            <IndexBlockInterest
+              key={brief._id}
+              briefcard={brief}
+              idBlock={brief.interest.id}
+              id={this.props.match.params.id}
+              briefUser={brief.user}
+            />
+          );
+        else {
+          return null;
+        }
+      });
+    }
+  };
+
   deleteBriefCardTemplate = () => {
     if (this.props.briefCardCon) {
       for (let i = 0; i < this.props.briefCardCon.length; i++) {
@@ -87,6 +108,7 @@ class ShowBriefCardTemplate extends React.Component {
         {this.renderBlockProfile()}
         {this.renderBlockMessage()}
         {this.renderBlockExperience()}
+        {this.renderBlockInterest()}
         <button onClick={this.deleteBriefCardTemplate} className="btn red">
           Delete
         </button>

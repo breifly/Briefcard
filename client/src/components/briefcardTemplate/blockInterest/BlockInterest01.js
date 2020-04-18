@@ -25,23 +25,9 @@ const interest = [
 ];
 
 class BlockInterest01 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: [] };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
   componentDidMount() {
     const elems = document.querySelectorAll('select');
     M.FormSelect.init(elems, {});
-  }
-
-  handleChange(event) {
-    this.setState({
-      value: Array.from(event.target.selectedOptions, (item) => item.value),
-    });
   }
 
   handleSubmit(event) {
@@ -65,7 +51,7 @@ class BlockInterest01 extends React.Component {
   };
 
   renderInterest = () => {
-    return this.state.value.map((value) => {
+    return this.props.value.map((value) => {
       return interest.map((int) => {
         if (int.title === value) {
           return (
@@ -90,22 +76,21 @@ class BlockInterest01 extends React.Component {
       <div className="">
         <div className="blockInterest">
           <form onSubmit={this.handleSubmit}>
-            <label>
-              Choose your Interest
-              <select
-                multiple={true}
-                value={this.state.value}
-                onChange={this.handleChange}
-              >
-                {this.renderSelectForm()}
-              </select>
-            </label>
+            {this.props.briefUser === this.props.auth._id ? (
+              <label>
+                Choose your Interest
+                <select
+                  multiple={true}
+                  value={this.props.value}
+                  onChange={this.props.handleChangeInterest}
+                >
+                  {this.renderSelectForm()}
+                </select>
+              </label>
+            ) : (
+              ''
+            )}
             <div className="row">{this.renderInterest()}</div>
-            {/* <input
-              className="btn btn-signin btn-message"
-              type="submit"
-              value="Submit"
-            /> */}
           </form>
         </div>
       </div>

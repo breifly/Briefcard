@@ -12,6 +12,7 @@ exports.createBriefcard = function (req, res, next) {
     const briefcard = new Briefcard({
       profile: BriefcardTemplate.profile,
       note: BriefcardTemplate.note,
+      interest: BriefcardTemplate.interest,
       experiences: BriefcardTemplate.experiences,
       user: BriefcardTemplate.user,
       chatroom: req.body.chatroom,
