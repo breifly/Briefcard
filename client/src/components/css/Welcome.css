@@ -6,6 +6,9 @@
 .slide-home {
   background-color: #e8f1f2;
 }
+.block-banner {
+  margin-top: 15%;
+}
 .btn-started {
   background-color: #5c88e8;
   color: #fff;
@@ -18,9 +21,69 @@
   margin: 80px 0px;
 }
 
+.banner-2 {
+  margin-bottom: 60px;
+}
+
+.btn-banner2 {
+  background-color: #e8f1f2;
+  color: #2f2f2f;
+  padding: 10px 20px;
+  font-size: 25px;
+  border-radius: 5px;
+}
+.title-buisness2 {
+  margin: 80px 0px 40px 0px;
+}
+
+/* Banner 3 */
+.opportunity {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.vs {
+  margin-top: 80px;
+}
+
 .image-parallax img {
   width: 100%;
 }
 
+/* newletter */
+.newletter {
+  background-color: #e8f1f2;
+}
+
+.newletter h4 {
+  padding: 60px 0px 0px 0px;
+}
+
+.newletter-signup {
+  margin-top: 20px;
+  padding-bottom: 60px;
+}
+
+.email-send {
+  padding: 10px 20px;
+  background-color: #5c88e8;
+  color: #fff;
+}
+
 @media only screen and (max-width: 600px) {
+  .slide-home h2 {
+    font-size: 30px;
+  }
+  .opportunity {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .img-welcome {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .vs {
+    margin-top: 0px;
+  }
 }

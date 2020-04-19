@@ -25,9 +25,24 @@ nav ul a {
 
 /* Footer */
 .page-footer {
-  margin-top: 40px;
-  border-top: 1px solid #fff;
-  background: transparent !important; /* fallback for old browsers */
+  background: #2b2b42 !important; /* fallback for old browsers */
+}
+
+.footer-link {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -20px;
+}
+
+.support {
+  line-height: 0;
+}
+.fa-linkedin {
+  font-size: 30px;
+}
+
+.footer-link p {
+  margin-right: 5px;
 }
 
 /* Signin & Signup */

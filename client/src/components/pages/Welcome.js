@@ -18,15 +18,18 @@ class Welcome extends React.Component {
           <div className="container-welcome">
             <div className="row">
               <div className="col m6">
-                <h2>
-                  There's more to you<br></br> then a static profile.
-                </h2>
-                <Link className="btn-started" to={'/signin'}>
-                  Get Started
-                </Link>
+                <div className="block-banner">
+                  <h2>
+                    There's more to you<br></br> then a static profile.
+                  </h2>
+                  <Link className="btn-started" to={'/signin'}>
+                    Get Started
+                  </Link>
+                </div>
               </div>
               <div className="col m6">
                 <img
+                  className="img-welcome"
                   src={process.env.PUBLIC_URL + '/images/banner.png'}
                   alt="banner"
                 />
@@ -38,62 +41,87 @@ class Welcome extends React.Component {
           <h4 className="title-buisness">
             All-in-one, all for business professionals.
           </h4>
+          <div className="banner-2">
+            <div className="row">
+              <div className="col m3 s12">
+                <img
+                  src={process.env.PUBLIC_URL + '/images/icon_Find_Work.png'}
+                  alt="find"
+                />
+                <p>Find Work</p>
+                <p>Search or post jobs & local projects</p>
+              </div>
+              <div className="col m3 s12">
+                <img
+                  src={process.env.PUBLIC_URL + '/images/icon_Network.png'}
+                  alt="network"
+                />
+                <p>Network</p>
+                <p>Simple & effective virtual networking</p>
+              </div>
+              <div className="col m3 s12">
+                <img
+                  src={process.env.PUBLIC_URL + '/images/icon_Personal_CRM.png'}
+                  alt="crm"
+                />
+                <p>Personal CRM</p>
+                <p>Easily manage opportunities</p>
+              </div>
+              <div className="col m3 s12">
+                <img
+                  src={process.env.PUBLIC_URL + '/images/Close_Clients.png'}
+                  alt="client"
+                />
+                <p>Close Clients</p>
+                <p>Personalize your marketing & approach</p>
+              </div>
+            </div>
+          </div>
+          <Link className="btn-banner2" to={'/signin'}>
+            sign up for free
+          </Link>
+          <h4 className="title-buisness2">
+            BriefCards are digital portfolios that are optimized for each unique
+            opportunity
+          </h4>
+          <h5>How does it work?</h5>
           <div className="row">
-            <div className="col m3">
+            <div className="col m5">
               <img
-                src={process.env.PUBLIC_URL + '/images/icon_Find_Work.png'}
-                alt="find"
+                className="opportunity"
+                src={
+                  process.env.PUBLIC_URL + '/images/Opportunity_After_Image.png'
+                }
+                alt="banner"
               />
-              <p>Find Work</p>
-              <p>Search or post jobs & local projects</p>
             </div>
-            <div className="col m3">
-              <img
-                src={process.env.PUBLIC_URL + '/images/icon_Network.png'}
-                alt="network"
-              />
-              <p>Network</p>
-              <p>Simple & effective virtual networking</p>
+            <div className="col m2 s12 vs">
+              <h4>VS</h4>
             </div>
-            <div className="col m3">
+            <div className="col m5">
               <img
-                src={process.env.PUBLIC_URL + '/images/icon_Personal_CRM.png'}
-                alt="crm"
+                className="opportunity"
+                src={
+                  process.env.PUBLIC_URL + '/images/Oppotunity_Before_Image.png'
+                }
+                alt="banner"
               />
-              <p>Personal CRM</p>
-              <p>Easily manage opportunities</p>
             </div>
-            <div className="col m3">
-              <img
-                src={process.env.PUBLIC_URL + '/images/Close_Clients.png'}
-                alt="client"
-              />
-              <p>Close Clients</p>
-              <p>Personalize your marketing & approach</p>
-            </div>
-            {/* <div className="col m3">
-              <img
-                src={process.env.PUBLIC_URL + '/images/icon_Chat.png'}
-                alt="find"
-              />
-              <p>Chat</p>
-              <p>Cross-Platform Messaging</p>
-            </div> */}
           </div>
         </div>
-        <Parallax
-          image={
-            <img
-              alt=""
-              src={process.env.PUBLIC_URL + '/images/banner2.jpg'}
-              className="last-banner"
-            />
-          }
-          className="image-parallax hide-on-small-only"
-          options={{
-            responsiveThreshold: 0,
-          }}
-        />
+        <div className="newletter">
+          <div className="container center">
+            <h4>Beta lauch - Fall 2020</h4>
+            <p>Get an invite for the limited beta launch!</p>
+            <a className="email-send" href="mailto:webmaster@example.com">
+              Click Here
+            </a>
+
+            <div className="newletter-signup">
+              <Link to={'/signup'}>sign up now for free</Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
