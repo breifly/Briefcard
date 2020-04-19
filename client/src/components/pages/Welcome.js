@@ -14,86 +14,86 @@ class Welcome extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <Parallax
-            image={
-              <img alt="" src={process.env.PUBLIC_URL + '/images/banner.jpg'} />
-            }
-            className="image-parallax white-text"
-            options={{
-              responsiveThreshold: 0,
-            }}
-          >
-            <ScrollAnimation animateOnce={true} animateIn="fadeInLeft">
-              <div className="box-banner">
-                <h3 className="title-first">Networking For Everyone</h3>
-                <p>
-                  A tap away from valuable connections that expand
-                  opportunities.
-                </p>
-                <Link className="button-homepage waves-light" to={'/signin'}>
-                  Lean More
+        <div className="slide-home">
+          <div className="container-welcome">
+            <div className="row">
+              <div className="col m6">
+                <h2>
+                  There's more to you<br></br> then a static profile.
+                </h2>
+                <Link className="btn-started" to={'/signin'}>
+                  Get Started
                 </Link>
               </div>
-            </ScrollAnimation>
-          </Parallax>
-          <div className="section white">
-            <div className="row container">
-              <h2 className="header center">Concept</h2>
-              <ScrollAnimation animateOnce={true} animateIn="bounceInLeft">
-                <div className="col m4 s12">
-                  <img
-                    alt="concept1"
-                    src={process.env.PUBLIC_URL + '/images/home1.png'}
-                    className="concept-image"
-                  />
-                  <p className="grey-text text-darken-3 lighten-3 center">
-                    Step 1: <br></br>Create your professional profile
-                  </p>
-                </div>
-              </ScrollAnimation>
-              <ScrollAnimation animateOnce={true} animateIn="bounceInUp">
-                <div className="col m4 s12">
-                  <img
-                    alt="concept2"
-                    src={process.env.PUBLIC_URL + '/images/home2.png'}
-                    className="concept-image"
-                  />
-                  <p className="grey-text text-darken-3 lighten-3 center">
-                    Step 2: <br></br>
-                    Meet new connections
-                  </p>
-                </div>
-              </ScrollAnimation>
-              <ScrollAnimation animateOnce={true} animateIn="bounceInRight">
-                <div className="col m4 s12">
-                  <img
-                    alt="concept3"
-                    src={process.env.PUBLIC_URL + '/images/home3.png'}
-                    className="concept-image"
-                  />
-                  <p className="grey-text text-darken-3 lighten-3 center">
-                    Step 3: <br></br>Chat and explore opportunities
-                  </p>
-                </div>
-              </ScrollAnimation>
+              <div className="col m6">
+                <img
+                  src={process.env.PUBLIC_URL + '/images/banner.png'}
+                  alt="banner"
+                />
+              </div>
             </div>
           </div>
-
-          <Parallax
-            image={
-              <img
-                alt=""
-                src={process.env.PUBLIC_URL + '/images/banner2.jpg'}
-                className="last-banner"
-              />
-            }
-            className="image-parallax hide-on-small-only"
-            options={{
-              responsiveThreshold: 0,
-            }}
-          />
         </div>
+        <div className="container center">
+          <h4 className="title-buisness">
+            All-in-one, all for business professionals.
+          </h4>
+          <div className="row">
+            <div className="col m3">
+              <img
+                src={process.env.PUBLIC_URL + '/images/icon_Find_Work.png'}
+                alt="find"
+              />
+              <p>Find Work</p>
+              <p>Search or post jobs & local projects</p>
+            </div>
+            <div className="col m3">
+              <img
+                src={process.env.PUBLIC_URL + '/images/icon_Network.png'}
+                alt="network"
+              />
+              <p>Network</p>
+              <p>Simple & effective virtual networking</p>
+            </div>
+            <div className="col m3">
+              <img
+                src={process.env.PUBLIC_URL + '/images/icon_Personal_CRM.png'}
+                alt="crm"
+              />
+              <p>Personal CRM</p>
+              <p>Easily manage opportunities</p>
+            </div>
+            <div className="col m3">
+              <img
+                src={process.env.PUBLIC_URL + '/images/Close_Clients.png'}
+                alt="client"
+              />
+              <p>Close Clients</p>
+              <p>Personalize your marketing & approach</p>
+            </div>
+            {/* <div className="col m3">
+              <img
+                src={process.env.PUBLIC_URL + '/images/icon_Chat.png'}
+                alt="find"
+              />
+              <p>Chat</p>
+              <p>Cross-Platform Messaging</p>
+            </div> */}
+          </div>
+        </div>
+        <Parallax
+          image={
+            <img
+              alt=""
+              src={process.env.PUBLIC_URL + '/images/banner2.jpg'}
+              className="last-banner"
+            />
+          }
+          className="image-parallax hide-on-small-only"
+          options={{
+            responsiveThreshold: 0,
+          }}
+        />
       </div>
     );
   }

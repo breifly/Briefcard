@@ -54,7 +54,7 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/">
-              <i className="far fa-comment-dots"></i> Briefcard
+              Briefcard
             </Link>
             <a href="#/" data-target="slide-out" className="sidenav-trigger">
               <i className="material-icons">menu</i>
@@ -72,7 +72,7 @@ class Header extends React.Component {
 
 function mapStateToPros(state) {
   return {
-    authenticated: state.auth.authenticated
+    authenticated: state.auth.authenticated,
   };
 }
 
