@@ -4,6 +4,14 @@ body {
   color: #2f2f2f;
 }
 
+.color-web {
+  color: #5c88e8;
+}
+
+.color-web2 {
+  color: #2f2f2f;
+}
+
 /* Navbar */
 nav {
   background-color: transparent !important;
@@ -26,21 +34,19 @@ nav ul a {
 /* Footer */
 .page-footer {
   background: #2b2b42 !important; /* fallback for old browsers */
+  padding: 20px;
 }
-
 .footer-link {
   display: flex;
   justify-content: center;
   margin-bottom: -20px;
 }
-
 .support {
   line-height: 0;
 }
 .fa-linkedin {
   font-size: 30px;
 }
-
 .footer-link p {
   margin-right: 5px;
 }
@@ -53,15 +59,15 @@ nav ul a {
   margin-right: auto;
 }
 .box-input-signin input {
-  color: #fff;
+  color: #5c88e8;
 }
 .btn-signin {
   width: 45%;
-  background-color: #1488cc !important;
+  background-color: #5c88e8 !important;
 }
 
 .input-field .prefix.active {
-  color: #1488cc !important;
+  color: #5c88e8 !important;
 }
 
 /* UserShow */
@@ -73,8 +79,8 @@ input[type='text']:not(.browser-default).validate + label,
 input.valid[type='text']:not(.browser-default),
 input[type='text']:not(.browser-default):focus:not([readonly]),
 input[type='tel']:not(.browser-default):focus:not([readonly]) {
-  border-bottom: 1px solid #1488cc !important;
-  box-shadow: 0 1px 0 0 #1488cc !important;
+  border-bottom: 1px solid #5c88e8 !important;
+  box-shadow: 0 1px 0 0 #5c88e8 !important;
 }
 
 .top-left {
@@ -138,7 +144,7 @@ input[type='tel']:not(.browser-default):focus:not([readonly]) {
   cursor: pointer;
   margin-left: 96px;
   margin-top: -12px;
-  color: #1488cc;
+  color: #5c88e8;
 }
 
 @media only screen and (max-width: 600px) {
