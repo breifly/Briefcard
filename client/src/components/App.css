@@ -16,6 +16,11 @@ body {
 nav {
   background-color: transparent !important;
 }
+
+nav a {
+  color: black !important;
+}
+
 nav .brand-logo {
   margin-left: 10px;
   color: Black !important;

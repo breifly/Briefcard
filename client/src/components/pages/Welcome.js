@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import '../css/Welcome.css';
-import { Parallax } from 'react-materialize';
-import '../css/Welcome.css';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 class Welcome extends React.Component {
@@ -45,7 +43,7 @@ class Welcome extends React.Component {
             <div className="row">
               <div className="col m3 s12">
                 <img
-                  src={process.env.PUBLIC_URL + '/images/icon_Find_Work.png'}
+                  src={process.env.PUBLIC_URL + '/images/Icon_Find_Work.png'}
                   alt="find"
                 />
                 <p>Find Work</p>
@@ -53,7 +51,7 @@ class Welcome extends React.Component {
               </div>
               <div className="col m3 s12">
                 <img
-                  src={process.env.PUBLIC_URL + '/images/icon_Network.png'}
+                  src={process.env.PUBLIC_URL + '/images/Icon_Network.png'}
                   alt="network"
                 />
                 <p>Network</p>
@@ -61,7 +59,7 @@ class Welcome extends React.Component {
               </div>
               <div className="col m3 s12">
                 <img
-                  src={process.env.PUBLIC_URL + '/images/icon_Personal_CRM.png'}
+                  src={process.env.PUBLIC_URL + '/images/Icon_Personal_CRM.png'}
                   alt="crm"
                 />
                 <p>Personal CRM</p>
