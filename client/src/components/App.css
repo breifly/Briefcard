@@ -29,6 +29,13 @@ nav ul a {
   color: black !important;
 }
 
+.sign-free {
+  background-color: #5c88e8;
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 8px;
+}
+
 .avatar {
   vertical-align: middle;
   width: 50px;

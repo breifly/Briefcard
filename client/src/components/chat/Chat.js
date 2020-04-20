@@ -71,7 +71,7 @@ class Chat extends React.Component {
   renderNoChat = () => {
     return (
       <div className="no-chat center">
-        <h4>Welcome to briefCard!</h4>
+        <h4>Welcome to briefcard!</h4>
         <p>You have not started any conversation yet.</p>
         <div>
           <h5>Here's how to start:</h5>
@@ -107,14 +107,12 @@ class Chat extends React.Component {
   render() {
     return (
       <div>
-        {this.props.propschats ? (
-          <div className="background-chatlist">
-            <div className="container">
-              <h4 className="white-text">Chat List</h4>
-              <ScrollAnimation animateOnce={true} animateIn="bounceInLeft">
-                {this.renderAllChatRoom()}
-              </ScrollAnimation>
-            </div>
+        {this.props.chats ? (
+          <div style={{ height: '100vh' }} className="container-chatlist">
+            <h4 style={{ marginBottom: '30px' }}>messages</h4>
+            <ScrollAnimation animateOnce={true} animateIn="bounceInLeft">
+              {this.renderAllChatRoom()}
+            </ScrollAnimation>
           </div>
         ) : (
           this.renderNoChat()

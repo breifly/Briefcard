@@ -42,7 +42,14 @@ class Header extends React.Component {
     } else {
       return (
         <div>
-          <Link to="/signin">login</Link>
+          <li>
+            <Link to="/signup">
+              <span className="sign-free">SIGN UP, IT'S FREE</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/signin">login</Link>
+          </li>
         </div>
       );
     }
@@ -54,7 +61,7 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/">
-              Briefcard
+              briefcard
             </Link>
             <a href="#/" data-target="slide-out" className="sidenav-trigger">
               <i className="material-icons">menu</i>

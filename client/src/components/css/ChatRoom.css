@@ -25,14 +25,6 @@
   font-size: 20px;
 }
 
-.background-chatlist {
-  background-image: url(/images/friends.svg);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 400px 300px;
-  min-height: 500px;
-}
-
 .background-chat {
   background-image: url(/images/chat.svg);
   background-repeat: no-repeat;
@@ -63,7 +55,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .box-message .input-field .prefix {
   color: #fff;
 }
@@ -82,34 +73,36 @@
   width: 100px;
   margin-left: 5px;
 }
-
+/* Chat list */
+.container-chatlist {
+  margin-left: 30%;
+  margin-right: 30%;
+}
+.rce-container-citem {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+}
 .rce-mbox-text {
   margin-right: 45px;
 }
-
-.rce-citem {
-  background-color: transparent;
-  color: #fff;
-}
-
 .rce-citem-body--bottom-title {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.4);
 }
-
-.rce-citem-body--top-time {
-  color: #fff;
+.rce-citem-body--top-title {
+  color: #2f2f2f;
 }
-
 .rce-citem:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Message chat */
 .rce-mbox-right-notch {
-  fill: #1488cc;
+  fill: #5c88e8;
 }
 
 .rce-mbox.rce-mbox-right {
-  background: #1488cc;
+  background: #5c88e8;
   color: #fff;
 }
 
@@ -138,6 +131,11 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .container-chatlist {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
   .box-chatroom {
     width: 100%;
     max-height: 520px;

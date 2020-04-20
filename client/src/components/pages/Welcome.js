@@ -20,7 +20,7 @@ class Welcome extends React.Component {
                   <h2>
                     There's more to you<br></br> then a static profile.
                   </h2>
-                  <Link className="btn-started hoverable" to={'/signin'}>
+                  <Link className="btn-started hoverable" to={'/signup'}>
                     Get Started
                   </Link>
                 </div>
@@ -75,7 +75,7 @@ class Welcome extends React.Component {
               </div>
             </div>
           </div>
-          <Link className="btn-banner2 hoverable" to={'/signin'}>
+          <Link className="btn-banner2 hoverable" to={'/signup'}>
             sign up for free
           </Link>
           <h4 className="title-buisness2">
