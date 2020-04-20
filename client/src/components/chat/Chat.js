@@ -68,15 +68,57 @@ class Chat extends React.Component {
     );
   };
 
+  renderNoChat = () => {
+    return (
+      <div className="no-chat center">
+        <h4>Welcome to briefCard!</h4>
+        <p>You have not started any conversation yet.</p>
+        <div>
+          <h5>Here's how to start:</h5>
+          <div className="block-btn-chat">
+            <Link
+              className="btn-no-chat hoverable"
+              to={`/briefcard-templates/${this.props.auth._id}`}
+            >
+              Create a BriefCard
+            </Link>
+          </div>
+          <div className="block-btn-chat">
+            <Link
+              className="btn-no-chat hoverable"
+              to={`/dashboard/${this.props.auth._id}`}
+            >
+              Network Virtually
+            </Link>
+          </div>
+          <div className="block-btn-chat">
+            <Link
+              className="btn-no-chat hoverable"
+              to={`/briefcard-templates/${this.props.auth._id}`}
+            >
+              Sync Leads & Contacts
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   render() {
     return (
-      <div className="background-chatlist">
-        <div className="container">
-          <h4 className="white-text">Chat List</h4>
-          <ScrollAnimation animateOnce={true} animateIn="bounceInLeft">
-            {this.renderAllChatRoom()}
-          </ScrollAnimation>
-        </div>
+      <div>
+        {this.props.propschats ? (
+          <div className="background-chatlist">
+            <div className="container">
+              <h4 className="white-text">Chat List</h4>
+              <ScrollAnimation animateOnce={true} animateIn="bounceInLeft">
+                {this.renderAllChatRoom()}
+              </ScrollAnimation>
+            </div>
+          </div>
+        ) : (
+          this.renderNoChat()
+        )}
       </div>
     );
   }

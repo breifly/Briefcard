@@ -1,3 +1,30 @@
+/* Chat list */
+.no-chat {
+  margin: 40px 0px 80px 0px;
+}
+.no-chat h4 {
+  color: #5c88e8;
+}
+.no-chat p {
+  color: #5c88e8;
+}
+
+.no-chat h5 {
+  margin-top: 60px;
+}
+
+.block-btn-chat {
+  margin: 40px;
+}
+
+.btn-no-chat {
+  background-color: #e8f1f2;
+  color: #2f2f2f;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
 .background-chatlist {
   background-image: url(/images/friends.svg);
   background-repeat: no-repeat;

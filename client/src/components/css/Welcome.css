@@ -68,6 +68,7 @@
   padding: 10px 20px;
   background-color: #5c88e8;
   color: #fff;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 600px) {
