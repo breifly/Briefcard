@@ -1,10 +1,10 @@
-.swipe-container{
+.swipe-container {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.img-empty{
+.img-empty {
   width: 220px;
   display: block;
   margin-left: auto;
@@ -12,19 +12,19 @@
   margin-top: 60px;
 }
 
-.swipe{
+.swipe {
   position: absolute;
   width: 350px;
   height: 500px;
-  top: calc(50vh - (/* height */500px / 2));
-  left: calc(50vw - (/* width */350px / 2)); 
-  margin-top: 78px;
+  top: calc(50vh - (/* height */ 500px / 2));
+  left: calc(50vw - (/* width */ 350px / 2));
+  margin-top: 110px;
   background-color: #fff;
   border-radius: 20px;
   cursor: pointer;
 }
 
-.card-tinder{
+.card-tinder {
   width: 100%;
   height: 100%;
   border-radius: 20px;
@@ -37,13 +37,12 @@
   color: #fff;
 }
 
-.card-description p:first-child{
+.card-description p:first-child {
   line-height: 0.6;
   font-size: 20px;
-
 }
 
-.love{
+.love {
   font-size: 45px;
   width: 100px;
   height: 100px;
@@ -53,42 +52,49 @@
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23); */
   margin-top: -140px;
-  color: #fff;
+  color: #5c88e8;
 }
 
 /* card Match */
 
-.avatar-large {
+.avatar-large-match {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
   margin: 20px 0px 5px 0px;
+  border: 5px solid #5c88e8;
 }
 
-.button-match{
+.button-match {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
-  padding: 20px;
-  border: 1px solid #fff;
+  padding: 15px;
   margin-bottom: 10px;
   font-size: 20px;
   cursor: pointer;
+  background-color: #f8f8f8;
 }
 
-.button-match a{
-  color: #fff
+.button-match a {
+  color: #2f2f2f;
 }
 
-.button-match:hover{
+.button-match:hover a {
+  color: #fff;
+}
+
+.button-match:hover {
   color: #fff !important;
-  background-color: #0575E6;
-  border: 1px solid #0575E6;
+  background-color: #5c88e8;
+  border: 1px solid #5c88e8;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .modal-match {
@@ -96,22 +102,19 @@
   height: 500px;
   position: absolute;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
-  border-radius: 20px;
-  margin-top: 78px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+  margin-top: 110px;
   background-color: #fff;
-  top: calc(50vh - (/* height */500px / 2));
-  left: calc(50vw - (/* width */350px / 2)); 
+  top: calc(50vh - (/* height */ 500px / 2));
+  left: calc(50vw - (/* width */ 350px / 2));
   padding: 20px;
-  color: #fff;
-  background: #1488CC;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #e8f1f2; /* fallback for old browsers */
 }
 
 @media only screen and (max-width: 600px) {
-  .button-match{
+  .button-match {
     padding: 10px;
     font-size: 16px;
   }
@@ -121,20 +124,20 @@
     height: 80px;
     border-radius: 50%;
   }
-  
-  .modal-match{
+
+  .modal-match {
     margin-top: 30px;
     width: 315px;
     height: 400px;
-    top: calc(50vh - (/* height */490px / 2));
-    left: calc(50vw - (/* width */315px / 2));
+    top: calc(50vh - (/* height */ 490px / 2));
+    left: calc(50vw - (/* width */ 315px / 2));
   }
 
-  .swipe{
+  .swipe {
     margin-top: 30px;
     width: 315px;
     height: 400px;
-    top: calc(50vh - (/* height */490px / 2));
-    left: calc(50vw - (/* width */315px / 2));
+    top: calc(50vh - (/* height */ 490px / 2));
+    left: calc(50vw - (/* width */ 315px / 2));
   }
 }

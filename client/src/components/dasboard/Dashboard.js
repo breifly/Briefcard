@@ -9,9 +9,11 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div style={{ height: '100vh' }} className="container">
-        <h4 className="center white-text">Swipe to match!</h4>
-        <p className="center white-text ">
-          Swipe left Unlike - Swipe right like
+        <h4 style={{ marginTop: '40px' }} className="center">
+          Time To Discover
+        </h4>
+        <p style={{ margin: '20px' }} className="center">
+          Swipe through relevant projects, jobs, and other opportunities!
         </p>
         {this.props.auth.firstName &&
         this.props.auth.lastName &&
@@ -20,16 +22,23 @@ class Dashboard extends React.Component {
             <Discover />
           </div>
         ) : (
-          <div style={{ fontSize: '18px' }} className="center">
-            <Link className="white-text" to={`/user/${this.props.auth._id}`}>
-              <img
-                className="complete-profile"
-                alt="profile-complited"
-                src={process.env.PUBLIC_URL + '/images/complete.svg'}
-              />
-              <i className="fas fa-exclamation-circle"></i> You must complete
-              your profile before swiping (Firstname, Lastname, Photo...)
+          <div
+            style={{ fontSize: '18px', marginTop: '40px' }}
+            className="center"
+          >
+            <Link
+              className="btn-config hoverable"
+              to={`/user/${this.props.auth._id}`}
+            >
+              Configure your account to get started!
             </Link>
+            <img
+              className="complete-profile"
+              alt="profile-complited"
+              src={process.env.PUBLIC_URL + '/images/profile.svg'}
+            />
+            {/* <i className="fas fa-exclamation-circle"></i> You must complete your
+            profile before swiping (Firstname, Lastname, Photo...) */}
           </div>
         )}
       </div>

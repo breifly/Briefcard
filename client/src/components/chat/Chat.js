@@ -107,15 +107,15 @@ class Chat extends React.Component {
   render() {
     return (
       <div>
-        {this.props.chats ? (
+        {this.props.chats === undefined || this.props.chats.length === 0 ? (
+          this.renderNoChat()
+        ) : (
           <div style={{ height: '100vh' }} className="container-chatlist">
             <h4 style={{ marginBottom: '30px' }}>messages</h4>
             <ScrollAnimation animateOnce={true} animateIn="bounceInLeft">
               {this.renderAllChatRoom()}
             </ScrollAnimation>
           </div>
-        ) : (
-          this.renderNoChat()
         )}
       </div>
     );
@@ -123,6 +123,7 @@ class Chat extends React.Component {
 }
 
 function mapStateToPros(state) {
+  console.log(state);
   return {
     auth: state.auth.authenticated,
     chats: state.chat.allChatByUser,

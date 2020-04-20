@@ -121,6 +121,7 @@ class ChatRoomSocket extends Component {
               to={`/chatroom/user/${user._id}`}
             >
               <img className="avatar" src={user.avatar} alt="avatar"></img>
+              {user.firstName} {user.lastName}
             </Link>
           );
         } else {
@@ -154,7 +155,7 @@ class ChatRoomSocket extends Component {
               key={idx}
               to={`/briefcard/${briefcard.briefcardId}`}
             >
-              <div>His BriefCard</div>
+              <div>Name BriefCard</div>
             </Link>
           );
         } else {
@@ -164,7 +165,7 @@ class ChatRoomSocket extends Component {
               key={idx}
               to={`/briefcard/${briefcard.briefcardId}`}
             >
-              <div>Your BriefCard</div>
+              <div>see my BriefCard</div>
             </Link>
           );
         }

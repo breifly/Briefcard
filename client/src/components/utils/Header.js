@@ -43,12 +43,12 @@ class Header extends React.Component {
       return (
         <div>
           <li>
+            <Link to="/signin">login</Link>
+          </li>
+          <li>
             <Link to="/signup">
               <span className="sign-free">SIGN UP, IT'S FREE</span>
             </Link>
-          </li>
-          <li>
-            <Link to="/signin">login</Link>
           </li>
         </div>
       );

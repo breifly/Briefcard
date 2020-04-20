@@ -9,7 +9,7 @@ class Footer extends React.Component {
         <p className="support">support@briefcard.io</p>
         <div className="footer-link">
           <p>About |</p>
-          <p>Privacy Poclicy |</p>
+          <p>Privacy Policy |</p>
           <p>Terms of Service |</p>
           <p>Contact</p>
         </div>

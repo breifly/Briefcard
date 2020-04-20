@@ -8,10 +8,11 @@ class TemplateList extends React.Component {
     return (
       <div style={{ marginTop: '10px' }} className="card-product">
         <img
-          src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+          src={process.env.PUBLIC_URL + '/images/getJob.jpg'}
           alt="image01"
         />
         <div className="card-product-infos">
+          <i class="fas fa-ellipsis-v right"></i>
           <h2>{this.props.briefcardTemplate.name}</h2>
           <p>{this.props.briefcardTemplate.description}</p>
         </div>
