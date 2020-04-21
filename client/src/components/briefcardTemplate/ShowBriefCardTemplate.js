@@ -105,13 +105,15 @@ class ShowBriefCardTemplate extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.renderBlockProfile()}
-        {this.renderBlockMessage()}
-        {this.renderBlockExperience()}
-        {this.renderBlockInterest()}
-        <button onClick={this.deleteBriefCardTemplate} className="btn red">
-          Delete
-        </button>
+        <div className="box-briefcard-template">
+          {this.renderBlockProfile()}
+          {this.renderBlockMessage()}
+          {this.renderBlockExperience()}
+          {this.renderBlockInterest()}
+          <button onClick={this.deleteBriefCardTemplate} className="btn red">
+            Delete
+          </button>
+        </div>
       </div>
     );
   }

@@ -1,10 +1,9 @@
 .bp-01 {
-  padding: 10px;
+  padding: 25px 10px 10px 10px;
 }
 
 .bp-01-block {
   display: flex;
-  color: white;
 }
 
 .bp-01-block h5 {
@@ -26,7 +25,7 @@
 .bp-01-block-02 {
   margin-top: 7%;
   font-size: 20px;
-  color: white;
+  margin-right: 5%;
 }
 
 .container-experience {

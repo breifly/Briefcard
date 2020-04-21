@@ -12,10 +12,38 @@
 .edit-block {
   line-height: 30px !important;
   padding: 0px 8px !important;
+  border-radius: 50% !important;
+  background-color: #5c88e8 !important;
+}
+
+.save-block {
+  line-height: 30px !important;
+  padding: 0px 8px !important;
 }
 
 .delete-block {
   line-height: 30px !important;
   padding: 0px 8px !important;
+  border-radius: 50% !important;
   margin-left: 5px;
+}
+
+.box-briefcard-template {
+  width: 60%;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-image: url('/images/header.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .box-briefcard-template {
+    width: 100%;
+  }
 }

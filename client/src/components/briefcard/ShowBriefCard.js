@@ -157,12 +157,14 @@ class ShowBriefCard extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.renderBlockProfile()}
-        {this.renderBlockMessage()}
-        {this.renderBlockExperience()}
-        {this.renderBlockInterest()}
-        {this.renderSendButton()}
-        {this.renderDeleteBriefcard()}
+        <div className="box-briefcard-template">
+          {this.renderBlockProfile()}
+          {this.renderBlockMessage()}
+          {this.renderBlockExperience()}
+          {this.renderBlockInterest()}
+          {this.renderSendButton()}
+          {this.renderDeleteBriefcard()}
+        </div>
       </div>
     );
   }

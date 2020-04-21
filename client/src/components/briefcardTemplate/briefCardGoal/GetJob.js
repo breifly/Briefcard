@@ -146,7 +146,7 @@ class GetJob extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="">
         <BlockProfile01
           handleType={this.handleType}
           firstName={this.state.firstName}

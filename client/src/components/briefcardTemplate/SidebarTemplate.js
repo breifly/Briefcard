@@ -14,17 +14,14 @@ class sidebarTemplate extends React.Component {
       <div className="sidebar-template">
         <div className="sidebar-background">
           <img
-            style={{ height: '100px' }}
-            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+            src={process.env.PUBLIC_URL + '/images/background-brief.jpg'}
             alt="background"
           />
         </div>
 
         <ul className="collapsible">
           <li>
-            <div className="collapsible-header">
-              <i className="material-icons">filter_drama</i>BriefCard Goal
-            </div>
+            <div className="collapsible-header">Build from Templates</div>
             <div className="collapsible-body">
               <div className="row">
                 <div className="col m4">
@@ -71,7 +68,7 @@ class sidebarTemplate extends React.Component {
               className="collapsible-header"
               onClick={this.props.displayBlock}
             >
-              <i className="material-icons">whatshot</i>Block
+              Build from Block
             </div>
             <div className="collapsible-body padding-none">
               <ul className="collapsible">
@@ -229,6 +226,18 @@ class sidebarTemplate extends React.Component {
             </div>
           </li>
         </ul>
+        <div className="block-info-sidebar">
+          <h6 className="center">How to make a BriefCard:</h6>
+          <ol>
+            <li>Choose a template or a set of blocks</li>
+            <li>Complete with all the relevant general information</li>
+            <li>Save your Template</li>
+          </ol>
+          <p>
+            Congrats!<br></br>You will now be able to personnalize and send a
+            briefcard in 30 seconds or less!
+          </p>
+        </div>
       </div>
     );
   }

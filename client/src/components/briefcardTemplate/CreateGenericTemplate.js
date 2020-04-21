@@ -104,7 +104,7 @@ class CreateGenericTemplate extends React.Component {
   render() {
     return (
       <div className="fluid-container">
-        <div className="row">
+        <div className="row no-margin-bottom">
           <div className="col m3 s12 padding-none">
             <SidebarTemplate
               displayGetJob={this.displayGetJob}
@@ -125,39 +125,41 @@ class CreateGenericTemplate extends React.Component {
             />
           </div>
           <div className="col m9 s12">
-            {/* Get Job */}
-            {this.state.getJob ? (
-              <div>
-                <GetJob />
-              </div>
-            ) : (
-              ''
-            )}
-            {/* New Client */}
-            {this.state.newClient ? <div>New Client</div> : ''}
-            {/* Block */}
-            {this.state.block ? (
-              <BlockPage
-                // Interest
-                idInterest={this.state.idInterest}
-                interest01={this.state.interest01}
-                interest02={this.state.interest02}
-                // Profile
-                idProfile={this.state.idProfile}
-                profile01={this.state.profile01}
-                profile02={this.state.profile02}
-                // Message
-                idMessage={this.state.idMessage}
-                message01={this.state.message01}
-                message02={this.state.message02}
-                // Experience
-                idExperience={this.state.idExperience}
-                experience01={this.state.experience01}
-                experience02={this.state.experience02}
-              />
-            ) : (
-              ''
-            )}
+            <div className="box-briefcard-template">
+              {/* Get Job */}
+              {this.state.getJob ? (
+                <div>
+                  <GetJob />
+                </div>
+              ) : (
+                ''
+              )}
+              {/* New Client */}
+              {this.state.newClient ? <div>New Client</div> : ''}
+              {/* Block */}
+              {this.state.block ? (
+                <BlockPage
+                  // Interest
+                  idInterest={this.state.idInterest}
+                  interest01={this.state.interest01}
+                  interest02={this.state.interest02}
+                  // Profile
+                  idProfile={this.state.idProfile}
+                  profile01={this.state.profile01}
+                  profile02={this.state.profile02}
+                  // Message
+                  idMessage={this.state.idMessage}
+                  message01={this.state.message01}
+                  message02={this.state.message02}
+                  // Experience
+                  idExperience={this.state.idExperience}
+                  experience01={this.state.experience01}
+                  experience02={this.state.experience02}
+                />
+              ) : (
+                ''
+              )}
+            </div>
           </div>
         </div>
       </div>

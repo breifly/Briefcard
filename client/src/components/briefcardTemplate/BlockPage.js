@@ -172,7 +172,6 @@ class BlockPage extends React.Component {
   render() {
     return (
       <div>
-        <h4 className="center">Block Page Custom</h4>
         <div className="container">
           {/* Profile Block */}
           {this.props.profile01 ? (

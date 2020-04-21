@@ -9,7 +9,7 @@ class BlockProfile01 extends React.Component {
     return (
       <div className="row">
         <div className="bp-01">
-          <div className="col m6">
+          <div className="col m6 s7">
             <div className="bp-01-block">
               <img
                 alt="avatar"
@@ -30,16 +30,19 @@ class BlockProfile01 extends React.Component {
               </ul>
             </div>
           </div>
-          <div className="col m6">
+          <div className="col m6 s5">
             <div className="bp-01-block-02 right">
               <p>
-                <a style={{ color: 'white' }} href={`tel:${this.props.phone}`}>
+                <a
+                  style={{ color: '#2f2f2f' }}
+                  href={`tel:${this.props.phone}`}
+                >
                   <i className="fas fa-phone"></i>
                 </a>
               </p>
               <p>
                 <a
-                  style={{ color: 'white' }}
+                  style={{ color: '#2f2f2f' }}
                   href={`mailto:${this.props.email}`}
                 >
                   <i className="far fa-envelope"></i>

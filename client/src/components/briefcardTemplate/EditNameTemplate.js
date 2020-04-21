@@ -6,7 +6,7 @@ class EditNameTemplate extends React.Component {
     return (
       <div>
         <Button
-          className="modal-trigger edit-block"
+          className="modal-trigger save-block"
           style={{ marginTop: '20px' }}
           href="#modalTemplate"
           node="button"
