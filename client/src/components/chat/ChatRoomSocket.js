@@ -47,6 +47,21 @@ class ChatRoomSocket extends Component {
     this.setState({ msg: e.target.value });
   };
 
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const form = {
+      id: this.state.value,
+      chatroom: this.props.match.params.id,
+    };
+    this.props.createBriefCard(form, (id) =>
+      this.props.history.push(`/briefcard/${id}`)
+    );
+  }
+
   onMessageSubmit = () => {
     if (this.state.msg) {
       this.setState({ error: '' });
@@ -115,14 +130,21 @@ class ChatRoomSocket extends Component {
       return this.props.users.map((user) => {
         if (user._id !== this.props.authenticated._id) {
           return (
-            <Link
-              className="hoverable"
-              key={user._id}
-              to={`/chatroom/user/${user._id}`}
-            >
-              <img className="avatar" src={user.avatar} alt="avatar"></img>
-              {user.firstName} {user.lastName}
-            </Link>
+            <div class="notification">
+              <Link key={user._id} to={`/chatroom/user/${user._id}`}>
+                <img
+                  className="avatar hoverable"
+                  src={user.avatar}
+                  alt="avatar"
+                ></img>
+              </Link>
+              <div class="notification-content">
+                <p>
+                  {user.firstName} {user.lastName}
+                </p>
+                {this.renderBriefCardSent()}
+              </div>
+            </div>
           );
         } else {
           return null;
@@ -130,42 +152,29 @@ class ChatRoomSocket extends Component {
       });
   };
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const form = {
-      id: this.state.value,
-      chatroom: this.props.match.params.id,
-    };
-    this.props.createBriefCard(form, (id) =>
-      this.props.history.push(`/briefcard/${id}`)
-    );
-  }
-
   renderBriefCardSent = () => {
     if (this.props.chatdetails) {
       return this.props.chatdetails.map((briefcard, idx) => {
         if (briefcard.user !== this.props.authenticated._id) {
           return (
             <Link
-              className="hoverable center"
+              className="hoverable"
               key={idx}
               to={`/briefcard/${briefcard.briefcardId}`}
             >
-              <div>Name BriefCard</div>
+              <div>see briefcard</div>
             </Link>
           );
         } else {
           return (
             <Link
-              className="hoverable center"
+              className="hoverable"
               key={idx}
               to={`/briefcard/${briefcard.briefcardId}`}
             >
-              <div>see my BriefCard</div>
+              <div style={{ marginTop: '-21px' }} className="right">
+                see my briefcard
+              </div>
             </Link>
           );
         }
@@ -190,7 +199,7 @@ class ChatRoomSocket extends Component {
 
   renderForm = () => {
     return (
-      <form className="select-briefCard" onSubmit={this.handleSubmit}>
+      <form className="notification" onSubmit={this.handleSubmit}>
         <select
           className="select-briefCard"
           value={this.state.value}
@@ -201,11 +210,7 @@ class ChatRoomSocket extends Component {
           </option>
           {this.renderListBriefCardTemplate()}
         </select>
-        <button
-          type="submit"
-          value="Submit"
-          className="btn btn-signin btn-message"
-        >
+        <button type="submit" value="Submit" className="btn-crete-brief">
           Select
         </button>
       </form>
@@ -228,17 +233,12 @@ class ChatRoomSocket extends Component {
     return (
       <div className="background-chat">
         <div className="container">
-          <div className="box-date white-text">
-            <h5 className="center title-chat">
-              Chatroom <i className="far fa-comments"></i>
-            </h5>
-            <div className="center">{this.renderUser()}</div>
-            {this.props.chatdetails === undefined ||
-            this.props.chatdetails.length === 0
-              ? this.renderForm()
-              : this.renderForm2()}
-            {this.renderBriefCardSent()}
-          </div>
+          <div className="box-info-profile">{this.renderUser()}</div>
+          {this.props.chatdetails === undefined ||
+          this.props.chatdetails.length === 0
+            ? this.renderForm()
+            : this.renderForm2()}
+
           <div className="box-chatroom">
             {this.props.messages && <div>{this.renderOldMessage()}</div>}
             <div>{this.renderChat()}</div>
@@ -249,9 +249,12 @@ class ChatRoomSocket extends Component {
               <div className="red-text center">{this.state.error}</div>
             )}
             <div className="input-field">
-              <i className="material-icons prefix">message</i>
+              <i style={{ color: '#5c88e8' }} className="material-icons prefix">
+                message
+              </i>
+
               <input
-                style={{ color: 'white' }}
+                // style={{ color: '#e8f1f2' }}
                 onChange={(e) => this.onTextChange(e)}
                 value={this.state.msg}
                 id="icon_prefix"
@@ -263,7 +266,7 @@ class ChatRoomSocket extends Component {
               className="waves-effect waves-light btn btn-signin btn-message"
               onClick={this.onMessageSubmit}
             >
-              Send
+              <i className="fas fa-paper-plane"></i>
             </button>
           </div>
         </div>

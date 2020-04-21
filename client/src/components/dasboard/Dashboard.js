@@ -9,12 +9,14 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div style={{ height: '100vh' }} className="container">
-        <h4 style={{ marginTop: '40px' }} className="center">
-          Time To Discover
-        </h4>
-        <p style={{ margin: '20px' }} className="center">
-          Swipe through relevant projects, jobs, and other opportunities!
-        </p>
+        <div>
+          <h4 style={{ marginTop: '40px' }} className="center">
+            Time To Discover
+          </h4>
+          <p style={{ margin: '20px' }} className="center">
+            Swipe through relevant projects, jobs, and other opportunities!
+          </p>
+        </div>
         {this.props.auth.firstName &&
         this.props.auth.lastName &&
         this.props.auth.avatar ? (

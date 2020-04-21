@@ -17,43 +17,93 @@
   margin: 40px;
 }
 
+.background-chat {
+  margin-top: 40px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+/* box-info-profile */
+.notification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235, 235, 235);
+}
+
+.notification .notification-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.notification p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notification small {
+  color: #999999;
+  font-weight: bold;
+}
+.notification .notification-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease 0.3s;
+}
+
+.notification:hover .notification-actions {
+  opacity: 1;
+}
+
+.notification .notification-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.notification .notification-actions a:hover {
+  color: #555555;
+}
+
+.btn-crete-brief {
+  width: 100px;
+  margin-left: 5px;
+  padding: 10px;
+  background-color: #5c88e8;
+  color: #fff;
+}
+
 .btn-no-chat {
-  background-color: #e8f1f2;
+  background-color: #5c88e8;
   color: #2f2f2f;
   padding: 10px 20px;
   border-radius: 8px;
   font-size: 20px;
 }
 
-.background-chat {
-  background-image: url(/images/chat.svg);
-  background-repeat: no-repeat;
-  background-size: 400px 300px;
-  min-height: 400px;
-}
-.box-chatroom {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.16),
-    0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 10px;
-  padding: 15px;
-  max-height: 450px;
-  min-height: 450px;
-  overflow: auto;
-}
-
-.box-date {
-  margin-bottom: 20px;
-}
-
 .box-message {
   display: flex;
-  width: 50%;
+  width: 100%;
+  padding: 0px 10px;
   margin-left: auto;
   margin-right: auto;
+  background-color: #fff;
+  border-left: 1px solid rgb(235, 235, 235);
+  border-right: 1px solid rgb(235, 235, 235);
+  border-bottom: 1px solid rgb(235, 235, 235);
+  margin-bottom: 60px;
+}
+.box-chatroom {
+  border-left: 1px solid rgb(235, 235, 235);
+  border-right: 1px solid rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 15px;
+  max-height: 350px;
+  min-height: 350px;
+  overflow: auto;
+  background-color: #fff;
 }
 .box-message .input-field .prefix {
   color: #fff;
@@ -137,6 +187,11 @@
     margin-right: 5%;
   }
 
+  .background-chat {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
   .box-chatroom {
     width: 100%;
     max-height: 520px;
@@ -147,10 +202,6 @@
     background-size: 300px 300px;
     max-height: 100vh;
     background-position: bottom;
-  }
-
-  .box-message {
-    width: 90%;
   }
 
   .background-chat {
