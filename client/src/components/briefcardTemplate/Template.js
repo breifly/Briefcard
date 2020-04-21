@@ -84,7 +84,7 @@ class Template extends React.Component {
         this.props.templates.length === 0 ? (
           this.renderNoTemplateList()
         ) : (
-          <div style={{ padding: '40px' }}>{this.renderTemplateList()}</div>
+          <div className="box-render-template">{this.renderTemplateList()}</div>
         )}
       </div>
     );

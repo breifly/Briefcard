@@ -12,7 +12,7 @@ class TemplateList extends React.Component {
           alt="image01"
         />
         <div className="card-product-infos">
-          <i class="fas fa-ellipsis-v right"></i>
+          <i className="fas fa-ellipsis-v right"></i>
           <h2>{this.props.briefcardTemplate.name}</h2>
           <p>{this.props.briefcardTemplate.description}</p>
         </div>

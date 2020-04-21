@@ -3,6 +3,10 @@
   padding: 60px 0px 30px 0px;
 }
 
+.box-render-template {
+  padding: 40px;
+}
+
 .box-btn-template {
   display: flex;
   width: 278px;
@@ -81,5 +85,8 @@
 @media only screen and (max-width: 600px) {
   .card-product img {
     width: 100px;
+  }
+  .box-render-template {
+    padding: 5px 0px;
   }
 }

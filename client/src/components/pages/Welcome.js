@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import '../css/Welcome.css';
-import ScrollAnimation from 'react-animate-on-scroll';
 
 class Welcome extends React.Component {
   onSubmit = (formValues) => {
