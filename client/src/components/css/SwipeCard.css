@@ -134,7 +134,7 @@
   }
 
   .swipe {
-    margin-top: 30px;
+    margin-top: 55px;
     width: 315px;
     height: 400px;
     top: calc(50vh - (/* height */ 490px / 2));
