@@ -127,7 +127,7 @@
   }
 
   .modal-match {
-    margin-top: 20%;
+    margin-top: 17%;
     width: 315px;
     height: 400px;
     top: calc(50vh - (/* height */ 490px / 2));
@@ -135,7 +135,7 @@
   }
 
   .swipe {
-    margin-top: 20%;
+    margin-top: 17%;
     width: 315px;
     height: 400px;
     top: calc(50vh - (/* height */ 490px / 2));

@@ -10,7 +10,7 @@ class Dashboard extends React.Component {
     return (
       <div style={{ height: '100vh' }} className="container">
         <div>
-          <h4 style={{ marginTop: '40px' }} className="center">
+          <h4 style={{ marginTop: '20px' }} className="center">
             Time To Discover
           </h4>
           <p style={{ margin: '20px' }} className="center">
