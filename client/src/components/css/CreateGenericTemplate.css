@@ -40,6 +40,7 @@
   background-position: top;
   background-repeat: no-repeat;
   background-color: #fff;
+  padding-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {

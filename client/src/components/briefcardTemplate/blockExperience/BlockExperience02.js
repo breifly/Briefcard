@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import '../../css/blockExperience/BlockExperience01.css';
+import '../../css/blockExperience/BlockExperience02.css';
 import AddExperience from './AddExperience';
 import EditExperience from './EditExperience';
 import DeleteExperience from './DeleteExperience';
@@ -38,18 +38,16 @@ class BlockExperience02 extends React.Component {
         return (
           <div key={idx} className="be-01">
             <div className="card-experience">
-              <i className="fas fa-city"></i>
-              <div className="card-experience-infos">
-                <h2>{exp.company}</h2>
-                <h3>
-                  {exp.position}{' '}
-                  <span>
-                    {exp.dateStart} - {exp.dateEnd}
-                  </span>
-                </h3>
-                <p>{exp.description} </p>
+              <div className="block-experience02">
+                <i className="fas fa-city"></i>
+              </div>
+
+              <div className="card-experience-infos02">
                 {this.props.briefUser === this.props.auth._id ? (
-                  <div className="right" style={{ display: 'flex' }}>
+                  <div
+                    className="right edit-exp-02"
+                    style={{ display: 'flex' }}
+                  >
                     <EditExperience
                       index={idx}
                       editExperience={this.props.editExperience}
@@ -68,6 +66,14 @@ class BlockExperience02 extends React.Component {
                 ) : (
                   ''
                 )}
+                <h2>{exp.company}</h2>
+                <h3>
+                  {exp.position}{' '}
+                  <span>
+                    {exp.dateStart} - {exp.dateEnd}
+                  </span>
+                </h3>
+                <p>{exp.description} </p>
               </div>
             </div>
           </div>
@@ -78,7 +84,6 @@ class BlockExperience02 extends React.Component {
   render() {
     return (
       <div className="row">
-        Block Experience02
         {this.renderExperience()}
         {this.props.briefUser === this.props.auth._id ? (
           <div className="right">

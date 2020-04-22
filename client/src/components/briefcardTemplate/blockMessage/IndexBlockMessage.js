@@ -6,7 +6,6 @@ import BlockMessage02 from './BlockMessage02';
 
 class IndexBlockMessage extends React.Component {
   state = {
-    title: this.props.briefcard.note.title,
     message: this.props.briefcard.note.message,
   };
 
@@ -18,7 +17,6 @@ class IndexBlockMessage extends React.Component {
     const id = this.props.id;
     form = {
       id: this.props.idBlock,
-      title: this.state.title,
       message: this.state.message,
     };
     if (this.props.briefcardEdit) {
@@ -39,7 +37,6 @@ class IndexBlockMessage extends React.Component {
       case 'BlockMessage01':
         return (
           <BlockMessage01
-            title={this.state.title}
             message={this.state.message}
             handleType={this.handleType}
             saveMessage={this.saveMessage}
@@ -50,7 +47,6 @@ class IndexBlockMessage extends React.Component {
       case 'BlockMessage02':
         return (
           <BlockMessage02
-            title={this.state.title}
             message={this.state.message}
             handleType={this.handleType}
             saveMessage={this.saveMessage}

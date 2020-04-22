@@ -30,7 +30,6 @@ class BlockPage extends React.Component {
       email: 'John@gmail.com',
       phone: '786 234 4557',
       // Note
-      title: 'Bob',
       message:
         'glad we got a chance to sit at thatch. Almost missed you for the holidays! Till next time.',
       //Interest
@@ -157,7 +156,7 @@ class BlockPage extends React.Component {
       },
       note: {
         id: this.props.idMessage,
-        title: this.state.title,
+
         message: this.state.message,
       },
       experiences: {
@@ -206,7 +205,6 @@ class BlockPage extends React.Component {
           {this.props.message01 ? (
             <BlockMessage01
               handleType={this.handleType}
-              title={this.state.title}
               message={this.state.message}
               briefUser={this.props.auth._id}
             />
@@ -216,28 +214,8 @@ class BlockPage extends React.Component {
           {this.props.message02 ? (
             <BlockMessage02
               handleType={this.handleType}
-              title={this.state.title}
               message={this.state.message}
               briefUser={this.props.auth._id}
-            />
-          ) : (
-            ''
-          )}
-          {/* Interest Block */}
-          {this.props.interest01 ? (
-            <BlockInterest01
-              briefUser={this.props.auth._id}
-              value={this.state.value}
-              handleChangeInterest={this.handleChangeInterest}
-            />
-          ) : (
-            ''
-          )}
-          {this.props.interest02 ? (
-            <BlockInterest02
-              briefUser={this.props.auth._id}
-              value={this.state.value}
-              handleChangeInterest={this.handleChangeInterest}
             />
           ) : (
             ''
@@ -283,6 +261,25 @@ class BlockPage extends React.Component {
               editDateEnd={this.state.editDateEnd}
               editDescription={this.state.editDescription}
               briefUser={this.props.auth._id}
+            />
+          ) : (
+            ''
+          )}
+          {/* Interest Block */}
+          {this.props.interest01 ? (
+            <BlockInterest01
+              briefUser={this.props.auth._id}
+              value={this.state.value}
+              handleChangeInterest={this.handleChangeInterest}
+            />
+          ) : (
+            ''
+          )}
+          {this.props.interest02 ? (
+            <BlockInterest02
+              briefUser={this.props.auth._id}
+              value={this.state.value}
+              handleChangeInterest={this.handleChangeInterest}
             />
           ) : (
             ''

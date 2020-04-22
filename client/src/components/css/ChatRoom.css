@@ -186,6 +186,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .notification .notification-content {
+    padding: 0 10px;
+  }
+
   .container-chatlist {
     margin-left: 5%;
     margin-right: 5%;
@@ -210,5 +214,12 @@
 
   .background-chat {
     background-image: none;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .notification .notification-content a div {
+    padding: 10px;
+    display: contents;
   }
 }

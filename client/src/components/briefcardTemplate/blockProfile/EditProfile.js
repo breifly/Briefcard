@@ -8,7 +8,6 @@ class EditProfile extends React.Component {
       <div>
         <Button
           className="modal-trigger edit-block"
-          style={{ marginTop: '20px' }}
           href="#modalProfile"
           node="button"
         >

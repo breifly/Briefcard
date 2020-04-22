@@ -42,18 +42,7 @@ class EditMessage extends React.Component {
         >
           <form className="col s12">
             <div className="row">
-              <div className="input-field col s6">
-                <i className="material-icons prefix">person</i>
-                <label htmlFor="person">Person</label>
-                <input
-                  name="title"
-                  id="person"
-                  type="text"
-                  className="validate"
-                  onChange={this.props.handleType}
-                />
-              </div>
-              <div className="input-field col s6">
+              <div className="input-field col s12">
                 <i className="material-icons prefix">message</i>
                 <label htmlFor="message">Message</label>
                 <input

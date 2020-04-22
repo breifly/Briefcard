@@ -1,0 +1,24 @@
+.card-interest02 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.box-img-interest {
+  width: 100%;
+  height: 80px;
+}
+
+.card-interest02 img {
+  width: 100%;
+  height: 80px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card-interest02 p {
+  text-align: center;
+  padding-bottom: 4px;
+  margin-top: 0px;
+}

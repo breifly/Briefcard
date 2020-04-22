@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import BlockProfile01 from '../blockProfile/BlockProfile01';
-import BlockMessage01 from '../blockMessage/BlockMessage01';
-import BlockExperience01 from '../blockExperience/BlockExperience01';
+import BlockProfile02 from '../blockProfile/BlockProfile02';
+import BlockMessage02 from '../blockMessage/BlockMessage02';
+import BlockExperience02 from '../blockExperience/BlockExperience02';
 import { withRouter } from 'react-router-dom';
 import EditNameTemplate from '../EditNameTemplate';
 
-class GetJob extends React.Component {
+class GetJob02 extends React.Component {
   state = {
     // name and describ
     name: '',
@@ -52,7 +52,7 @@ class GetJob extends React.Component {
       describe: this.state.describe,
       user: this.props.auth._id,
       profile: {
-        id: 'BlockProfile01',
+        id: 'BlockProfile02',
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         job: this.state.job,
@@ -61,11 +61,11 @@ class GetJob extends React.Component {
         image: this.props.auth.avatar,
       },
       note: {
-        id: 'BlockMessage01',
+        id: 'BlockMessage02',
         message: this.state.message,
       },
       experiences: {
-        id: 'BlockExperience01',
+        id: 'BlockExperience02',
         experience: this.state.experiences,
       },
     };
@@ -145,7 +145,7 @@ class GetJob extends React.Component {
   render() {
     return (
       <div className="">
-        <BlockProfile01
+        <BlockProfile02
           handleType={this.handleType}
           firstName={this.state.firstName}
           lastName={this.state.lastName}
@@ -155,12 +155,12 @@ class GetJob extends React.Component {
           image={this.props.auth.avatar}
           briefUser={this.props.auth._id}
         />
-        <BlockMessage01
+        <BlockMessage02
           handleType={this.handleType}
           message={this.state.message}
           briefUser={this.props.auth._id}
         />
-        <BlockExperience01
+        <BlockExperience02
           editExperience={this.editExperience}
           onSubmitAdd={this.onSubmitAdd}
           handleType={this.handleType}
@@ -194,4 +194,4 @@ function mapStateToProps(state) {
     auth: state.auth.authenticated,
   };
 }
-export default withRouter(connect(mapStateToProps, actions)(GetJob));
+export default withRouter(connect(mapStateToProps, actions)(GetJob02));

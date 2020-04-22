@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import '../../css/blockMessage/BlockMessage01.css';
+import '../../css/blockMessage/BlockMessage02.css';
 import EditMessage from './EditMessage';
 
 class BlockMessage02 extends React.Component {
   render() {
     return (
       <div>
-        Block Message 02
         {this.props.briefUser === this.props.auth._id ? (
           <div className=" row right">
             <EditMessage
@@ -20,9 +19,7 @@ class BlockMessage02 extends React.Component {
           ''
         )}
         <div className="container">
-          <div className="bm-01">
-            Hey {this.props.title}! {this.props.message}
-          </div>
+          <div className="bm-01 block-message02">{this.props.message}</div>
         </div>
       </div>
     );

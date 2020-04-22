@@ -74,7 +74,8 @@ class ShowBriefCardTemplate extends React.Component {
   renderBlockInterest = () => {
     if (this.props.briefCardCon) {
       return this.props.briefCardCon.map((brief) => {
-        if (brief.interest)
+        console.log(brief.interest);
+        if (brief.interest.interest.length !== 0)
           return (
             <IndexBlockInterest
               key={brief._id}
@@ -120,6 +121,7 @@ class ShowBriefCardTemplate extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
     auth: state.auth.authenticated,
     briefCardCon: state.briefcardTemplate.briefcardTemplateContent,

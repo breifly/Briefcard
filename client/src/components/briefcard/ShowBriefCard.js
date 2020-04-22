@@ -77,7 +77,7 @@ class ShowBriefCard extends React.Component {
   renderBlockInterest = () => {
     if (this.props.briefCardCon) {
       return this.props.briefCardCon.map((brief) => {
-        if (brief.interest)
+        if (brief.interest.interest.length !== 0)
           return (
             <IndexBlockInterest
               key={brief._id}

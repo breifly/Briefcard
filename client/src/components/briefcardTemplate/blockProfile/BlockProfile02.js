@@ -1,52 +1,46 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import '../../css/blockProfile/BlockProfile01.css';
+import '../../css/blockProfile/BlockProfile02.css';
 import EditProfile from './EditProfile';
 
 class BlockProfile02 extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="bp-01">
-          <h6>Block profile 02</h6>
-          <div className="col m6">
-            <div className="bp-01-block">
-              <img
-                alt="avatar"
-                src={
-                  this.props.image ||
-                  process.env.PUBLIC_URL + '/images/lechef.jpg'
-                }
-              />
-              <ul>
-                <li>
-                  <h5>
-                    {this.props.firstName} {this.props.lastName}
-                  </h5>
-                </li>
-                <li className="job">{this.props.job}</li>
-                <li>{this.props.email}</li>
-                <li>{this.props.phone}</li>
-              </ul>
-            </div>
-          </div>
-          <div className="col m6">
-            <div className="bp-01-block-02 right">
-              <p>
-                <a style={{ color: 'white' }} href={`tel:${this.props.phone}`}>
+        <div className="bp-02">
+          <div className="col m12 s12 center">
+            <img
+              alt="avatar"
+              src={
+                this.props.image ||
+                process.env.PUBLIC_URL + '/images/lechef.jpg'
+              }
+            />
+            <ul>
+              <li>
+                <a
+                  className=" icon-profile"
+                  style={{ color: '#2f2f2f' }}
+                  href={`tel:${this.props.phone}`}
+                >
                   <i className="fas fa-phone"></i>
                 </a>
-              </p>
-              <p>
                 <a
-                  style={{ color: 'white' }}
+                  className=" icon-profile"
+                  style={{ color: '#2f2f2f' }}
                   href={`mailto:${this.props.email}`}
                 >
                   <i className="far fa-envelope"></i>
                 </a>
-              </p>
-            </div>
+              </li>
+              <li>
+                <h5>
+                  {this.props.firstName} {this.props.lastName}
+                </h5>
+              </li>
+              <li className="job-profile-02">{this.props.job}</li>
+            </ul>
           </div>
         </div>
         {this.props.briefUser === this.props.auth._id ? (

@@ -42,14 +42,6 @@ class sidebarTemplate extends React.Component {
                     <p className="center white-text">New Client</p>
                   </div>
                 </div>
-                <div className="col m4">
-                  <div className="img-block">
-                    <img
-                      src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
-                      alt="background"
-                    />
-                  </div>
-                </div>
               </div>
             </div>
           </li>
@@ -88,10 +80,13 @@ class sidebarTemplate extends React.Component {
                           className="img-block"
                         >
                           <img
-                            src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"
+                            src={
+                              process.env.PUBLIC_URL +
+                              '/images/ProfileCard/profile01.png'
+                            }
                             alt="background"
                           />
-                          <p className="center white-text">profile 01</p>
+                          <p className="center">profile 01</p>
                         </div>
                       </div>
                       <div className="col m4">

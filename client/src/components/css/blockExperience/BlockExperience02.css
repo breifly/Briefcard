@@ -1,0 +1,23 @@
+.block-experience02 {
+  margin-left: 30px;
+  border-radius: 10px;
+  height: 100%;
+  padding: 30px 20px;
+  background-color: #e8f1f2;
+  margin-right: 10px;
+}
+
+.block-experience02 .fa-city {
+  margin-left: 0px;
+}
+
+.card-experience-infos02 {
+  padding: 20px 20px 5px 20px;
+  margin-right: 30px;
+  border-radius: 10px;
+  background-color: #e8f1f2;
+}
+
+.edit-exp-02 {
+  margin-top: -10px;
+}

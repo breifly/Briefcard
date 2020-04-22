@@ -19,9 +19,7 @@ class BlockMessage01 extends React.Component {
           ''
         )}
         <div className="container">
-          <div className="bm-01">
-            Hey {this.props.title}! {this.props.message}
-          </div>
+          <div className="bm-01">{this.props.message}</div>
         </div>
       </div>
     );

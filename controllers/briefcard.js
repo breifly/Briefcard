@@ -49,7 +49,7 @@ exports.editBriefcard = function (req, res, next) {
     });
   }
   // Message
-  if (req.body.title) {
+  if (req.body.message) {
     Briefcard.findByIdAndUpdate(req.params.id, { note: req.body }).then(
       function (Briefcard) {
         res.json(Briefcard);

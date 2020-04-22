@@ -5,6 +5,7 @@ import '../css/CreateGenericTemplate.css';
 import SidebarTemplate from './SidebarTemplate';
 import GetJob from './briefCardGoal/GetJob';
 import BlockPage from './BlockPage';
+import GetJob02 from './briefCardGoal/GetJob02';
 
 class CreateGenericTemplate extends React.Component {
   state = {
@@ -135,7 +136,13 @@ class CreateGenericTemplate extends React.Component {
                 ''
               )}
               {/* New Client */}
-              {this.state.newClient ? <div>New Client</div> : ''}
+              {this.state.newClient ? (
+                <div>
+                  <GetJob02 />
+                </div>
+              ) : (
+                ''
+              )}
               {/* Block */}
               {this.state.block ? (
                 <BlockPage
