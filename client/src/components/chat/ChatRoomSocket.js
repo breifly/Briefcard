@@ -130,15 +130,15 @@ class ChatRoomSocket extends Component {
       return this.props.users.map((user) => {
         if (user._id !== this.props.authenticated._id) {
           return (
-            <div class="notification">
-              <Link key={user._id} to={`/chatroom/user/${user._id}`}>
+            <div key={user._id} className="notification">
+              <Link to={`/chatroom/user/${user._id}`}>
                 <img
                   className="avatar hoverable"
                   src={user.avatar}
                   alt="avatar"
                 ></img>
               </Link>
-              <div class="notification-content">
+              <div className="notification-content">
                 <p>
                   {user.firstName} {user.lastName}
                 </p>

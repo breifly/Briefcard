@@ -23,8 +23,10 @@ class IndexBlockInterest extends React.Component {
   saveInterest = (form) => {
     const id = this.props.id;
     form = {
-      id: this.props.idBlock,
-      value: this.state.value,
+      interest: {
+        id: this.props.idBlock,
+        interest: this.state.value,
+      },
     };
     if (this.props.briefcardEdit) {
       // edit from briefCard
@@ -37,6 +39,7 @@ class IndexBlockInterest extends React.Component {
         this.props.getBriefCardTemplate(this.props.id)
       );
     }
+    alert('Your Interest have been register');
   };
 
   renderBlockInterest = () => {
@@ -62,7 +65,18 @@ class IndexBlockInterest extends React.Component {
     }
   };
   render() {
-    return <div>{this.renderBlockInterest()}</div>;
+    return (
+      <div>
+        {this.renderBlockInterest()}
+        {this.props.briefUser === this.props.auth._id ? (
+          <div onClick={this.saveInterest} className="btn save-interest right">
+            save Interest
+          </div>
+        ) : (
+          ''
+        )}
+      </div>
+    );
   }
 }
 

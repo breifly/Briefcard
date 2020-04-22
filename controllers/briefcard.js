@@ -64,6 +64,14 @@ exports.editBriefcard = function (req, res, next) {
       res.json(Briefcard);
     });
   }
+  // Interest
+  if (req.body.interest) {
+    Briefcard.findByIdAndUpdate(req.params.id, {
+      interest: req.body.interest,
+    }).then(function (BriefcardTemplate) {
+      res.json(BriefcardTemplate);
+    });
+  }
 };
 
 exports.addExperienceBriefcard = function (req, res, next) {

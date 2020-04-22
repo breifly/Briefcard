@@ -55,7 +55,7 @@ class BlockInterest01 extends React.Component {
       return interest.map((int) => {
         if (int.title === value) {
           return (
-            <div key={int.title} className="col m4">
+            <div key={int.title} className="col m4 s6">
               <div
                 className="card-interest"
                 style={{
@@ -67,13 +67,14 @@ class BlockInterest01 extends React.Component {
             </div>
           );
         }
+        return null;
       });
     });
   };
 
   render() {
     return (
-      <div className="">
+      <div>
         <div className="blockInterest">
           <form onSubmit={this.handleSubmit}>
             {this.props.briefUser === this.props.auth._id ? (
@@ -90,7 +91,9 @@ class BlockInterest01 extends React.Component {
             ) : (
               ''
             )}
-            <div className="row">{this.renderInterest()}</div>
+            <div className="row">
+              <div className="interest-show">{this.renderInterest()}</div>
+            </div>
           </form>
         </div>
       </div>

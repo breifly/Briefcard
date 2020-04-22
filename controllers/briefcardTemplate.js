@@ -81,6 +81,14 @@ exports.editBriefcardTemplate = function (req, res, next) {
       res.json(BriefcardTemplate);
     });
   }
+  // Interest
+  if (req.body.interest) {
+    BriefcardTemplate.findByIdAndUpdate(req.params.id, {
+      interest: req.body.interest,
+    }).then(function (BriefcardTemplate) {
+      res.json(BriefcardTemplate);
+    });
+  }
 };
 
 exports.addExperienceBriefcardTemplate = function (req, res, next) {

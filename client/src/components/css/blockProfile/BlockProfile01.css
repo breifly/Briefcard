@@ -14,7 +14,7 @@
   padding: 15px;
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 75px;
 }
 
 .job {
@@ -29,6 +29,18 @@
 }
 
 .container-experience {
-  padding-left: 9%;
-  padding-right: 9%;
+  /* padding-left: 9%;
+  padding-right: 9%; */
+}
+
+@media only screen and (max-width: 600px) {
+  .bp-01-block h5 {
+    font-size: 17px;
+  }
+
+  .bp-01-block-02 {
+    margin-top: 10%;
+    font-size: 17px;
+    margin-right: -3%;
+  }
 }
